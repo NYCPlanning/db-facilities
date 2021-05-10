@@ -8,4 +8,4 @@ SELECT
 INTO facdb_classification
 FROM facdb_base a
 JOIN lookup_classification b
-ON a.facsubgrp = b.subgrp;
+ON a.facsubgrp = b.facsubgrp;
