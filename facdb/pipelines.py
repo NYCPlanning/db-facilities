@@ -501,6 +501,7 @@ def moeo_socialservicesitelocations(df: pd.DataFrame = None):
     df["bbl"] = df.bbl.fillna(0).astype(float).astype(int)
     df["bin"] = df.bin.fillna(0).astype(float).astype(int)
     df["postcode"] = df.bbl.fillna(0).astype(float).astype(int)
+    df["postcode"] = df.postcode.astype(str).apply(lambda x: x[:5])
     return df
 
 

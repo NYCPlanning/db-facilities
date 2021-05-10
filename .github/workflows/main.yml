@@ -38,7 +38,7 @@ jobs:
         - name: Check on Services
           run: docker-compose ps
 
-        - name: Run Pipeliens
+        - name: Run Pipelines
           run: ./facdb.sh run --all
 
         - name: Build facdb

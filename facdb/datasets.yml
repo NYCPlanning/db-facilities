@@ -64,10 +64,19 @@ datasets:
 
   - name: hra_snapcenters
     version: 20200901
+    scripts:
+      - hra_snapcenters.sql
+
   - name: hra_jobcenters
     version: 20200901
+    scripts:
+      - hra_snapcenters.sql
+
   - name: hra_medicaid
     version: 20200901
+    scripts:
+      - hra_medicaid.sql
+
   - name: nycha_communitycenters
     version: 20191118
   - name: nycha_policeservice
@@ -221,12 +230,24 @@ datasets:
 
   - name: foodbankny_foodbanks
     version: 20210414
+    scripts:
+      - foodbankny_foodbanks.sql
+
   - name: hhc_hospitals
     version: 20170908
+    scripts:
+      - hhc_hospitals.sql
+
   - name: moeo_socialservicesitelocations
     version: 20210414
+    scripts:
+      - moeo_socialservicesitelocations.sql
+
   - name: nycdoc_corrections
     version: 20210413
+    scripts:
+      - nycdoc_corrections.sql
+
   - name: nysopwdd_providers
     version: 20210422
   - name: nysparks_historicplaces
