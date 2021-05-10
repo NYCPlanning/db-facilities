@@ -14,3 +14,14 @@ CREATE TABLE lookup_classification (
     servarea TEXT
 );
 \COPY lookup_classification FROM 'facdb/data/lookup_classification.csv' DELIMITER ',' CSV HEADER;
+
+
+DROP TABLE IF EXISTS lookup_agency;
+CREATE TABLE lookup_agency (
+    overagency TEXT,
+    overabbrev TEXT,
+    overlevel TEXT,
+    opabbrev TEXT,
+    optype TEXT
+);
+\COPY lookup_agency FROM 'facdb/data/lookup_agency.csv' DELIMITER ',' CSV HEADER;
