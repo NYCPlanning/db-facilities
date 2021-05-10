@@ -6,7 +6,7 @@ SELECT
     initcap(psa) as facname,
     parsed_hnum as addressnum,
     parsed_sname as streetname,
-    cleaned_address as address,
+    address as address,
     NULL as city,
     zipcode,
     borough as boro,

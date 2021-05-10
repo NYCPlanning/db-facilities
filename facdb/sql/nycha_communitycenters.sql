@@ -6,7 +6,7 @@ SELECT
     development as facname,
     parsed_hnum as addressnum,
     parsed_sname as streetname,
-    cleaned_address as address,
+    address as address,
     NULL as city,
     NULL as zipcode,
     borough as boro,
