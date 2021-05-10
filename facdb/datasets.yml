@@ -58,6 +58,9 @@ datasets:
 
   - name: nycha_policeservice
     version: 20160915
+    scripts:
+      - nycha_policeservice.sql
+
   - name: nycourts_courts
     version: 20210413
   - name: nysdec_lands
