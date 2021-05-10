@@ -68,6 +68,8 @@ datasets:
 
   - name: nysdec_lands
     version: 20210415
+    scripts:
+      - nysdec_lands.sql
 
   - name: dot_bridgehouses
     version: 20210413
