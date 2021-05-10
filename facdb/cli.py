@@ -48,6 +48,7 @@ def build():
     ExecuteSQL("facdb/sql/_create_facdb_address.sql")
     ExecuteSQL("facdb/sql/_create_facdb_spatial.sql")
     ExecuteSQL("facdb/sql/_create_facdb_boro.sql")
+    ExecuteSQL("facdb/sql/_create_facdb_classification.sql")
 
 
 @app.command()
