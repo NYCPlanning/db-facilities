@@ -79,12 +79,23 @@ datasets:
 
   - name: nycha_communitycenters
     version: 20191118
+    scripts:
+      - nycha_communitycenters.sql
+
   - name: nycha_policeservice
     version: 20160915
+    scripts:
+      - nycha_policeservice.sql
+
   - name: nycourts_courts
     version: 20210413
+    scripts:
+      - nycourts_courts.sql
+
   - name: nysdec_lands
     version: 20210415
+    scripts:
+      - nysdec_lands.sql
 
   - name: dot_bridgehouses
     version: 20210413
