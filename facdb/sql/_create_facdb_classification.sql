@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS facdb_classification;
 SELECT
-	a.uid,
+    a.uid,
     a.facsubgrp,
     b.facgroup,
     b.facdomain,
