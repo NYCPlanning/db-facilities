@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS lookup_boro s;
+DROP TABLE IF EXISTS lookup_boro;
 CREATE TABLE lookup_boro (
     boro TEXT,
     boroname TEXT,
