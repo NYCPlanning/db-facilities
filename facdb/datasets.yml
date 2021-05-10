@@ -34,16 +34,34 @@ datasets:
 
   - name: dsny_garages
     version: 20210414
+    scripts:
+      - dsny_garages.sql
+
   - name: dsny_specialwastedrop
     version: 20210414
+    scripts:
+      - dsny_specialwastedrop.sql
+
   - name: dsny_textiledrop
     version: 20210415
+    scripts:
+      - dsny_textiledrop.sql
+
   - name: dsny_leafdrop
     version: 20210402
+    scripts:
+      - dsny_leafdrop.sql
+
   - name: dsny_fooddrop
     version: 20210402
+    scripts:
+      - dsny_fooddrop.sql
+
   - name: dsny_electronicsdrop
     version: 20210414
+    scripts:
+      - dsny_electronicsdrop.sql
+
   - name: hra_snapcenters
     version: 20200901
   - name: hra_jobcenters
@@ -144,14 +162,27 @@ datasets:
 
   - name: nysomh_mentalhealth
     version: 20210413
+
   - name: dpr_parksproperties
     version: 20210324
+    scripts:
+      - dpr_parksproperties.sql
+
   - name: dycd_afterschoolprograms
     version: 20170916
+    scripts:
+      -  dycd_afterschoolprograms.sql
+
   - name: fbop_corrections
     version: 20210413
+    scripts:
+      - fbop_corrections.sql
+
   - name: fdny_firehouses
     version: 20170916
+    scripts:
+      - fdny_firehouses.sql
+
   - name: nysomh_mentalhealth
     version: 20210413
 
