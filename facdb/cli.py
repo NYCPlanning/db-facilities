@@ -44,9 +44,13 @@ def build():
     """
     Building facdb based on facdb_base
     """
+    # Lookups and derived fields
     ExecuteSQL("facdb/sql/_create_facdb_geom.sql")
     ExecuteSQL("facdb/sql/_create_facdb_spatial.sql")
     ExecuteSQL("facdb/sql/_create_facdb_boro.sql")
+
+    # Append lookups to facdb_base
+    ExecuteSQL("facdb/sql/_build.sql")
 
 
 @app.command()
