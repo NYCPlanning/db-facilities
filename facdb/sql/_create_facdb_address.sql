@@ -1,7 +1,19 @@
 DROP TABLE IF EXISTS facdb_address;
-WITH _facdb_address AS (
-    SELECT
+SELECT
+	uid,
+	source,
+	(CASE WHEN source = 'dcp_colp' then addressnum else geo_house_number END) as addressnum,
+	(CASE WHEN source = 'dcp_colp' then streetname else geo_street_name END) as streetname,
+	UPPER(CASE
+		WHEN source = 'dcp_colp' then address
+		WHEN geo_grc in ('00', '01') and geo_grc2 in ('00', '01')
+		THEN nullif(geo_house_number||' '||geo_street_name,'')
+	ELSE address END) as address
+INTO facdb_address
+FROM (
+	SELECT
         uid,
+        source,
         addressnum,
         streetname,
         nullif(geo_1b->'result'->>'geo_house_number','') as geo_house_number,
@@ -10,12 +22,6 @@ WITH _facdb_address AS (
         nullif(geo_1b->'result'->>'geo_grc2','') as geo_grc2,
         geo_1b->'inputs'->>'input_hnum' as input_hnum,
         geo_1b->'inputs'->>'input_sname' as input_sname,
-        address as raw_address
+        address
     FROM facdb_base
-)
-SELECT
-    COALESCE(nullif(geo_house_number||' '||geo_street_name,''), UPPER(raw_address)) as address,
-    *
-INTO facdb_address
-FROM _facdb_address
-;
+) a;
