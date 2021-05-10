@@ -16,6 +16,6 @@ WITH _facdb_address AS (
 SELECT
     COALESCE(nullif(geo_house_number||' '||geo_street_name,''), UPPER(raw_address)) as address,
     *
-FROM _facdb_address
 INTO facdb_address
+FROM _facdb_address
 ;
