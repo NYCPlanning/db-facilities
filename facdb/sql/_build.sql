@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS facdb;
 WITH
 spatial_join AS(
     SELECT
-        a.uid
+        a.uid,
         a.facname,
         a.source as datasource,
         a.opname,
