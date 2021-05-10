@@ -314,16 +314,16 @@ def dsny_specialwastedrop(df: pd.DataFrame = None):
 
 @Export
 @Function1B(
-    street_name_field="parsed_sname",
-    house_number_field="parsed_hnum",
+    street_name_field="street",
+    house_number_field="number",
     borough_field="borough",
     zipcode_field="zip",
 )
-@ParseAddress(raw_address_field="address")
 @FunctionBL(bbl_field="bbl")
 @FunctionBN(bin_field="bin")
 @Prepare
 def dsny_textiledrop(df: pd.DataFrame = None):
+    df["bbl"] = df.bbl.fillna(0).astype(float).astype(int)
     return df
 
 
