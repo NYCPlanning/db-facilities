@@ -26,6 +26,7 @@ def init():
     Initialize empty facdb_base table and create procedures and functions
     """
     ExecuteSQL("facdb/sql/_create_facdb_base.sql")
+    ExecuteSQL("facdb/sql/_create_reference_tables.sql")
     ExecuteSQL("facdb/sql/_procedures.sql")
     ExecuteSQL("facdb/sql/_functions.sql")
 
@@ -45,6 +46,8 @@ def build():
     """
     ExecuteSQL("facdb/sql/_create_facdb_geom.sql")
     ExecuteSQL("facdb/sql/_create_facdb_address.sql")
+    ExecuteSQL("facdb/sql/_create_facdb_spatial.sql")
+    ExecuteSQL("facdb/sql/_create_facdb_boro.sql")
 
 
 @app.command()

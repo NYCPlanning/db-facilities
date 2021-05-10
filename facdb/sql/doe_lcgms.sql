@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS _doe_lcgms;
-SELECT md5(a.uid || b.uid) as uid,
+SELECT md5(a.uid || coalesce(b.uid, '')) as uid,
 	a.source,
 	a.location_name as facname,
 	a.parsed_hnum as addressnum,

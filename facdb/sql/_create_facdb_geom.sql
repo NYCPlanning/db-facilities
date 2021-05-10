@@ -30,7 +30,7 @@ FROM (
             ) as geomsource
         FROM (
                 SELECT a.*,
-                    b.wkb_geometry as geom_bldg,
+                    st_centroid(b.wkb_geometry) as geom_bldg,
                     (
                         case
                             when a.wkb_geometry is not null then 'wkb_geometry'
@@ -96,6 +96,6 @@ FROM (
                             ) a
                             LEFT JOIN dcp_mappluto b ON b.bbl::bigint::text = a.geo_bbl
                     ) a
-                    LEFT JOIN doitt_buildingcentroids b ON b.bin::bigint::text = a.geo_bin
+                    LEFT JOIN doitt_buildingfootprints b ON b.bin::bigint::text = a.geo_bin
             ) a
     ) a
