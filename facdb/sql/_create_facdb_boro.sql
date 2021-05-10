@@ -28,13 +28,13 @@ FROM (
         WHERE uid not in (SELECT uid FROM facdb_spatial where borocode IS NOT NULL)
     ) a LEFT JOIN doitt_zipcodeboundaries b
     ON a.input_zipcode = b.zipcode) a
-    LEFT JOIN lookup_borough b
+    LEFT JOIN lookup_boro b
     ON a.boro = b.boro
     UNION
     SELECT
         uid, b.boroname, a.borocode, city, zipcode
     FROM facdb_spatial a
-    LEFT JOIN lookup_borough b
+    LEFT JOIN lookup_boro b
     ON b.borocode = a.borocode
     WHERE a.borocode IS NOT NULL
 ) a

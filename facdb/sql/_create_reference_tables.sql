@@ -1,15 +1,7 @@
-DROP TABLE IF EXISTS lookup_city_zip_borough;
-CREATE TABLE lookup_city_zip_borough (
-    zipcode INTEGER,
-    city TEXT,
-    boro TEXT
-);
-\COPY lookup_city_zip_borough FROM 'facdb/data/lookup_city_zip_borough.csv' DELIMITER ',' CSV HEADER;
-
-DROP TABLE IF EXISTS lookup_borough;
-CREATE TABLE lookup_borough (
+DROP TABLE IF EXISTS lookup_boro s;
+CREATE TABLE lookup_boro (
     boro TEXT,
     boroname TEXT,
     borocode INTEGER
 );
-\COPY lookup_borough FROM 'facdb/data/lookup_borough.csv' DELIMITER ',' CSV HEADER;
+\COPY lookup_boro FROM 'facdb/data/lookup_boro.csv' DELIMITER ',' CSV HEADER;
