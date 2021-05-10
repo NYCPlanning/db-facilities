@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS facdb_spatial;
 with boundary_geosupport as (
 	SELECT
 		uid,
-		nullif(geo_1b->'result'->>'geo_borough_code','')::integer as borocode,
+		nullif(nullif(geo_1b->'result'->>'geo_borough_code',''), '0')::integer as borocode,
 		nullif(geo_1b->'result'->>'geo_zip_code','') as zipcode,
 		nullif(geo_1b->'result'->>'geo_bin','') as bin,
 		nullif(geo_1b->'result'->>'geo_bbl','') as bbl,
