@@ -6,6 +6,7 @@ CREATE TABLE lookup_boro (
 );
 \COPY lookup_boro FROM 'facdb/data/lookup_boro.csv' DELIMITER ',' CSV HEADER;
 
+
 DROP TABLE IF EXISTS lookup_classification;
 CREATE TABLE lookup_classification (
     facsubgrp TEXT,
@@ -25,3 +26,13 @@ CREATE TABLE lookup_agency (
     optype TEXT
 );
 \COPY lookup_agency FROM 'facdb/data/lookup_agency.csv' DELIMITER ',' CSV HEADER;
+
+
+DROP TABLE IF EXISTS manual_corrections;
+CREATE TABLE manual_corrections (
+    uid TEXT,
+    field TEXT,
+    old_value TEXT,
+    new_value TEXT
+);
+\COPY manual_corrections FROM 'facdb/data/manual_corrections.csv' DELIMITER ',' CSV HEADER;
