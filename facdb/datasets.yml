@@ -79,12 +79,23 @@ datasets:
 
   - name: nycha_communitycenters
     version: 20191118
+    scripts:
+      - nycha_communitycenters.sql
+
   - name: nycha_policeservice
     version: 20160915
+    scripts:
+      - nycha_policeservice.sql
+
   - name: nycourts_courts
     version: 20210413
+    scripts:
+      - nycourts_courts.sql
+
   - name: nysdec_lands
     version: 20210415
+    scripts:
+      - nysdec_lands.sql
 
   - name: dot_bridgehouses
     version: 20210413
@@ -171,6 +182,8 @@ datasets:
 
   - name: nysomh_mentalhealth
     version: 20210413
+    scripts:
+      - nysomh_mentalhealth.sql
 
   - name: dpr_parksproperties
     version: 20210324
@@ -250,9 +263,20 @@ datasets:
 
   - name: nysopwdd_providers
     version: 20210422
+    scripts:
+      - nysopwdd_providers.sql
+
   - name: nysparks_historicplaces
-    version: 20210422
+    version: 20210511
+    scripts:
+      - nysparks_historicplaces.sql
+
   - name: nysparks_parks
-    version: 20210422
+    version: 20210511
+    scripts:
+      - nysparks_parks.sql
+
   - name: nysoasas_programs
     version: 22-Apr-21
+    scripts:
+      - nysoasas_programs.sql
