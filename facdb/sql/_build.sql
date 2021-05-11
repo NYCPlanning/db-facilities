@@ -5,12 +5,7 @@ spatial_join AS(
         a.uid,
         a.facname,
         a.source as datasource,
-        a.opname,
         a.opabbrev,
-        a.optype,
-        a.overagency,
-        a.overabbrev,
-        a.overlevel,
         a.capacity,
         a.captype,
         a.proptype,
@@ -69,7 +64,20 @@ classification_join AS(
     FROM address_join a
     JOIN facdb_classification b
     ON a.uid = b.uid
+),
+agency_join AS(
+    SELECT
+        a.*,
+        b.opname,
+        b.optype,
+        b.overabbrev,
+        b.overagency,
+        b.overlevel
+    FROM classification_join a
+    JOIN facdb_agency b
+    ON a.uid = b.uid
 )
+facdb_agency
 SELECT
     facname,
     addressnum,
@@ -109,6 +117,6 @@ SELECT
     uid,
     geom
 INTO facdb
-FROM classification_join;
+FROM agency_join;
 
 CALL apply_correction(facdb, manual_corrections);
