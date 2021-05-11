@@ -18,7 +18,7 @@ spatial_join AS(
         b.precinct,
         b.schooldist
     FROM facdb_base a
-    JOIN facdb_spatial b
+    LEFT JOIN facdb_spatial b
     ON a.uid = b.uid
 ),
 boro_join AS(
@@ -29,7 +29,7 @@ boro_join AS(
         b.city,
         b.zipcode
     FROM spatial_join a
-    JOIN facdb_boro b
+    LEFT JOIN facdb_boro b
     ON a.uid = b.uid
 ),
 geom_join AS(
@@ -41,7 +41,7 @@ geom_join AS(
         x as xcoord,
         y as ycoord
     FROM boro_join a
-    JOIN facdb_geom b
+    LEFT JOIN facdb_geom b
     ON a.uid = b.uid
 ),
 address_join AS(
@@ -51,7 +51,7 @@ address_join AS(
         b.streetname,
         b.address
     FROM geom_join a
-    JOIN facdb_address b
+    LEFT JOIN facdb_address b
     ON a.uid = b.uid
 ),
 classification_join AS(
@@ -62,7 +62,7 @@ classification_join AS(
         b.facdomain,
         b.servearea
     FROM address_join a
-    JOIN facdb_classification b
+    LEFT JOIN facdb_classification b
     ON a.uid = b.uid
 ),
 agency_join AS(
@@ -74,7 +74,7 @@ agency_join AS(
         b.overagency,
         b.overlevel
     FROM classification_join a
-    JOIN facdb_agency b
+    LEFT JOIN facdb_agency b
     ON a.uid = b.uid
 )
 facdb_agency

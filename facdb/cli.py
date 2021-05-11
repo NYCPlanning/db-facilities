@@ -44,13 +44,13 @@ def build():
     """
     Building facdb based on facdb_base
     """
-    # Lookups and derived fields
     ExecuteSQL("facdb/sql/_create_facdb_geom.sql")
+    ExecuteSQL("facdb/sql/_create_facdb_address.sql")
     ExecuteSQL("facdb/sql/_create_facdb_spatial.sql")
     ExecuteSQL("facdb/sql/_create_facdb_boro.sql")
-
-    # Append lookups to facdb_base
-    ExecuteSQL("facdb/sql/_build.sql")
+    ExecuteSQL("facdb/sql/_create_facdb_classification.sql")
+    ExecuteSQL("facdb/sql/_create_facdb_agency.sql")
+    ExecuteSQL("facdb/sql/_create_facdb.sql")
 
 
 @app.command()
@@ -72,7 +72,6 @@ def run(
     This function is used to execute the python portion of a pipeline,
     if there's a scripts section in datasets.yml under this dataset, the
     sql script will also be executed.
-
     facdb run -n {{ name }} to run both python and sql part\n
     facdb run -n {{ name }} --python to run the python part only\n
     facdb run -n {{ name }} --sql to run the sql part only\n
