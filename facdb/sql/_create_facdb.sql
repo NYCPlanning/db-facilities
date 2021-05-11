@@ -36,7 +36,7 @@ SELECT
     facdb_geom.y as ycoord,
     facdb_base.source as datasource,
     facdb_base.uid,
-    facdb_geom.geom,
+    facdb_geom.geom
 INTO facdb
 FROM facdb_base
 LEFT JOIN facdb_spatial 	ON facdb_base.uid = facdb_spatial.uid
