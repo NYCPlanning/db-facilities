@@ -46,4 +46,4 @@ LEFT JOIN facdb_classification 	on facdb_base.uid = facdb_classification.uid
 LEFT JOIN facdb_agency 		ON facdb_base.uid = facdb_agency.uid
 LEFT JOIN facdb_geom 		ON facdb_base.uid = facdb_geom.uid;
 
-CALL apply_correction(facdb, manual_corrections);
+CALL apply_correction('facdb', 'manual_corrections');
