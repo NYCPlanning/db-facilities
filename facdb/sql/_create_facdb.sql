@@ -30,7 +30,7 @@ SELECT
     facdb_classification.facsubgrp,
     facdb_classification.facgroup,
     facdb_classification.facdomain,
-    facdb_classification.servearea,
+    facdb_classification.servarea,
     facdb_geom.geom,
     facdb_geom.longitude,
     facdb_geom.latitude,
