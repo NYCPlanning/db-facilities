@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS _nysparks_historicplaces;
-
 SELECT
     uid,
     source,

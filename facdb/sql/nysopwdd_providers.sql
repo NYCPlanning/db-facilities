@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS _nysopwdd_providers;
-
 SELECT
     uid,
     source,
@@ -36,4 +35,3 @@ INTO _nysopwdd_providers
 FROM nysopwdd_providers;
 
 CALL append_to_facdb_base('_nysopwdd_providers');
-
