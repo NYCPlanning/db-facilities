@@ -1,122 +1,49 @@
 DROP TABLE IF EXISTS facdb;
-WITH
-spatial_join AS(
-    SELECT
-        a.uid,
-        a.facname,
-        a.source as datasource,
-        a.opabbrev,
-        a.capacity,
-        a.captype,
-        a.proptype,
-        b.bin,
-        b.bbl,
-        b.commboard,
-        b.nta,
-        b.council,
-        b.censtract,
-        b.precinct,
-        b.schooldist
-    FROM facdb_base a
-    LEFT JOIN facdb_spatial b
-    ON a.uid = b.uid
-),
-boro_join AS(
-    SELECT
-        a.*,
-        b.boro,
-        b.borocode,
-        b.city,
-        b.zipcode
-    FROM spatial_join a
-    LEFT JOIN facdb_boro b
-    ON a.uid = b.uid
-),
-geom_join AS(
-    SELECT
-        a.*,
-        geom,
-        longitude,
-        latitude,
-        x as xcoord,
-        y as ycoord
-    FROM boro_join a
-    LEFT JOIN facdb_geom b
-    ON a.uid = b.uid
-),
-address_join AS(
-    SELECT
-        a.*,
-        b.addressnum,
-        b.streetname,
-        b.address
-    FROM geom_join a
-    LEFT JOIN facdb_address b
-    ON a.uid = b.uid
-),
-classification_join AS(
-    SELECT
-        a.*,
-        b.facsubgrp,
-        b.facgroup,
-        b.facdomain,
-        b.servearea
-    FROM address_join a
-    LEFT JOIN facdb_classification b
-    ON a.uid = b.uid
-),
-agency_join AS(
-    SELECT
-        a.*,
-        b.opname,
-        b.optype,
-        b.overabbrev,
-        b.overagency,
-        b.overlevel
-    FROM classification_join a
-    LEFT JOIN facdb_agency b
-    ON a.uid = b.uid
-)
-facdb_agency
 SELECT
-    facname,
-    addressnum,
-    streetname,
-    address,
-    city,
-    zipcode,
-    boro,
-    borocode,
-    bin,
-    bbl,
-    commboard,
-    nta,
-    council,
-    schooldist,
-    policeprct,
-    censtract,
-    factype,
-    facsubgrp,
-    facgroup,
-    facdomain,
-    servarea,
-    opname,
-    opabbrev,
-    optype,
-    overagency,
-    overabbrev,
-    overlevel,
-    capacity,
-    captype,
-    proptype,
-    latitude,
-    longitude,
-    xcoord,
-    ycoord,
-    datasource,
-    uid,
-    geom
+    facdb_base.uid,
+    facdb_base.facname,
+    facdb_base.source as datasource,
+    facdb_agency.opname,
+    facdb_agency.opabbrev,
+    facdb_agency.optype,
+    facdb_agency.overagency,
+    facdb_agency.overabbrev,
+    facdb_agency.overlevel,
+    facdb_base.capacity,
+    facdb_base.captype,
+    facdb_base.proptype,
+    facdb_spatial.bin,
+    facdb_spatial.bbl,
+    facdb_spatial.commboard,
+    facdb_spatial.nta,
+    facdb_spatial.council,
+    facdb_spatial.censtract,
+    facdb_spatial.precinct,
+    facdb_spatial.schooldist,
+    facdb_boro.boro,
+    facdb_boro.borocode,
+    facdb_boro.city,
+    facdb_boro.zipcode,
+    facdb_address.addressnum,
+    facdb_address.streetname,
+    facdb_address.address,
+    facdb_classification.facsubgrp,
+    facdb_classification.facgroup,
+    facdb_classification.facdomain,
+    facdb_classification.servearea,
+    facdb_geom.geom,
+    facdb_geom.longitude,
+    facdb_geom.latitude,
+    facdb_geom.x as xcoord,
+    facdb_geom.y as ycoord
 INTO facdb
-FROM agency_join;
+FROM facdb_base
+	LEFT JOIN facdb_spatial ON facdb_base.uid = facdb_spatial.uid
+	LEFT JOIN facdb_boro ON facdb_base.uid = facdb_boro.uid
+	LEFT JOIN facdb_address on facdb_base.uid = facdb_address.uid
+	LEFT JOIN facdb_classification on facdb_base.uid = facdb_classification.uid
+	LEFT JOIN facdb_agency ON facdb_base.uid = facdb_agency.uid
+	LEFT JOIN facdb_geom ON facdb_base.uid = facdb_geom.uid
+;
 
 CALL apply_correction(facdb, manual_corrections);
