@@ -16,7 +16,7 @@ SELECT
     category as factype,
     (
         CASE
-        WHEN category LIKE '%Preserve%' 
+        WHEN category LIKE '%Preserve%'
         THEN 'Preserves and Conservation Areas'
         ELSE 'Parks'
 	    END
@@ -27,7 +27,7 @@ SELECT
     NULL as capacity,
     NULL as captype,
     NULL as proptype,
-    ST_POINT(longitude::double precision, latitude::double precision) as wkb_geometry,
+    wkt::geometry as wkb_geometry,
     NULL geo_1b,
     NULL as geo_bl,
     NULL as geo_bn

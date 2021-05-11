@@ -22,7 +22,7 @@ SELECT
     NULL as capacity,
     NULL as captype,
     NULL as proptype,
-    ST_POINT(longitude::double precision, latitude::double precision) as wkb_geometry,
+    wkt::geometry as wkb_geometry,
     NULL geo_1b,
     NULL as geo_bl,
     NULL as geo_bn
@@ -30,5 +30,3 @@ INTO _nysparks_historicplaces
 FROM nysparks_historicplaces;
 
 CALL append_to_facdb_base('_nysparks_historicplaces');
-
-
