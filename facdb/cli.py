@@ -26,6 +26,7 @@ def init():
     Initialize empty facdb_base table and create procedures and functions
     """
     ExecuteSQL("facdb/sql/_create_facdb_base.sql")
+    ExecuteSQL("facdb/sql/_create_reference_tables.sql")
     ExecuteSQL("facdb/sql/_procedures.sql")
     ExecuteSQL("facdb/sql/_functions.sql")
 
@@ -36,6 +37,18 @@ def dataloading():
     Load SQL dump datasets from data library e.g. dcp_mappluto, doitt_buildingcentroids
     """
     os.system("./facdb/bash/dataloading.sh")
+
+
+@app.command()
+def build():
+    """
+    Building facdb based on facdb_base
+    """
+    ExecuteSQL("facdb/sql/_create_facdb_geom.sql")
+    ExecuteSQL("facdb/sql/_create_facdb_address.sql")
+    ExecuteSQL("facdb/sql/_create_facdb_spatial.sql")
+    ExecuteSQL("facdb/sql/_create_facdb_boro.sql")
+    ExecuteSQL("facdb/sql/_create_facdb_classification.sql")
 
 
 @app.command()

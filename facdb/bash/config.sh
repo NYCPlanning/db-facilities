@@ -36,7 +36,7 @@ function import_public {
   name=$1
   version=${2:-latest}
   url=https://nyc3.digitaloceanspaces.com/edm-recipes
-  version=$(curl -s $url/datasets/$name/$version/config.json | jq -r '.dataset.version')
+  version=$(curl -ss $url/datasets/$name/$version/config.json | jq -r '.dataset.version')
   echo "$name version: $version"
 
   target_dir=$(pwd)/.library/datasets/$name/$version
@@ -48,7 +48,7 @@ function import_public {
     echo "🛠 $name.sql doesn't exists in cache, downloading ..."
     mkdir -p $target_dir && (
       cd $target_dir
-      curl -O $url/datasets/$name/$version/$name.sql
+      curl -ss -O $url/datasets/$name/$version/$name.sql
     )
   fi
 
