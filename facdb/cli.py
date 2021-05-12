@@ -52,7 +52,14 @@ def build():
     ExecuteSQL("facdb/sql/_create_facdb_agency.sql")
     ExecuteSQL("facdb/sql/_create_facdb.sql")
 
+    
+def qaqc():
+    """
+    Running QAQC commands
+    """
+    ExecuteSQL("facdb/sql/_qaqc.sql")
 
+    
 @app.command()
 def export():
     """
