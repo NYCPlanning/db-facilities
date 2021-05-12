@@ -15,6 +15,7 @@ function urlparse {
     BUILD_PORT="$(echo $hostport | sed -e 's,^.*:,:,g' -e 's,.*:\([0-9]*\).*,\1,g' -e 's,[^0-9],,g')"
     BUILD_DB="$(echo $url | grep / | cut -d/ -f2-)"
 }
+urlparse $BUILD_ENGINE
 
 function max_bg_procs {
     if [[ $# -eq 0 ]] ; then
@@ -33,13 +34,13 @@ function max_bg_procs {
 }
 
 function import_public {
-  name=$1
-  version=${2:-latest}
-  url=https://nyc3.digitaloceanspaces.com/edm-recipes
-  version=$(curl -ss $url/datasets/$name/$version/config.json | jq -r '.dataset.version')
+  local name=$1
+  local version=${2:-latest}
+  local url=https://nyc3.digitaloceanspaces.com/edm-recipes
+  local version=$(curl -ss $url/datasets/$name/$version/config.json | jq -r '.dataset.version')
   echo "$name version: $version"
 
-  target_dir=$(pwd)/.library/datasets/$name/$version
+  local target_dir=$(pwd)/.library/datasets/$name/$version
 
   # Download sql dump for the datasets from data library
   if [ -f $target_dir/$name.sql ]; then
@@ -57,16 +58,17 @@ function import_public {
 }
 
 function CSV_export {
+  local name=$1
+  local output_name=${2:-$name}
   psql $BUILD_ENGINE  -c "\COPY (
-    SELECT * FROM $@
-  ) TO STDOUT DELIMITER ',' CSV HEADER;" > $@.csv
+    SELECT * FROM $name
+  ) TO STDOUT DELIMITER ',' CSV HEADER;" > $output_name.csv
 }
 
 function SHP_export {
-  urlparse $BUILD_ENGINE
-  table=$1
-  geomtype=$2
-  name=${3:-$table}
+  local table=$1
+  local geomtype=$2
+  local name=${3:-$table}
   mkdir -p $name &&(
     cd $name
     ogr2ogr -progress -f "ESRI Shapefile" $name.shp \
