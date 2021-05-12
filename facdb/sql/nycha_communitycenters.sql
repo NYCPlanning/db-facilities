@@ -14,13 +14,36 @@ SELECT
     bin,
     bbl,
     (CASE
-		WHEN program_type = 'NORC' THEN 'NORC Services'
-		ELSE 'NYCHA Community Center - '|| initcap(program_type)
-	END) as factype,
+      WHEN program_type = 'NORC' THEN 'NORC Services'
+		  ELSE 'NYCHA Community Center - '|| initcap(program_type)
+    END) as factype,
     (CASE
-		WHEN program_type = 'NORC' THEN 'Senior Services'
-		ELSE 'Community Centers and Community School Programs'
-	END) as facsubgrp,
+      WHEN program_type LIKE '%/%/%' THEN 'COMMUNITY CENTER'
+      WHEN program_type ~* 'Case Management' THEN 'LEGAL AND INTERVENTION SERVICES'
+      WHEN program_type ~* 'UPK' THEN 'DOE UNIVERSAL PRE-KINDERGARTEN'
+      WHEN program_type ~* 'Senior|NORC' THEN 'SENIOR SERVICES'
+      WHEN program_type ~* 'Day Care|Child Care' THEN 'DAY CARE'
+      WHEN program_type ~* 'Disabilities' THEN 'PROGRAMS FOR PEOPLE WITH DISABILITIES'
+      WHEN program_type ~* 'Storage' THEN 'STORAGE'
+      WHEN program_type ~* 'Job Readiness|Jobs Plus' THEN 'WORKFORCE DEVELOPMENT'
+      WHEN program_type ~* 'Vocational|Trade School' THEN 'GED AND ALTERNATIVE HIGH SCHOOL EQUIVALENCY'
+      WHEN program_type ~* 'School' THEN 'PUBLIC K-12 SCHOOLS'
+      WHEN program_type ~* 'NYPD' THEN 'POLICE SERVICES'
+      WHEN program_type ~* 'Food Pantry' THEN 'SOUP KITCHENS AND FOOD PANTRIES'
+      WHEN program_type ~* 'Mental|Counseling' THEN 'MENTAL HEALTH'
+      WHEN program_type ~* 'Clinic' THEN 'HOSPITALS AND CLINICS'
+      WHEN program_type ~* 'Plasterer''s Shop' THEN 'CUSTODIAL'
+      WHEN program_type ~* 'ESL|Literacy' THEN 'ADULT AND IMMIGRANT LITERACY'
+      WHEN program_type ~* 'Training' THEN 'TRAINING AND TESTING'
+      WHEN program_type ~* 'Library' THEN 'PUBLIC LIBRARIES'
+      WHEN program_type ~* 'CCTV' THEN 'TELECOMMUNICATIONS'
+      WHEN program_type ~* 'Office|Staff|Contractor|ORRR' THEN 'CITY GOVERNMENT OFFICES'
+      WHEN program_type ~* 'RESERVED - OPERATIONS|TA USE|lighting vendor|Unknown|Vacant' THEN 'MISCELLANEOUS USE'
+      WHEN program_type ~* 'Urban Family Center|Shelter' THEN 'NON-RESIDENTIAL HOUSING AND HOMELESS SERVICES'
+      WHEN program_type ~* 'Head Start' THEN 'HEAD START'
+      WHEN program_type ~* 'Child welfare|Family' THEN 'FAMILY SERVICES'
+      ELSE 'COMMUNITY CENTER'
+    END) as facsubgrp,
     'NYC Housing Authority' as opname,
     'NYCHA' as opabbrev,
     'NYCHA' as overabbrev,
