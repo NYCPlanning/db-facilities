@@ -10,11 +10,11 @@ SELECT
     facdb_boro.borocode,
     facdb_spatial.bin,
     facdb_spatial.bbl,
-    facdb_spatial.commboard,
+    facdb_spatial.commboard as cd,
     facdb_spatial.nta,
     facdb_spatial.council,
     facdb_spatial.schooldist,
-    facdb_spatial.precinct,
+    facdb_spatial.policeprct,
     facdb_spatial.censtract,
     facdb_base.factype,
     facdb_classification.facsubgrp,
@@ -41,9 +41,27 @@ INTO facdb
 FROM facdb_base
 LEFT JOIN facdb_spatial 	ON facdb_base.uid = facdb_spatial.uid
 LEFT JOIN facdb_boro 		ON facdb_base.uid = facdb_boro.uid
-LEFT JOIN facdb_address 	on facdb_base.uid = facdb_address.uid
-LEFT JOIN facdb_classification 	on facdb_base.uid = facdb_classification.uid
+LEFT JOIN facdb_address 	ON facdb_base.uid = facdb_address.uid
+LEFT JOIN facdb_classification 	ON facdb_base.uid = facdb_classification.uid
 LEFT JOIN facdb_agency 		ON facdb_base.uid = facdb_agency.uid
 LEFT JOIN facdb_geom 		ON facdb_base.uid = facdb_geom.uid;
+
+-- Remove records where field = 'remove' in manual_corrections
+INSERT INTO corrections_applied (uid, field)
+    (SELECT
+        uid,
+        'remove' as field
+    FROM manual_corrections
+    WHERE uid IN (SELECT uid FROM facdb));
+
+INSERT INTO corrections_not_applied (uid, field)
+    (SELECT
+        uid,
+        'remove' as field
+    FROM manual_corrections
+    WHERE uid NOT IN (SELECT uid FROM facdb));
+
+DELETE FROM facdb
+WHERE uid IN (SELECT uid FROM corrections_applied WHERE field = 'remove');
 
 CALL apply_correction('facdb', 'manual_corrections');

@@ -11,7 +11,7 @@ with boundary_geosupport as (
 		nullif(geo_1b->'result'->>'geo_nta','') as nta,
 		nullif(geo_1b->'result'->>'geo_council','') as council,
 		nullif(geo_1b->'result'->>'geo_censtract','000000') as censtract,
-		nullif(geo_1b->'result'->>'geo_policeprct','') as precinct,
+		nullif(geo_1b->'result'->>'geo_policeprct','') as policeprct,
 		nullif(geo_1b->'result'->>'geo_schooldist','') as schooldist,
 		'geosupport' as boundarysource
 	FROM facdb_base
@@ -32,7 +32,7 @@ with boundary_geosupport as (
 		(select ntacode from dcp_ntaboundaries b where st_intersects(b.wkb_geometry, a.geom)) as nta,
 		(select coundist::text from dcp_councildistricts b where st_intersects(b.wkb_geometry, a.geom)) as council,
 		(select RIGHT(boroct2010::text, 6) from dcp_censustracts b where st_intersects(b.wkb_geometry, a.geom)) as censtract,
-		(select precinct::text from dcp_policeprecincts b where st_intersects(b.wkb_geometry, a.geom)) as precinct,
+		(select precinct::text from dcp_policeprecincts b where st_intersects(b.wkb_geometry, a.geom)) as policeprct,
 		(select schooldist::text from dcp_school_districts b where st_intersects(b.wkb_geometry, a.geom)) as schooldist,
 		'spatial join' as boundarysource
 	FROM facdb_geom a
