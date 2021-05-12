@@ -54,6 +54,14 @@ def build():
 
 
 @app.command()
+def qaqc():
+    """
+    Running QAQC commands
+    """
+    ExecuteSQL("facdb/sql/_qaqc.sql")
+
+
+@app.command()
 def run(
     name: str = typer.Option(
         None,
