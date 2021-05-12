@@ -10,7 +10,7 @@ SELECT
     facdb_boro.borocode,
     facdb_spatial.bin,
     facdb_spatial.bbl,
-    facdb_spatial.commboard as commdist,
+    facdb_spatial.commboard as cd,
     facdb_spatial.nta,
     facdb_spatial.council,
     facdb_spatial.schooldist,
