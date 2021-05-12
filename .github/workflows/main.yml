@@ -43,3 +43,9 @@ jobs:
 
         - name: Build facdb
           run: ./facdb.sh build
+
+        - name: QAQC facdb
+          run: ./facdb.sh qaqc
+
+        - name: Export facdb
+          run: ./facdb.sh build
