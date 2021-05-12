@@ -14,6 +14,10 @@ SELECT
     bin,
     bbl,
     (CASE
+      WHEN program_type = 'NORC' THEN 'NORC Services'
+		  ELSE 'NYCHA Community Center - '|| initcap(program_type)
+    END) as factype,
+    (CASE
       WHEN program_type LIKE '%/%/%' THEN 'COMMUNITY CENTER'
       WHEN program_type ~* 'Case Management' THEN 'LEGAL AND INTERVENTION SERVICES'
       WHEN program_type ~* 'UPK' THEN 'DOE UNIVERSAL PRE-KINDERGARTEN'
@@ -39,11 +43,7 @@ SELECT
       WHEN program_type ~* 'Head Start' THEN 'HEAD START'
       WHEN program_type ~* 'Child welfare|Family' THEN 'FAMILY SERVICES'
       ELSE 'COMMUNITY CENTER'
-    END as facsubgrp) as factype,
-    (CASE
-		  WHEN program_type = 'NORC' THEN 'Senior Services'
-		  ELSE 'Community Centers and Community School Programs'
-	  END) as facsubgrp,
+    END) as facsubgrp,
     'NYC Housing Authority' as opname,
     'NYCHA' as opabbrev,
     'NYCHA' as overabbrev,
