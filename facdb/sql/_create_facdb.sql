@@ -46,4 +46,22 @@ LEFT JOIN facdb_classification 	ON facdb_base.uid = facdb_classification.uid
 LEFT JOIN facdb_agency 		ON facdb_base.uid = facdb_agency.uid
 LEFT JOIN facdb_geom 		ON facdb_base.uid = facdb_geom.uid;
 
+-- Remove records where field = 'remove' in manual_corrections
+INSERT INTO corrections_applied (uid, field)
+    (SELECT
+        uid,
+        'remove' as field
+    FROM manual_corrections
+    WHERE uid IN (SELECT uid FROM facdb));
+
+INSERT INTO corrections_not_applied (uid, field)
+    (SELECT
+        uid,
+        'remove' as field
+    FROM manual_corrections
+    WHERE uid NOT IN (SELECT uid FROM facdb));
+
+DELETE FROM facdb
+WHERE uid IN (SELECT uid FROM corrections_applied WHERE field = 'remove');
+
 CALL apply_correction('facdb', 'manual_corrections');

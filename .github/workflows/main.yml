@@ -63,3 +63,4 @@ jobs:
 
         - name: Upload Artifacts
           run: ./facdb.sh upload
+
