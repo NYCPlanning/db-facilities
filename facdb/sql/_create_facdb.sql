@@ -14,7 +14,7 @@ SELECT
     facdb_spatial.nta,
     facdb_spatial.council,
     facdb_spatial.schooldist,
-    facdb_spatial.precinct,
+    facdb_spatial.policeprct,
     facdb_spatial.censtract,
     facdb_base.factype,
     facdb_classification.facsubgrp,
