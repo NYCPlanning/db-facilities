@@ -5,7 +5,9 @@ datasets:
       - nypl_libraries.sql
 
   - name: bpl_libraries
-    version: testor
+    version: 20210511
+    scripts:
+      - bpl_libraries.sql
 
   - name: dcp_colp
     version: 20201101
@@ -70,7 +72,7 @@ datasets:
   - name: hra_jobcenters
     version: 20200901
     scripts:
-      - hra_snapcenters.sql
+      - hra_jobcenters.sql
 
   - name: hra_medicaid
     version: 20200901
@@ -207,6 +209,8 @@ datasets:
 
   - name: nysomh_mentalhealth
     version: 20210413
+    scripts:
+      - nysomh_mentalhealth.sql
 
   - name: dep_wwtc
     version: 20210413
