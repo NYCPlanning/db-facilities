@@ -1,16 +1,15 @@
 DROP TABLE IF EXISTS facdb_agency;
 SELECT
-	a.*, b.overagency, b.overlevel
+    a.uid,
+    a.opname,
+    a.opabbrev,
+    b.optype,
+    a.overabbrev,
+    c.overagency,
+    c.overlevel
 INTO facdb_agency
-FROM (
-	SELECT
-		uid,
-		a.opname,
-		a.opabbrev,
-		b.optype,
-		a.overabbrev
-	FROM facdb_base a
-	LEFT JOIN lookup_agency b
-	ON a.opabbrev = b.opabbrev
-) a LEFT JOIN lookup_agency b
-ON a.overabbrev = b.overabbrev
+FROM facdb_base a
+LEFT JOIN lookup_agency b
+ON a.opabbrev = b.opabbrev
+LEFT JOIN lookup_agency c
+ON a.overabbrev = c.overabbrev;
