@@ -19,10 +19,9 @@ CREATE TABLE lookup_classification (
 
 DROP TABLE IF EXISTS lookup_agency;
 CREATE TABLE lookup_agency (
+    agencyabbrev TEXT,
     overagency TEXT,
-    overabbrev TEXT,
     overlevel TEXT,
-    opabbrev TEXT,
     optype TEXT
 );
 \COPY lookup_agency FROM 'facdb/data/lookup_agency.csv' DELIMITER ',' CSV HEADER;
