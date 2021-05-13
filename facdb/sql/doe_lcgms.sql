@@ -1,4 +1,12 @@
 DROP TABLE IF EXISTS _doe_lcgms;
+WITH latest_sca_data AS (
+	SELECT *
+	FROM sca_enrollment_capacity
+	WHERE data_as_of::date =
+		(SELECT
+			MAX(data_as_of::date)
+		FROM sca_enrollment_capacity)
+)
 SELECT md5(a.uid || coalesce(b.uid, '')) as uid,
 	a.source,
 	a.location_name as facname,
@@ -94,9 +102,10 @@ SELECT md5(a.uid || coalesce(b.uid, '')) as uid,
 	NULL as wkb_geometry,
 	a.geo_1b,
 	a.geo_bl,
-	NULL as geo_bn INTO _doe_lcgms
+	NULL as geo_bn
+INTO _doe_lcgms
 FROM doe_lcgms a
-	LEFT JOIN sca_enrollment_capacity b ON (
+	LEFT JOIN latest_sca_data b ON (
 		(a.location_code || a.building_code) = (b.org_id || b.bldg_id)
 	);
 CALL append_to_facdb_base('_doe_lcgms');
