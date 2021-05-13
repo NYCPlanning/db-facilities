@@ -11,12 +11,7 @@ SELECT uid,
     NULL as borocode,
     NULL as bin,
     NULL as bbl,
-    (
-        CASE
-            WHEN description LIKE '%Residential%' THEN 'Residential Health Care'
-            ELSE description
-        END
-    ) as factype,
+    description as factype,
     (
         CASE
             WHEN description LIKE '%Residential%'
@@ -49,6 +44,9 @@ SELECT uid,
     NULL as wkb_geometry,
     geo_1b,
     NULL as geo_bl,
-    NULL as geo_bn INTO _nysdoh_healthfacilities
-FROM nysdoh_healthfacilities;
+    NULL as geo_bn
+INTO _nysdoh_healthfacilities
+FROM nysdoh_healthfacilities
+WHERE description NOT LIKE '%Residential%';
+
 CALL append_to_facdb_base('_nysdoh_healthfacilities');
