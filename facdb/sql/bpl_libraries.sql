@@ -13,7 +13,7 @@ SELECT
     NULL as bin,
     NULL as bbl,
     'Public Library' as factype,
-    'Public Library' as facsubgrp,
+    'Public Libraries' as facsubgrp,
     'Brooklyn Public Library' as opname,
     'BPL' as opabbrev,
     'BPL' as overabbrev,
