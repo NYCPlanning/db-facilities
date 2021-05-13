@@ -10,6 +10,6 @@ SELECT
 INTO facdb_agency
 FROM facdb_base a
 LEFT JOIN lookup_agency b
-ON a.opabbrev = b.opabbrev
+ON a.opabbrev = b.agencyabbrev
 LEFT JOIN lookup_agency c
-ON a.overabbrev = c.overabbrev;
+ON a.overabbrev = c.agencyabbrev;
