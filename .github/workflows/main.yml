@@ -39,14 +39,6 @@ jobs:
         - name: Initialize
           run: ./facdb.sh init
 
-        - name: Cache Large Files (PLUTO & Building Footprints)
-          if: github.ref != 'refs/heads/develop'
-          uses: actions/cache@v2
-          id: dataloading
-          with:
-            path: .library
-            key: dataloading-${{ hashFiles('facdb/bash/dataloading.sh') }}
-
         - name: Dataloading
           run: ./facdb.sh dataloading
 
