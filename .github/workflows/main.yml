@@ -40,6 +40,7 @@ jobs:
           run: ./facdb.sh init
 
         - name: Cache Large Files (PLUTO & Building Footprints)
+          if: github.ref != 'refs/heads/develop'
           uses: actions/cache@v2
           id: dataloading
           with:
