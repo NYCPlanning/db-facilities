@@ -8,7 +8,7 @@ SELECT
     program_address as address,
     NULL as city,
     program_zipcode as zipcode,
-    program_borough as boro,
+    borough as boro,
     NULL as borocode,
     NULL as bin,
     NULL as bbl,

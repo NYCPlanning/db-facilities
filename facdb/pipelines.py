@@ -123,12 +123,16 @@ def dep_wwtc(df: pd.DataFrame = None):
 @Function1B(
     street_name_field="parsed_sname",
     house_number_field="parsed_hnum",
-    borough_field="program_borough",
+    borough_field="borough",
     zipcode_field="program_zipcode",
 )
 @ParseAddress(raw_address_field="program_address")
 @Prepare
 def dfta_contracts(df: pd.DataFrame = None):
+    boro = ["BROOKLYN", "NEW YORK", "STATEN ISLAND", "BRONX"]
+    df["borough"] = df.program_borough.apply(
+        lambda x: "QUEENS" if x.upper() not in boro else x.upper()
+    )
     return df
 
 
