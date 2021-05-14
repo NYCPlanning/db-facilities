@@ -26,7 +26,7 @@ SELECT uid,
     facility_name as opname,
     NULL as opabbrev,
     'NYSDOH' as overabbrev,
-    NULL as capacity,
+    total_capacity as capacity,
     (
         CASE
             WHEN bed_type = 'NHBEDSAV' THEN 'beds'
