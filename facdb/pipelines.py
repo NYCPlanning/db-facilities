@@ -374,13 +374,26 @@ def dsny_electronicsdrop(df: pd.DataFrame = None):
 @Function1B(
     street_name_field="parsed_sname",
     house_number_field="parsed_hnum",
-    zipcode_field="postcode",
+    borough_field="borough__community",
+    zipcode_field="zipcode",
 )
 @FunctionBL(bbl_field="bbl")
 @FunctionBN(bin_field="bin")
-@ParseAddress(raw_address_field="location_1")
+@ParseAddress(raw_address_field="address")
 @Prepare
 def dycd_afterschoolprograms(df: pd.DataFrame = None):
+    df["address"] = df.location_1.apply(
+        lambda x: str(x).replace("nan", "").split("\n")[0][:-5]
+    )
+    df["zipcode"] = df.location_1.apply(
+        lambda x: str(x).replace("nan", "").split("\n")[0][-5:]
+    )
+    df["spatial"] = df.location_1.apply(
+        lambda x: str(x).replace("nan", "").split("\n")[-1]
+    )
+    df["spatial"] = df.spatial.apply(lambda x: x.replace("(", "").replace(")", ""))
+    df["longitude"] = df.spatial.apply(lambda x: x.split(",")[0])
+    df["latitude"] = df.spatial.apply(lambda x: x.split(",")[-1])
     return df
 
 
@@ -687,33 +700,28 @@ def nysomh_mentalhealth(df: pd.DataFrame = None):
     street_name_field="parsed_sname",
     house_number_field="parsed_hnum",
     borough_field="county",
-    zipcode_field="zip_code"
+    zipcode_field="zip_code",
 )
 @ParseAddress(raw_address_field="street_address")
 @Prepare
 def nysopwdd_providers(df: pd.DataFrame = None):
-    df = df[
-        df.county.isin(["BRONX", "NEW YORK", "KINGS", "QUEENS", "RICHMOND"])
-    ]
+    df = df[df.county.isin(["BRONX", "NEW YORK", "KINGS", "QUEENS", "RICHMOND"])]
     return df
 
 
 @Export
 @Prepare
 def nysparks_historicplaces(df: pd.DataFrame = None):
-    df = df[
-        df.county.isin(["Bronx", "New York", "Kings", "Queens", "Richmond"])
-    ]
+    df = df[df.county.isin(["Bronx", "New York", "Kings", "Queens", "Richmond"])]
     return df
 
 
 @Export
 @Prepare
 def nysparks_parks(df: pd.DataFrame = None):
-    df = df[
-        df.county.isin(["Bronx", "New York", "Kings", "Queens", "Richmond"])
-    ]
+    df = df[df.county.isin(["Bronx", "New York", "Kings", "Queens", "Richmond"])]
     return df
+
 
 @Export
 @Function1B(
