@@ -396,8 +396,8 @@ def dycd_afterschoolprograms(df: pd.DataFrame = None):
         lambda x: str(x).replace("nan", "").split("\n")[-1]
     )
     df["spatial"] = df.spatial.apply(lambda x: x.replace("(", "").replace(")", ""))
-    df["longitude"] = df.spatial.apply(lambda x: x.split(",")[0])
-    df["latitude"] = df.spatial.apply(lambda x: x.split(",")[-1])
+    df["longitude"] = df.spatial.apply(lambda x: x.split(",")[-1])
+    df["latitude"] = df.spatial.apply(lambda x: x.split(",")[0])
     return df
 
 
@@ -453,9 +453,10 @@ def foodbankny_foodbanks(df: pd.DataFrame = None):
 @FunctionBN(bin_field="bin")
 @Prepare
 def hhc_hospitals(df: pd.DataFrame = None):
-    df["spatial"] = df.location_1.apply(lambda x: x.split("(")[-1].replace(")", ""))
-    df["longitude"] = df.spatial.apply(lambda x: x.split(",")[0])
-    df["latitude"] = df.spatial.apply(lambda x: x.split(",")[-1])
+    df["spatial"] = df.location_1.apply(lambda x: x.split)
+    df["longitude"] = df.spatial.apply(lambda x: x.split(",")[-1])
+    df["latitude"] = df.spatial.apply(lambda x: x.split(",")[0])
+    df.location_1 = df.location_1.apply(lambda x: x.replace("\n", " "))
     return df
 
 
