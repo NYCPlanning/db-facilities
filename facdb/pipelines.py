@@ -453,6 +453,9 @@ def foodbankny_foodbanks(df: pd.DataFrame = None):
 @FunctionBN(bin_field="bin")
 @Prepare
 def hhc_hospitals(df: pd.DataFrame = None):
+    df["spatial"] = df.location_1.apply(lambda x: x.split("(")[-1].replace(")", ""))
+    df["longitude"] = df.spatial.apply(lambda x: x.split(",")[0])
+    df["latitude"] = df.spatial.apply(lambda x: x.split(",")[-1])
     return df
 
 
