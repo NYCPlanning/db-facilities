@@ -24,14 +24,89 @@ SELECT
         ELSE initcap(program_name)
     END) as factype,
     (CASE
-        WHEN program_name = 'JOBS & INTERNSHIPS' THEN 'Workforce Development'
-        WHEN program_name = 'GERIATRIC MENTAL HEALTH' THEN 'Mental Health'
-        WHEN program_name = 'NORC SITES' THEN 'Senior Services'
-        WHEN program_name = 'READING & WRITING' THEN 'Adult and Immigrant Literacy'
-        WHEN program_name = 'IMMIGRANT SERVICES' THEN 'Immigrant Services'
-        WHEN program_name = 'TRANSPORTATION ONLY' THEN 'Senior Services'
-        WHEN program_name = 'AFTERSCHOOL PROGRAMS' THEN 'After-School Programs'
-        ELSE 'Other Health Care'
+        WHEN program_name IN
+            ('PEAK Centers',
+            'Teen Rapp',
+            'Youth Recreational Services/Youth Athletic Leagues')
+            THEN 'After-School Programs'
+        WHEN program_name IN
+            ('Community Based Programs')
+            THEN 'Community Centers and Community School Programs'
+        WHEN program_name IN
+            ('Social Welfare')
+            THEN 'Financial Assistance and Social Services'
+        WHEN program_name IN
+            ('COVID19 Programs',
+            'Customized Assistance Services (CAS)',
+            'Intake Medical Services')
+            THEN 'Health Promotion and Disease Prevention'
+        WHEN program_name IN
+            ('AIM',
+            'Alternative To Detention',
+            'Alternative To Incarceration',
+            'Anti-gun Violence Initiative',
+            'Appellate Indigent Criminal Defense',
+            'Arches',
+            'Article 10 Petition Parental Representation',
+            'Assigned Domestic Violence Counsel',
+            'Child Advocacy Center',
+            'Court Advocacy Services',
+            'Court Based Programs',
+            'Crime Victims Services',
+            'Discharge and Reentry Services',
+            'Emergency Intervention Services (Domestic Violence Shelters)',
+            'Family Justice Center',
+            'Hate Crimes Prevention',
+            'ICM Plus',
+            'Legal Services',
+            'Mediation Services',
+            'Next STEPS',
+            'Parent Support Program',
+            'Trial-Level Indigent Defense Representation',
+            'Victim Services, Domestic Violence',
+            'Victim Services, Other',
+            'Young Adult Justice Program')
+            THEN 'Legal and Intervention Services'
+        WHEN program_name IN
+            ('Adolescent IMPACT',
+            'Mental Health Services, Vocational',
+            'Mobile Adolescent Therapy')
+            THEN 'Mental Health'
+        WHEN program_name IN
+            ('Adult Outreach Service',
+            'Drop-In Centers',
+            'Homebase Homelessness Prevention',
+            'Rapid Re-Housing',
+            'Shelter Intake',
+            'Shelter/Shelter Services')
+            THEN 'Non-residential Housing and Homeless Services'
+        WHEN program_name IN
+            ('Home Care/Attendant/Maker and Housekeeping Services')
+            THEN 'Other Health Care'
+        WHEN program_name IN
+            ('Food Pantry/Meal Services')
+            THEN 'Soup Kitchens and Food Pantries'
+        WHEN program_name IN
+            ('CareerAdvance',
+            'CareerCompass',
+            'ECHOES',
+            'Employment Focused Services',
+            'Job Services',
+            'Jobs Plus',
+            'Justice Plus',
+            'Neighborhood Employment Services',
+            'NeON',
+            'NeON Arts',
+            'NYC Business Solutions',
+            'Placement Services',
+            'WeCARE',
+            'Workforce 1 Career Centers',
+            'Works Plus',
+            'YouthPathways')
+            THEN 'Workforce Development'
+        WHEN program_name IN
+            ('Adult Protective Services')
+            THEN 'Programs for People with Disabilities'
     END) as facsubgrp,
     provider_name as opname,
     NULL as opabbrev,
