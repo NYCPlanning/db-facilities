@@ -8,13 +8,14 @@ SELECT
     buildingaddress as address,
     buildingcity as city,
     zipcode,
-    NULL as boro,
+    buildingcity as boro,
     NULL as borocode,
     NULL as bin,
     NULL as bbl,
     courttype as factype,
     (CASE
-		WHEN upper(courttype) LIKE '%COURT%' THEN 'Courthouses and Judicial'
+		WHEN upper(courttype) LIKE '%COURT%'
+        THEN 'Courthouses and Judicial'
 		ELSE 'Legal and Intervention Services'
 	END) as facsubgrp,
     officename as opname,
@@ -28,6 +29,7 @@ SELECT
     NULL geo_bl,
     NULL geo_bn
 INTO _uscourts_courts
-FROM uscourts_courts;
+FROM uscourts_courts
+WHERE buildingcity IN ('New York', 'Brooklyn');
 
 CALL append_to_facdb_base('_uscourts_courts');
