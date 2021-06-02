@@ -1,4 +1,5 @@
 import datetime
+from io import StringIO
 
 import pandas as pd
 
@@ -421,6 +422,20 @@ def fbop_corrections(df: pd.DataFrame = None):
 @ParseAddress(raw_address_field="facilityaddress")
 @Prepare
 def fdny_firehouses(df: pd.DataFrame = None):
+    research = (
+        "facilityname,facilityaddress,borough,postcode,wkt\n"
+        'Engine 261/Ladder 116,37-20 29 street,Queens,11101,"POINT (-73.9354517 40.755397)"\n'
+        'Marine 1,Little West 12th Street/Hudson River,Manhattan,10014,"POINT (-74.0118215 40.7406884)"\n'
+        'Engine 307/Ladder 154,81-17 Northern Blvd,Queens,11372,"POINT (-73.8877877 40.755805)"\n'
+    )
+    df_research = pd.read_csv(StringIO(research))
+    df.loc[
+        df.facilityname.isin(df_research.facilityname),
+        ["facilityaddress", "borough", "postcode", "wkt"],
+    ] = df_research.loc[
+        df_research.facilityname.isin(df.facilityname),
+        ["facilityaddress", "borough", "postcode", "wkt"],
+    ].values
     return df
 
 
