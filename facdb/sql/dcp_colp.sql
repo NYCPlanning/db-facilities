@@ -388,24 +388,44 @@ WITH _dcp_colp_tmp AS(
         NULL as geo_bl,
         NULL as geo_bn
     FROM dcp_colp
-    WHERE CONCAT(category, expandcat) IN ('11', '12', '14', '16', '17', '28', '29', '38')
-        AND usecode NOT IN (
-            '0800',
-            '0870',
-            '0900',
-            '0939',
-            '1139',
-            '1200',
-            '1229',
-            '1300',
-            '1350',
-            '1400',
-            '0520'
+    WHERE
+        (
+            (
+                CONCAT(category, expandcat) IN ('11', '12', '14', '16', '17', '28', '29', '38')
+                AND usecode NOT IN (
+                    '0800',
+                    '0870',
+                    '0900',
+                    '0939',
+                    '1139',
+                    '1200',
+                    '1229',
+                    '1300',
+                    '1350',
+                    '1400',
+                    '0520'
+                )
+                AND usecode NOT LIKE '02%'
+            )
+            OR usecode = '0230'
+            OR usecode = '1320'
+            OR usecode = '1321'
         )
-        AND usecode NOT LIKE '02%'
-        OR usecode = '0230'
-        OR usecode = '1320'
-        OR usecode = '1321'
+        AND (
+                (
+                    agency <> 'NYCHA'
+                    AND agency <> 'HPD'
+                    AND usetype <> 'ROAD/HIGHWAY'
+                    AND usetype <> 'TRANSIT WAY'
+                    AND usetype NOT LIKE '%WATER SUPPLY%'
+                    AND usetype NOT LIKE '%RESERVOIR%'
+                    AND usetype NOT LIKE '%AQUEDUCT%'
+                    AND agency <> 'DHS'
+                )
+                OR (agency = 'DHS' AND usetype NOT LIKE '%RESIDENTIAL%' AND usetype NOT LIKE '%HOUSING%')
+                OR (agency = 'HRA' AND usetype NOT LIKE '%RESIDENTIAL%' AND usetype NOT LIKE '%HOUSING%')
+                OR (agency = 'ACS' AND usetype NOT LIKE '%RESIDENTIAL%' AND usetype NOT LIKE '%HOUSING%')
+        )
 ),
 duplicate_offices AS(
     SELECT
@@ -421,7 +441,7 @@ duplicate_offices AS(
         )
     AND factype = 'Office'
 )
-SELECT *
+SELECT DISTINCT ON (facname, factype, facsubgrp, LEFT(bbl, 6)) *
 INTO _dcp_colp
 FROM _dcp_colp_tmp
 WHERE uid NOT IN (SELECT uid FROM duplicate_offices)
