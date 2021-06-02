@@ -14,8 +14,7 @@ SELECT uid,
     description as factype,
     (
         CASE
-            WHEN description LIKE '%Residential%'
-            OR description LIKE '%Hospice%' THEN 'Residential Health Care'
+            WHEN description LIKE '%Hospice%' THEN 'Residential Health Care'
             WHEN description LIKE '%Adult Day Health%' THEN 'Other Health Care'
             WHEN description LIKE '%Home%' THEN 'Other Health Care'
             ELSE 'Hospitals and Clinics'
@@ -47,6 +46,6 @@ SELECT uid,
     NULL as geo_bn
 INTO _nysdoh_healthfacilities
 FROM nysdoh_healthfacilities
-WHERE description NOT LIKE '%Residential%';
+WHERE description NOT LIKE '%Residential%' AND description NOT LIKE 'Licensed Home Care Services Agency';
 
 CALL append_to_facdb_base('_nysdoh_healthfacilities');
