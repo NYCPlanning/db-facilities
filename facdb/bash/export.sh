@@ -17,6 +17,7 @@ mkdir -p output && (
     # CSV_export geo_rejects &
     # CSV_export geo_result &
     SHP_export facdb POINT facilities
+    FGDB_export facdb POINT facilities
     wait
     echo "export complete"
 )

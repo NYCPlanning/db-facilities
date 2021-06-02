@@ -29,12 +29,14 @@ jobs:
     steps:
         - uses: actions/checkout@v2
 
-        - name: Install Minio Client
+        - name: Install Minio Client and Ogr2ogr
           run: |
             curl -O https://dl.min.io/client/mc/release/linux-amd64/mc
             chmod +x mc
             sudo mv ./mc /usr/bin
             mc alias set spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
+            sudo apt-get update
+            sudo apt-get -y install --no-install-recommends gdal-bin
 
         - name: Initialize
           run: ./facdb.sh init
