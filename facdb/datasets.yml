@@ -160,7 +160,7 @@ datasets:
       - nysdec_solidwaste.sql
 
   - name: nysdoh_healthfacilities
-    version: 20210412
+    version: 20210602
     scripts:
       - nysdoh_healthfacilities.sql
 
