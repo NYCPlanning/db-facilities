@@ -683,6 +683,7 @@ def nysed_activeinstitutions(df: pd.DataFrame = None):
 def nysoasas_programs(df: pd.DataFrame = None):
     df = df[
         df.provider_county.isin(["New York", "Kings", "Bronx", "Queens", "Richmond"])
+        & df.program_county.isin(["New York", "Kings", "Bronx", "Queens", "Richmond"])
     ]
     return df
 
