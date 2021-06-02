@@ -62,22 +62,6 @@ def qaqc():
 
 
 @app.command()
-def export():
-    """
-    create file export
-    """
-    os.system("./facdb/bash/export.sh")
-
-
-@app.command()
-def export():
-    """
-    create file export
-    """
-    os.system("./facdb/bash/export.sh")
-
-
-@app.command()
 def run(
     name: str = typer.Option(
         None,
