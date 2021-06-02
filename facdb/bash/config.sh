@@ -101,6 +101,8 @@ function FGDB_export {
     zip -9 $name.gdb.zip *
     ls | grep -v $name.gdb.zip | xargs rm
   )
+  mv $name/$name.gdb.zip $name.gdb.zip
+  rm -rf $name
 }
 
 function archive {
