@@ -14,8 +14,7 @@ SELECT uid,
     description as factype,
     (
         CASE
-            WHEN description LIKE '%Residential%'
-            OR description LIKE '%Hospice%' THEN 'Residential Health Care'
+            WHEN description LIKE '%Hospice%' THEN 'Residential Health Care'
             WHEN description LIKE '%Adult Day Health%' THEN 'Other Health Care'
             WHEN description LIKE '%Home%' THEN 'Other Health Care'
             ELSE 'Hospitals and Clinics'
