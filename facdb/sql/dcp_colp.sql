@@ -333,6 +333,7 @@ WITH _dcp_colp_tmp AS(
                 WHEN agency = 'TAX' THEN 'NYCTC'
                 WHEN agency = 'COURT' THEN 'NYCOURTS'
                 WHEN agency = 'CUNY' THEN 'CUNY'
+                WHEN agency='CNTYC' THEN 'CNTYC'
                 WHEN agency = 'PRIV' THEN 'Non-public'
                 WHEN agency = 'UNKN' THEN 'NYC-Unknown'
                 ELSE CONCAT('NYC', agency)
@@ -376,6 +377,7 @@ WITH _dcp_colp_tmp AS(
             WHEN agency='TAX' THEN 'NYCTC'
             WHEN agency='COURT' THEN 'NYCOURTS'
             WHEN agency='CUNY' THEN 'CUNY'
+            WHEN agency='CNTYC' THEN 'CNTYC'
             WHEN agency='PRIV' THEN 'Non-public'
             WHEN agency='UNKN' THEN 'NYC-Unknown'
             ELSE CONCAT('NYC',agency)
