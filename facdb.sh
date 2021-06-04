@@ -39,9 +39,14 @@ function facdb_archive {
     esac
 }
 
+function facdb_export {
+    ./facdb/bash/export.sh
+}
+
 case $1 in
     init) init ;;
     upload) facdb_upload ;;
     archive) facdb_archive $@ ;;
+    export) facdb_export $@ ;;
     *) facdb_execute $@ ;;
 esac

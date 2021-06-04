@@ -82,6 +82,28 @@ function SHP_export {
   rm -rf $name
 }
 
+function FGDB_export {
+  local table=$1
+  local geomtype=$2
+  local name=${3:-$table}
+  mkdir -p $name &&(
+    cd $name
+    docker run \
+      -v $(pwd):/data\
+      --user $UID\
+      --network host\
+      --rm webmapp/gdal-docker:latest ogr2ogr -progress -f "FileGDB" $name.gdb \
+        PG:"host=$BUILD_HOST user=$BUILD_USER port=$BUILD_PORT dbname=$BUILD_DB password=$BUILD_PWD" \
+        -mapFieldType Integer64=Real\
+        -lco GEOMETRY_NAME=Shape\
+        -nlt $geomtype $table
+    rm -f $name.gdb.zip
+    zip -r -9 $name.gdb.zip $name.gdb
+  )
+  mv $name/$name.gdb.zip $name.gdb.zip
+  rm -rf $name
+}
+
 function archive {
     local src=$1
     local dst=${2-$src}
