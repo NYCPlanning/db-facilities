@@ -1,3 +1,18 @@
+-- Within source deduplication -> same bin or geom, facname, factype, and datasource
+DELETE FROM facdb
+WHERE uid IN (
+	SELECT uid FROM (
+		SELECT uid, ROW_NUMBER() OVER(
+			PARTITION BY
+				coalesce(bin, geom::Text),
+				factype,
+				datasource,
+				regexp_replace(facname, '[^a-zA-Z0-9]+', '','g')
+			) as rownum
+		FROM facdb
+	) a WHERE rownum > 1
+);
+
 -- For factype NYCHA COMMUNITY CENTER - CHILD CARE,
 -- if dohmh_daycare has a site with the same BIN, delete the nycha record
 DELETE FROM facdb
