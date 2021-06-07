@@ -40,6 +40,7 @@ with boundary_geosupport as (
 )
 SELECT
 	uid,
+	borocode,
 	zipcode,
 	(CASE WHEN bin LIKE '%000000' THEN NULL ELSE bin END) as bin,
 	bbl,
