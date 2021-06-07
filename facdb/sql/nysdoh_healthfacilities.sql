@@ -40,11 +40,10 @@ SELECT uid,
     NULL as capacity,
     NULL as captype,
     NULL as proptype,
-    NULL as wkb_geometry,
+    wkt::geometry as wkb_geometry,
     geo_1b,
     NULL as geo_bl,
-    NULL as geo_bn
-INTO _nysdoh_healthfacilities
+    NULL as geo_bn INTO _nysdoh_healthfacilities
 FROM nysdoh_healthfacilities
 WHERE description NOT LIKE '%Residential%' AND description NOT LIKE 'Licensed Home Care Services Agency';
 

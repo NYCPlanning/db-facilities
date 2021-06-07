@@ -34,12 +34,10 @@ SELECT uid,
         END
     ) as captype,
     NULL as proptype,
-    NULL as wkb_geometry,
+    location::geometry as wkb_geometry,
     geo_1b,
     NULL as geo_bl,
-    NULL as geo_bn
-INTO _nysdoh_nursinghomes
+    NULL as geo_bn INTO _nysdoh_nursinghomes
 FROM nysdoh_nursinghomes
 WHERE bed_type ~* 'NHBEDSAV|ADHCPSLOTSAV';
-
 CALL append_to_facdb_base('_nysdoh_nursinghomes');
