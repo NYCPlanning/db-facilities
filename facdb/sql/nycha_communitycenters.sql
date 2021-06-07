@@ -15,7 +15,8 @@ SELECT
     bbl,
     (CASE
       WHEN program_type = 'NORC' THEN 'NORC Services'
-		  ELSE 'NYCHA Community Center - '|| initcap(program_type)
+      WHEN program_type IS NULL THEN 'NYCHA Community Center'
+      ELSE 'NYCHA Community Center - '|| initcap(program_type)
     END) as factype,
     (CASE
       WHEN program_type LIKE '%/%/%' THEN 'COMMUNITY CENTER'
