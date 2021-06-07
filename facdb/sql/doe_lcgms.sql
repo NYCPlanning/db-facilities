@@ -107,5 +107,7 @@ INTO _doe_lcgms
 FROM doe_lcgms a
 	LEFT JOIN latest_sca_data b ON (
 		(a.location_code || a.building_code) = (b.org_id || b.bldg_id)
-	);
+	)
+WHERE a.location_category_description NOT IN ('Early Childhood','District Pre-K Center')
+;
 CALL append_to_facdb_base('_doe_lcgms');
