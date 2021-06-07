@@ -41,7 +41,7 @@ with boundary_geosupport as (
 SELECT
 	uid,
 	borocode,
-	zipcode,
+	NULLIF(NULLIF(LEFT(zipcode, 5), ''), '0') as zipcode,
 	(CASE WHEN bin LIKE '%000000' THEN NULL ELSE bin END) as bin,
 	bbl,
 	city,
