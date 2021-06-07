@@ -20,9 +20,6 @@ AND bin in (
 	WHERE datasource = 'dfta_contracts'
 );
 
--- Remove out of NYC zipcodes
-DELETE FROM facdb WHERE zipcode NOT IN (SELECT zipcode::integer FROM doitt_zipcodeboundaries);
-
 -- Remove records outside of NYC based on geometry
 DELETE FROM facdb WHERE geom IS NOT NULL AND uid NOT IN (
     SELECT a.uid FROM facdb a, (
