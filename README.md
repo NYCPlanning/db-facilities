@@ -16,9 +16,30 @@
     - docker-compose is also used to test PR and build the dataset in github actions
 
 ### Pipeline development with the `facdb` cli
+>💡 Note: the cli documentation might not always be up-to-date, to see the latest commands and features, use `facdb --help`
+
 - Create a pipeline function under the name of the function, e.g. `dcp_colp`
 - If you don't want to run every command with `poetry run`, we recommend you activate the virtual environment by `poetry shell`
 - `facdb --help` to show instructions
+```console
+foo@bar:~$ facdb --help
+Usage: facdb [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  build        Building facdb based on facdb_base
+  clear        clear will clear the cached dataset created while reading a...
+  dataloading  Load SQL dump datasets from data library e.g.
+  export       create file export
+  init         Initialize empty facdb_base table and create procedures and...
+  qaqc         Running QAQC commands
+  run          This function is used to execute the python portion of a...
+  sql          this command will execute any given sql script against the...
+```
+<details><summary>Examples</summary>
+    
 - `facdb init` initialization of the database with `facdb_base`, functions and stored procedures
 - `facdb dataloading` load supplementry datasets from data-library (e.g. `dcp_mappluto`, `doitt_buildingcentroids`)
 - `facdb run`
@@ -33,3 +54,5 @@
 - `facdb clear`
     - `facdb clear -n nysed_activeinstitutions` to clear cache for nysed_activeinstitutions
     - `facdb clear --all` to clear all cache for all datasets
+    
+</details>
