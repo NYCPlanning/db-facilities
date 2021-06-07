@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS facdb;
 SELECT
-    facdb_base.facname,
+    TRIM(UPPER(facdb_base.facname)) as facname,
     facdb_address.addressnum,
     facdb_address.streetname,
     facdb_address.address,
