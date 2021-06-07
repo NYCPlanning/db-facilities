@@ -51,6 +51,7 @@ def build():
     ExecuteSQL("facdb/sql/_create_facdb_classification.sql")
     ExecuteSQL("facdb/sql/_create_facdb_agency.sql")
     ExecuteSQL("facdb/sql/_create_facdb.sql")
+    ExecuteSQL("facdb/sql/_deduplication.sql")
 
 
 @app.command()
