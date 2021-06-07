@@ -3,6 +3,7 @@
 DELETE FROM facdb
 WHERE factype = 'NYCHA COMMUNITY CENTER - CHILD CARE'
 AND datasource = 'nycha_communitycenters'
+AND bin IS NOT NULL
 AND bin in (
 	SELECT distinct bin FROM facdb
 	WHERE datasource = 'dohmh_daycare'
@@ -13,6 +14,7 @@ AND bin in (
 DELETE FROM facdb
 WHERE factype = 'NYCHA COMMUNITY CENTER - SENIOR CENTER'
 AND datasource = 'nycha_communitycenters'
+AND bin IS NOT NULL
 AND bin in (
 	SELECT distinct bin FROM facdb
 	WHERE datasource = 'dfta_contracts'

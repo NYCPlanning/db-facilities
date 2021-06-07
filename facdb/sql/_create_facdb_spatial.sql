@@ -38,7 +38,20 @@ with boundary_geosupport as (
 	FROM facdb_geom a
 	WHERE uid NOT IN (SELECT uid FROM boundary_geosupport) AND geom IS NOT NULL
 )
-SELECT * INTO facdb_spatial
+SELECT
+	uid,
+	zipcode,
+	(CASE WHEN bin LIKE '%000000' THEN NULL ELSE bin END) as bin,
+	bbl,
+	city,
+	commboard,
+	nta,
+	council,
+	censtract,
+	policeprct,
+	schooldist,
+	boundarysource
+INTO facdb_spatial
 FROM (
     SELECT * FROM boundary_geosupport UNION
     SELECT * FROM boundary_spatial_join
