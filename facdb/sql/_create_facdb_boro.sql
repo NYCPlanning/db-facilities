@@ -6,7 +6,7 @@ SELECT
 		WHEN boro IN ('BROOKLYN', 'BRONX', 'STATEN ISLAND') THEN boro
 		ELSE city
 	END) as city,
-	zipcode
+    NULLIF(NULLIF(regexp_replace(LEFT(zipcode, 5), '[^0-9]+', '', 'g'), '0'), '') as zipcode
 INTO facdb_boro
 FROM (
     SELECT

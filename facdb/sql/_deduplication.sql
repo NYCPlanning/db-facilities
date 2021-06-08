@@ -34,3 +34,10 @@ AND bin in (
 	SELECT distinct bin FROM facdb
 	WHERE datasource = 'dfta_contracts'
 );
+
+-- Remove records outside of NYC based on geometry
+DELETE FROM facdb WHERE geom IS NOT NULL AND uid NOT IN (
+    SELECT a.uid FROM facdb a, (
+		SELECT ST_Union(wkb_geometry) As geom FROM dcp_boroboundaries_wi
+	) b WHERE ST_Contains(ST_SetSRID(b.geom, 4326), a.geom)
+ );
