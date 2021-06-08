@@ -5,7 +5,7 @@ SELECT
     facdb_address.streetname,
     facdb_address.address,
     facdb_boro.city,
-    facdb_boro.zipcode as zipcode,
+    facdb_boro.zipcode,
     facdb_boro.boro,
     facdb_boro.borocode as borocode,
     facdb_spatial.bin::integer as bin,
