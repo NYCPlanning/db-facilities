@@ -7,7 +7,7 @@ SELECT
     facdb_boro.city,
     facdb_boro.zipcode,
     facdb_boro.boro,
-    facdb_boro.borocode as borocode,
+    facdb_boro.borocode,
     facdb_spatial.bin::integer as bin,
     facdb_spatial.bbl::bigint as bbl,
     facdb_spatial.commboard as cd,
