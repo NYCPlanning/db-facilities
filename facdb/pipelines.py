@@ -84,8 +84,13 @@ def dcla_culturalinstitutions(df: pd.DataFrame = None):
 
 
 @Export
+@FunctionBL(bbl_field="bbl")
+@Function1B(
+    street_name_field="sname", house_number_field="hnum", borough_field="borough"
+)
 @Prepare
 def dcp_colp(df: pd.DataFrame = None):
+    df["bbl"] = df.bbl.str.split(pat=".").str[0]
     return df
 
 

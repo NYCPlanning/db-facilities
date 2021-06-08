@@ -27,7 +27,7 @@ WITH _dcp_colp_tmp AS(
         NULL as zipcode,
         NULL as boro,
         borough as borocode,
-        NULL as bin,
+        nullif(geo_1b->'result'->>'geo_bin','') as bin,
         left(bbl, 10) as bbl,
         (
             CASE
