@@ -4,7 +4,7 @@ WHERE uid IN (
 	SELECT uid FROM (
 		SELECT uid, ROW_NUMBER() OVER(
 			PARTITION BY
-				coalesce(bin, geom::Text),
+				coalesce(bin::Text, geom::Text),
 				factype,
 				datasource,
 				regexp_replace(facname, '[^a-zA-Z0-9]+', '','g')
