@@ -57,11 +57,12 @@ def dca_operatingbusinesses(df: pd.DataFrame = None):
         "Tow Truck Company",
     ]
     today = datetime.datetime.today()
+    covid_freeze = datetime.datetime.strptime("03/12/2020", "%m/%d/%Y")
     df.license_expiration_date = pd.to_datetime(
         df["license_expiration_date"], format="%m/%d/%Y"
     )
     # fmt:off
-    df = df.loc[df.license_expiration_date >= today, :]\
+    df = df.loc[((df.license_expiration_date >= today) & (df.industry == "Scrap Metal Processor"))|((df.license_expiration_date >= covid_freeze) & (df.industry != "Scrap Metal Processor")), :]\
         .loc[df.industry.isin(industry), :]
     # fmt:on
     return df
