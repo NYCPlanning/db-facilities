@@ -14,6 +14,7 @@ mkdir -p output && (
     CSV_export qc_proptype &
     CSV_export qc_mapped &
     CSV_export qc_diff &
+    CSV_export qc_recordcounts &
     # CSV_export geo_rejects &
     # CSV_export geo_result &
     SHP_export facdb POINT facilities

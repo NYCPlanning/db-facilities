@@ -181,3 +181,20 @@ and a.facsubgrp = b.facsubgrp
 and a.factype = b.factype
 and a.datasource = b.datasource
 order by facdomain, facgroup, facsubgrp, factype;
+
+-- QC Number of records source vs facdb
+DROP TABLE IF EXISTS qc_recordcounts;
+SELECT
+	a.datasource,
+	a.raw_record_counts,
+	b.final_record_counts,
+	a.raw_record_counts-b.final_record_counts as diff
+INTO qc_recordcounts
+FROM (
+	SELECT source as datasource, count(*) as raw_record_counts
+	FROM facdb_base GROUP BY source
+) a LEFT JOIN (
+	SELECT datasource, count(*) as final_record_counts
+	FROM facdb GROUP BY datasource
+) b ON a.datasource=b.datasource
+ORDER BY diff DESC;
