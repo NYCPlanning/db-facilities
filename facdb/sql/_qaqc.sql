@@ -198,3 +198,18 @@ FROM (
 	FROM facdb GROUP BY datasource
 ) b ON a.datasource=b.datasource
 ORDER BY diff DESC;
+
+-- QC on bins by subgroup
+DROP TABLE IF EXISTS qc_subgrpbins;
+SELECT
+	facsubgrp,
+	count(*) as count_total,
+	count(distinct bin) as count_distinct_bin,
+	count(*) - count(distinct bin) filter (where bin is not null and bin::text not like '%000000') as count_repeat_bin,
+	count(*) filter (where bin is null) as count_null_bin,
+	count(*) filter (where bin::text like '%000000') as count_million_bin,
+	count(*) filter (where geom is null) as count_wo_geom
+INTO qc_subgrpbins
+FROM facdb
+GROUP BY facsubgrp
+ORDER BY count_repeat_bin DESC;
