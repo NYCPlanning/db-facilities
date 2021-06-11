@@ -49,7 +49,15 @@ function import_public {
     echo "🛠 $name.sql doesn't exists in cache, downloading ..."
     mkdir -p $target_dir && (
       cd $target_dir
-      curl -ss -O $url/datasets/$name/$version/$name.sql
+      local download_url=$url/datasets/$name/$version/$name.sql
+      local download_url_zip=$download_url.zip
+      local statuscode=$(curl --silent --output $name.sql.zip --write-out "%{http_code}" $download_url_zip)
+      if [ $statuscode = 404 ] ; then
+        curl -ss -O $download_url
+      else
+        unzip $name.sql.zip
+      fi
+      rm $name.sql.zip
     )
   fi
 
