@@ -51,19 +51,18 @@ function import_public {
       cd $target_dir
       local download_url=$url/datasets/$name/$version/$name.sql
       local download_url_zip=$download_url.zip
-      local statuscode=$(curl --write-out '%{http_code}' --silent --output /dev/null $download_url_zip)
+      local statuscode=$(curl --silent --output $name.sql.zip --write-out "%{http_code}" $download_url_zip)
       if [ $statuscode = 404 ] ; then
         curl -ss -O $download_url
       else
-        curl -ss -O $download_url_zip
         unzip $name.sql.zip
-        rm $name.sql.zip
       fi
+      rm $name.sql.zip
     )
   fi
 
   # Loading into Database
-  # psql $BUILD_ENGINE -f $target_dir/$name.sql
+  psql $BUILD_ENGINE -f $target_dir/$name.sql
 }
 
 function CSV_export {
