@@ -127,7 +127,7 @@ WITH _dcp_colp_tmp AS(
                 OR (
                     agency LIKE '%HRA%'
                     AND parcelname LIKE '%CENTER%'
-                ) THEN 'Community Centers and Community School Programs' -- Parks, Cultural
+                ) THEN 'Community Centers and Community Programs' -- Parks, Cultural
                 WHEN usetype LIKE '%LIBRARY%' THEN 'Public Libraries'
                 WHEN usetype LIKE '%MUSEUM%' THEN 'Museums'
                 WHEN usetype LIKE '%CULTURAL%' THEN 'Other Cultural Institutions'

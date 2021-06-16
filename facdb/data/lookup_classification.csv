@@ -45,7 +45,7 @@ Hospitals and Clinics,Health Care,Health and Human Services,Regional
 Mental Health,Health Care,Health and Human Services,Regional
 Other Health Care,Health Care,Health and Human Services,Regional
 Residential Health Care,Health Care,Health and Human Services,Regional
-Community Centers and Community School Programs,Human Services,Health and Human Services,Local
+Community Centers and Community Programs,Human Services,Health and Human Services,Local
 Financial Assistance and Social Services,Human Services,Health and Human Services,Local
 Legal and Intervention Services,Human Services,Health and Human Services,Local
 Non-residential Housing and Homeless Services,Human Services,Health and Human Services,Local
@@ -78,3 +78,4 @@ City Government Offices,"Offices, Training, and Testing",Administration of Gover
 Training and Testing,"Offices, Training, and Testing",Administration of Government,Regional
 Miscellaneous Use,Other Property,Administration of Government,Regional
 Properties Leased or Licensed to Non-public Entities,Other Property,Administration of Government,Regional
+Head Start,Day Care and Pre-Kindergarten,"Education, Child Welfare, and Youth",Local

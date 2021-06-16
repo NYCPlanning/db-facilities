@@ -31,7 +31,7 @@ SELECT
             THEN 'After-School Programs'
         WHEN program_name IN
             ('Community Based Programs')
-            THEN 'Community Centers and Community School Programs'
+            THEN 'Community Centers and Community Programs'
         WHEN program_name IN
             ('Social Welfare')
             THEN 'Financial Assistance and Social Services'
