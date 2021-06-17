@@ -205,7 +205,7 @@ SELECT
 	facsubgrp,
 	count(*) as count_total,
 	count(distinct bin) as count_distinct_bin,
-	count(*) - count(distinct bin) filter (where bin is not null and bin::text not like '%000000') as count_repeat_bin,
+	count(*) filter (where bin is not null) - count(distinct bin) as count_repeat_bin,
 	count(*) filter (where bin is null) as count_null_bin,
 	count(*) filter (where bin::text like '%000000') as count_million_bin,
 	count(*) filter (where geom is null) as count_wo_geom
