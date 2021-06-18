@@ -15,7 +15,7 @@ FROM (
         uid,
         source,
         addressnum,
-        streetname,
+        TRIM(regexp_replace(facdb_address.streetname, '\s+', ' ', 'g')) as streetname,
         nullif(geo_1b->'result'->>'geo_house_number','') as geo_house_number,
         nullif(geo_1b->'result'->>'geo_street_name','') as geo_street_name,
         nullif(geo_1b->'result'->>'geo_grc','') as geo_grc,
