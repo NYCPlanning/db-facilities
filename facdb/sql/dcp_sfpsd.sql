@@ -19,7 +19,7 @@ SELECT
     overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
+    proptype,
     the_geom::geometry as wkb_geometry,
     NULL as geo_1b,
     NULL as geo_bl,
