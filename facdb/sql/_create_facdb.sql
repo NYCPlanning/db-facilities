@@ -12,7 +12,7 @@ SELECT
     facdb_spatial.bbl::bigint as bbl,
     facdb_spatial.commboard as cd,
     facdb_spatial.nta,
-    facdb_spatial.council ,
+    facdb_spatial.council,
     facdb_spatial.schooldist,
     facdb_spatial.policeprct,
     facdb_spatial.censtract,
