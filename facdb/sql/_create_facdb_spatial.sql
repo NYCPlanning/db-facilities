@@ -47,10 +47,10 @@ SELECT
 	city,
 	commboard,
 	nta,
-	council,
+	LPAD(council,2,'0') as council,
 	censtract,
-	policeprct,
-	schooldist,
+	LPAD(policeprct,3,'0') as policeprct,
+	LPAD(schooldist,2,'0') as schooldist,
 	boundarysource
 INTO facdb_spatial
 FROM (
