@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS facdb_address;
+WITH
 addresses AS (
     SELECT
         uid,
