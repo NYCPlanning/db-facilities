@@ -1,17 +1,6 @@
 DROP TABLE IF EXISTS facdb_address;
-SELECT
-	uid,
-	source,
-	(CASE WHEN source = 'dcp_colp' then addressnum else geo_house_number END) as addressnum,
-	(CASE WHEN source = 'dcp_colp' then streetname else geo_street_name END) as streetname,
-	UPPER(CASE
-		WHEN source = 'dcp_colp' then address
-		WHEN geo_grc in ('00', '01') and geo_grc2 in ('00', '01')
-		THEN nullif(geo_house_number||' '||geo_street_name,'')
-	ELSE address END) as address
-INTO facdb_address
-FROM (
-	SELECT
+addresses AS (
+    SELECT
         uid,
         source,
         addressnum,
@@ -24,4 +13,56 @@ FROM (
         geo_1b->'inputs'->>'input_sname' as input_sname,
         address
     FROM facdb_base
+)
+SELECT *
+INTO facdb_address
+FROM
+(
+    -- COLP addresses
+    SELECT
+        uid,
+        source,
+        (CASE
+            WHEN addressnum !~ '[0-9]' THEN NULL
+            ELSE addressnum
+        END) as addressnum,
+        streetname,
+        (CASE
+            WHEN addressnum !~ '[0-9]' THEN streetname
+            ELSE address
+        END) as address
+    FROM addresses
+    WHERE source = 'dcp_colp'
+    UNION
+    -- Non-COLP geocoded addresses
+    SELECT
+        uid,
+        source,
+        geo_house_number as addressnum,
+        geo_street_name as streetname,
+        TRIM(UPPER(nullif(CONCAT(geo_house_number,' ',geo_street_name),' '))) as address
+    FROM addresses
+    WHERE (source <> 'dcp_colp'
+        AND geo_grc IN ('00', '01')
+        AND geo_grc2 IN ('00', '01'))
+    UNION
+    -- Non-COLP, non-geocoded addresses
+    SELECT
+        uid,
+        source,
+        NULL as addressnum,
+        NULL as streetname,
+        (CASE
+        	WHEN address ~* ' at '
+        		OR address LIKE '%@%'
+        		OR address ~* ' and '
+        		OR address LIKE '%&%'
+        		OR address ~* 'PO BOX'
+        	THEN NULL
+        	ELSE UPPER(address)
+        END) as address
+    FROM addresses
+    WHERE (source <> 'dcp_colp'
+        AND NOT (geo_grc IN ('00', '01')
+            AND geo_grc2 IN ('00', '01')))
 ) a;
