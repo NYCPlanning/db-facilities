@@ -113,7 +113,6 @@ SELECT
     'NYC'||agency_name as overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
     NULL as wkb_geometry,
     geo_1b,
     geo_bl,

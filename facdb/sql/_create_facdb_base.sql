@@ -19,7 +19,6 @@ CREATE TABLE facdb_base (
     overabbrev text,
     capacity text,
     captype text,
-    proptype text,
     wkb_geometry geometry,
     geo_1b json,
     geo_bl json,

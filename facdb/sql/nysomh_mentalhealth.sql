@@ -28,7 +28,6 @@ SELECT
     'NYSOMH' as overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
     (CASE
         WHEN location LIKE '%(%'
             THEN ST_SetSRID(ST_Point(
