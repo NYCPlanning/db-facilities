@@ -20,7 +20,6 @@ SELECT
     'NYSDOH' as overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
     coalesce(
         wkt::geometry,
         ST_POINT(longitude::double precision, latitude::double precision)

@@ -129,7 +129,6 @@ SELECT uid,
     'NYCDOE' as overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
     ST_POINT(
         gis_longitute_x::double precision,
         gis_latitude_y::double precision

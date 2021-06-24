@@ -33,7 +33,6 @@ SELECT uid,
             WHEN bed_type = 'ADHCPSLOTSAV' THEN 'seats'
         END
     ) as captype,
-    NULL as proptype,
     location::geometry as wkb_geometry,
     geo_1b,
     NULL as geo_bl,

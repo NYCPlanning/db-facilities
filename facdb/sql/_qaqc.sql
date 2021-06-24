@@ -97,25 +97,6 @@ from new a
 join old b
 on a.captype = b.captype;
 
--- make sure property types are consistent
-DROP TABLE IF EXISTS qc_proptype;
-with
-new as (
-	SELECT coalesce(proptype, 'NULL') as proptype, count(*) as count_new
-	FROM facdb
-	group by proptype
-),
-old as (
-	SELECT coalesce(proptype, 'NULL') as proptype, count(*) as count_old
-	FROM dcp_facilities
-	group by proptype
-)
-select a.proptype, a.count_new, b.count_old,  a.count_new - b.count_old as diff
-INTO qc_proptype
-from new a
-join old b
-on a.proptype = b.proptype;
-
 DROP TABLE IF EXISTS qc_mapped;
 WITH
 geom_new as (

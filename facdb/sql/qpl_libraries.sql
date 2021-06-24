@@ -19,7 +19,6 @@ SELECT
     'QPL' as overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
     wkt::geometry as wkb_geometry,
     geo_1b,
     geo_bl,

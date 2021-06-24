@@ -20,7 +20,6 @@ SELECT
     'NYSOPRHP' as overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
     wkt::geometry as wkb_geometry,
     NULL geo_1b,
     NULL as geo_bl,

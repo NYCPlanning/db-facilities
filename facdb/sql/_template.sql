@@ -30,7 +30,6 @@ SELECT
     NULL as overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
     NULL as wkb_geometry,
     NULL as geo_1b,
     NULL as geo_bl,
