@@ -54,5 +54,6 @@ Commands:
 - `facdb clear`
     - `facdb clear -n nysed_activeinstitutions` to clear cache for nysed_activeinstitutions
     - `facdb clear --all` to clear all cache for all datasets
+- `facdb build` build facdb from loaded source tables and produce QAQC tables
     
 </details>
