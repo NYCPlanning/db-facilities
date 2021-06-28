@@ -30,7 +30,6 @@ SELECT
     'NYCDYCD' as overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
     ST_POINT(longitude::double precision, latitude::double precision) as wkb_geometry,
     geo_1b,
     geo_bl,

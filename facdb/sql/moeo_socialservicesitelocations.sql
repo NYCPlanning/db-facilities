@@ -31,7 +31,7 @@ SELECT
             THEN 'After-School Programs'
         WHEN program_name IN
             ('Community Based Programs')
-            THEN 'Community Centers and Community School Programs'
+            THEN 'Community Centers and Community Programs'
         WHEN program_name IN
             ('Social Welfare')
             THEN 'Financial Assistance and Social Services'
@@ -113,7 +113,6 @@ SELECT
     'NYC'||agency_name as overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
     NULL as wkb_geometry,
     geo_1b,
     geo_bl,

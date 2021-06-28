@@ -19,7 +19,7 @@ SELECT
       ELSE 'NYCHA Community Center - '|| initcap(program_type)
     END) as factype,
     (CASE
-      WHEN program_type LIKE '%/%/%' THEN 'COMMUNITY CENTER'
+      WHEN program_type LIKE '%/%/%' THEN 'COMMUNITY CENTERS AND COMMUNITY PROGRAMS'
       WHEN program_type ~* 'Case Management' THEN 'LEGAL AND INTERVENTION SERVICES'
       WHEN program_type ~* 'UPK' THEN 'DOE UNIVERSAL PRE-KINDERGARTEN'
       WHEN program_type ~* 'Senior|NORC' THEN 'SENIOR SERVICES'
@@ -42,15 +42,14 @@ SELECT
       WHEN program_type ~* 'RESERVED - OPERATIONS|TA USE|lighting vendor|Unknown|Vacant' THEN 'MISCELLANEOUS USE'
       WHEN program_type ~* 'Urban Family Center|Shelter' THEN 'NON-RESIDENTIAL HOUSING AND HOMELESS SERVICES'
       WHEN program_type ~* 'Head Start' THEN 'HEAD START'
-      WHEN program_type ~* 'Child welfare|Family' THEN 'FAMILY SERVICES'
-      ELSE 'COMMUNITY CENTER'
+      WHEN program_type ~* 'Child welfare|Family' THEN 'FINANCIAL ASSISTANCE AND SOCIAL SERVICES'
+      ELSE 'COMMUNITY CENTERS AND COMMUNITY PROGRAMS'
     END) as facsubgrp,
     'NYC Housing Authority' as opname,
     'NYCHA' as opabbrev,
     'NYCHA' as overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
     wkt::geometry as wkb_geometry,
     geo_1b,
     geo_bl,

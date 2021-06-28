@@ -22,7 +22,6 @@ SELECT
     'NYCDCP' as overabbrev,
     NULL as capacity,
     NULL as captype,
-    NULL as proptype,
     (CASE
         WHEN location is NULL
         THEN ST_TRANSFORM(ST_SetSRID(ST_Point(

@@ -29,7 +29,6 @@ SELECT
     facdb_agency.overlevel,
     facdb_base.capacity,
     facdb_base.captype,
-    facdb_base.proptype,
     facdb_geom.latitude,
     facdb_geom.longitude,
     facdb_geom.x as xcoord,

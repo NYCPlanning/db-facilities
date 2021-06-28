@@ -127,7 +127,7 @@ WITH _dcp_colp_tmp AS(
                 OR (
                     agency LIKE '%HRA%'
                     AND parcelname LIKE '%CENTER%'
-                ) THEN 'Community Centers and Community School Programs' -- Parks, Cultural
+                ) THEN 'Community Centers and Community Programs' -- Parks, Cultural
                 WHEN usetype LIKE '%LIBRARY%' THEN 'Public Libraries'
                 WHEN usetype LIKE '%MUSEUM%' THEN 'Museums'
                 WHEN usetype LIKE '%CULTURAL%' THEN 'Other Cultural Institutions'
@@ -321,7 +321,7 @@ WITH _dcp_colp_tmp AS(
                 WHEN agency = 'DSBS' THEN 'NYCSBS'
                 WHEN agency = 'FIRE' THEN 'FDNY'
                 WHEN agency = 'NYPD' THEN 'NYPD'
-                WHEN agency = 'HRA' THEN 'NYCHRA/DSS'
+                WHEN agency = 'HRA' THEN 'NYCHRA'
                 WHEN agency = 'DA-SP' THEN 'NYCDA-SNP'
                 WHEN agency = 'LDMKS' THEN 'NYCLPC'
                 WHEN agency = 'OEM' THEN 'NYCEM'
@@ -365,7 +365,7 @@ WITH _dcp_colp_tmp AS(
             WHEN agency='DSBS' THEN 'NYCSBS'
             WHEN agency='FIRE' THEN 'FDNY'
             WHEN agency='NYPD' THEN 'NYPD'
-            WHEN agency='HRA' THEN 'NYCHRA/DSS'
+            WHEN agency='HRA' THEN 'NYCHRA'
             WHEN agency='DA-SP' THEN 'NYCDA-SNP'
             WHEN agency='LDMKS' THEN 'NYCLPC'
             WHEN agency='OEM' THEN 'NYCEM'
@@ -384,7 +384,6 @@ WITH _dcp_colp_tmp AS(
         END)as overabbrev,
         NULL as capacity,
         NULL as captype,
-        NULL as proptype,
         st_transform(geom::geometry, 4326) wkb_geometry,
         NULL as geo_1b,
         NULL as geo_bl,
