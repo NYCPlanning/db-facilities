@@ -22,7 +22,8 @@ branch = st.sidebar.selectbox(
     "Select a Branch", branches, index=branches.index(default)
 )
 st.experimental_set_query_params(branch=branch)
-table_style = st.sidebar.radio("Dataframe Display Style", ("plotly", "streamlit"))
+table_style = st.sidebar.radio(
+    "Dataframe Display Style", ("plotly", "streamlit"))
 
 
 def plotly_table(df):
@@ -67,7 +68,7 @@ def get_data(branch=branch):
     qc_mapped = pd.read_csv(f"{url}/qc_mapped.csv")
     qc_operator = pd.read_csv(f"{url}/qc_operator.csv")
     qc_oversight = pd.read_csv(f"{url}/qc_oversight.csv")
-    qc_proptype = pd.read_csv(f"{url}/qc_proptype.csv")
+    # qc_proptype = pd.read_csv(f"{url}/qc_proptype.csv")
 
     qc_tables = {
         "Facility subgroup classification": {
@@ -76,7 +77,7 @@ def get_data(branch=branch):
         },
         "Operator": {"dataframe": qc_operator, "type": "dataframe"},
         "Oversight": {"dataframe": qc_oversight, "type": "dataframe"},
-        "Property Types": {"dataframe": qc_proptype, "type": "table"},
+        # "Property Types": {"dataframe": qc_proptype, "type": "table"},
         "Capacity Types": {"dataframe": qc_captype, "type": "table"},
     }
     return qc_tables, qc_diff, qc_mapped
@@ -161,7 +162,8 @@ if level == "factype":
             refer to the table below for more information"
     )
 else:
-    count_comparison(dff.loc[dff["diff"].abs() > thresh, :].sort_values("diff"))
+    count_comparison(dff.loc[dff["diff"].abs() >
+                     thresh, :].sort_values("diff"))
 
 st.header(f"Change in counts by {level}")
 dff.insert(0, level, dff.index)
@@ -230,7 +232,8 @@ important_factype = [
     "SENIOR CENTER",
 ]
 important = (
-    qc_diff.loc[qc_diff.factype.isin(important_factype), :].groupby("factype").sum()
+    qc_diff.loc[qc_diff.factype.isin(
+        important_factype), :].groupby("factype").sum()
 )
 count_comparison(important.sort_values("diff"), width=500, height=500)
 
@@ -250,7 +253,7 @@ tablenames = [
     "qc_mapped",
     "qc_operator",
     "qc_oversight",
-    "qc_proptype",
+    # "qc_proptype",
     "facilities",
 ]
 url = f"https://edm-publishing.nyc3.digitaloceanspaces.com/db-facilities/{branch}/latest/output"
