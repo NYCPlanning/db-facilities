@@ -16,7 +16,7 @@ SELECT
     facdb_spatial.schooldist,
     facdb_spatial.policeprct,
     facdb_spatial.censtract,
-    UPPER(facdb_base.factype) as factype,
+    TRIM(UPPER(regexp_replace(facdb_base.factype, '\s+', ' ', 'g'))) as factype,
     UPPER(facdb_classification.facsubgrp) as facsubgrp,
     UPPER(facdb_classification.facgroup) as facgroup,
     UPPER(facdb_classification.facdomain) as facdomain,

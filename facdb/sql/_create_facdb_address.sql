@@ -12,7 +12,7 @@ addresses AS (
         nullif(geo_1b->'result'->>'geo_grc2','') as geo_grc2,
         geo_1b->'inputs'->>'input_hnum' as input_hnum,
         geo_1b->'inputs'->>'input_sname' as input_sname,
-        address
+        TRIM(regexp_replace(address, '\s+', ' ', 'g')) as address
     FROM facdb_base
 )
 SELECT *
@@ -40,8 +40,16 @@ FROM
         uid,
         source,
         geo_house_number as addressnum,
-        geo_street_name as streetname,
-        TRIM(UPPER(nullif(CONCAT(geo_house_number,' ',geo_street_name),' '))) as address
+        TRIM(regexp_replace(geo_street_name, '\s+', ' ', 'g')) as streetname,
+        TRIM(
+            UPPER(
+                nullif(
+                    CONCAT(
+                        geo_house_number,' ',regexp_replace(geo_street_name, '\s+', ' ', 'g')
+                    ),
+                ' ')
+            )
+        ) as address
     FROM addresses
     WHERE (source <> 'dcp_colp'
         AND geo_grc IN ('00', '01')
