@@ -103,6 +103,7 @@ function FGDB_export {
       --rm webmapp/gdal-docker:latest ogr2ogr -progress -f "FileGDB" $name.gdb \
         PG:"host=$BUILD_HOST user=$BUILD_USER port=$BUILD_PORT dbname=$BUILD_DB password=$BUILD_PWD" \
         -mapFieldType Integer64=Real\
+        -s_srs EPSG:4326 -t_srs EPSG:2263\
         -lco GEOMETRY_NAME=Shape\
         -nlt $geomtype $table
     rm -f $name.gdb.zip
