@@ -1,4 +1,5 @@
 import datetime
+import re
 from io import StringIO
 
 import pandas as pd
@@ -425,9 +426,12 @@ def fbop_corrections(df: pd.DataFrame = None):
 )
 @FunctionBL(bbl_field="bbl")
 @FunctionBN(bin_field="bin")
-@ParseAddress(raw_address_field="facilityaddress")
+@ParseAddress(raw_address_field="cleaned_address")
 @Prepare
 def fdny_firehouses(df: pd.DataFrame = None):
+    df["cleaned_address"] = df["facilityaddress"].map(
+        lambda x: re.sub("[^A-Za-z0-9- ]+", "", x)
+    )
     research = (
         "facilityname,facilityaddress,borough,postcode,wkt\n"
         'Engine 261/Ladder 116,37-20 29 street,Queens,11101,"POINT (-73.9354517 40.755397)"\n'
