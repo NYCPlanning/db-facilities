@@ -16,7 +16,6 @@ SELECT
     typecategory as factype,
     (CASE
         -- admin of gov
-        WHEN typecategory = 'Undeveloped' THEN 'Miscellaneous Use'
         WHEN typecategory = 'Lot' THEN 'City Agency Parking'
         -- parks
         WHEN typecategory = 'Cemetery' THEN 'Cemeteries'
@@ -31,6 +30,7 @@ SELECT
         WHEN typecategory = 'Flagship Park' THEN 'Parks'
         WHEN typecategory = 'Community Park' THEN 'Parks'
         WHEN typecategory = 'Neighborhood Park' THEN 'Parks'
+        WHEN typecategory = 'Undeveloped' THEN 'Undeveloped'
         ELSE 'Recreation and Waterfront Sites'
 	END) as facsubgrp,
     'NYC Department of Parks and Recreation' as opname,
