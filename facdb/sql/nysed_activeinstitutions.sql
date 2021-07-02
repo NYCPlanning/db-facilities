@@ -138,9 +138,4 @@ SELECT uid,
     NULL as geo_bn INTO _nysed_activeinstitutions
 FROM merged;
 
--- https://github.com/NYCPlanning/db-facilities/issues/462
--- charter schools would come from DOE since LCGMS trumps NYSED
--- Confirmed with LS - Remove charter schools from NYSED
-DELETE FROM _nysed_activeinstitutions WHERE factype ~* 'CHARTER SCHOOL';
-
 CALL append_to_facdb_base('_nysed_activeinstitutions');
