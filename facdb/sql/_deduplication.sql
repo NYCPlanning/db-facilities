@@ -106,6 +106,28 @@ AND uid IN (
 	)
 );
 
+/* For Charter Schools,
+	if a nysed_activeinstitutions record has a match with a doe_lcgms
+	where the names are the same and facsubgrp='Charter K-12 Schools'
+	and the locations are the same, delete nysed_activeinstitutions record.
+
+	here we are saving the duplicates in facdb_duplicates for review
+*/
+INSERT INTO facdb_duplicates
+SELECT * FROM facdb
+WHERE facsubgrp = 'CHARTER K-12 SCHOOLS'
+AND bin IS NOT NULL
+AND uid IN (
+	SELECT
+		a.uid
+	FROM (SELECT * FROM facdb WHERE datasource = 'nysed_activeinstitutions') a
+	JOIN (SELECT * FROM facdb WHERE datasource = 'doe_lcgms') b
+	ON a.facsubgrp = b.facsubgrp
+	AND a.facsubgrp = 'CHARTER K-12 SCHOOLS'
+	AND a.bin=b.bin
+	AND UPPER(regexp_replace(a.facname, '[^a-zA-Z0-9]+', '','g'))=UPPER(regexp_replace(b.facname, '[^a-zA-Z0-9]+', '','g'))
+	);
+
 -- Remove records outside of NYC based on geometry
 DELETE FROM facdb WHERE geom IS NOT NULL AND uid NOT IN (
     SELECT a.uid FROM facdb a, (
