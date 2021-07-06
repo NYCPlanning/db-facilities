@@ -256,7 +256,7 @@ datasets:
       - hhc_hospitals.sql
 
   - name: moeo_socialservicesitelocations
-    version: 20210414
+    version: 20210706
     scripts:
       - moeo_socialservicesitelocations.sql
 
