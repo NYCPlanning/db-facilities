@@ -11,7 +11,6 @@ mkdir -p output && (
     CSV_export qc_oversight &
     CSV_export qc_classification &
     CSV_export qc_captype &
-    CSV_export qc_proptype &
     CSV_export qc_mapped &
     CSV_export qc_diff &
     CSV_export qc_recordcounts &
