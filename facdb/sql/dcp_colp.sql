@@ -4,64 +4,69 @@ WITH _dcp_colp_tmp AS(
         source,
         (
             CASE
-                WHEN (
-                    parcelname = ' '
-                    OR parcelname IS NULL
-                )
-                AND usetype ~* 'office' THEN 'Offices - '||(
-            CASE
-                WHEN agency = 'HYDC' THEN 'HYDC'
-                WHEN agency = 'MTA' THEN 'MTA'
-                WHEN agency = 'NYCTA' THEN 'MTA'
-                WHEN agency = 'TBTA' THEN 'MTA'
-                WHEN agency = 'PARKS' THEN 'NYCDPR'
-                WHEN agency = 'BLDGS' THEN 'NYCDOB'
-                WHEN agency = 'BPL' THEN 'BPL'
-                WHEN agency = 'NYPL' THEN 'NYPL'
-                WHEN agency = 'QPL' THEN 'QPL'
-                WHEN agency = 'SANIT' THEN 'NYCDSNY'
-                WHEN agency = 'AGING' THEN 'NYCDFTA'
-                WHEN agency = 'EDUC' THEN 'NYCDOE'
-                WHEN agency = 'CULT' THEN 'NYCDCLA'
-                WHEN agency = 'CORR' THEN 'NYCDOC'
-                WHEN agency = 'HLTH' THEN 'NYCDOHMH'
-                WHEN agency = 'ELECT' THEN 'BOENY'
-                WHEN agency = 'CIVIL' THEN 'NYCCCSC'
-                WHEN agency = 'HUMRT' THEN 'NYCCCHR'
-                WHEN agency = 'COUNC' THEN 'NYCC'
-                WHEN agency = 'PLAN' THEN 'NYCDCP'
-                WHEN agency = 'FINAN' THEN 'NYCDOF'
-                WHEN agency = 'PROB' THEN 'NYCDOP'
-                WHEN agency = 'DSBS' THEN 'NYCSBS'
-                WHEN agency = 'FIRE' THEN 'FDNY'
-                WHEN agency = 'NYPD' THEN 'NYPD'
-                WHEN agency = 'HRA' THEN 'NYCHRA'
-                WHEN agency = 'DA-SP' THEN 'NYCDA-SNP'
-                WHEN agency = 'LDMKS' THEN 'NYCLPC'
-                WHEN agency = 'OEM' THEN 'NYCEM'
-                WHEN agency = 'PBADV' THEN 'NYCPA'
-                WHEN agency = 'ACTRY' THEN 'NYCACT'
-                WHEN agency = 'COMPT' THEN 'NYCCOMP'
-                WHEN agency = 'MAYOR' THEN 'NYCOOM'
-                WHEN agency = 'MOME' THEN 'NYCOOM'
-                WHEN agency = 'TAX' THEN 'NYCTC'
-                WHEN agency = 'COURT' THEN 'NYCOURTS'
-                WHEN agency = 'CUNY' THEN 'CUNY'
-                WHEN agency='CNTYC' THEN 'CNTYC'
-                WHEN agency = 'PRIV' THEN 'Non-public'
-                WHEN agency = 'UNKN' THEN 'NYC-Unknown'
-                ELSE CONCAT('NYC', agency)
-            END
-        )
-                WHEN (
+            WHEN (
                     parcelname = ' '
                     OR parcelname IS NULL
                 )
                 AND usetype ~* 'no use'
-                AND ownership = 'C' THEN 'City Owned Property'
-                WHEN upper(parcelname) = 'OFFICE BLDG'
-                AND agency IS NOT NULL
-                THEN parcelname||' - '||(
+                AND ownership = 'C'
+                THEN 'City Owned Property'
+            WHEN (
+                    parcelname = ' '
+                    OR parcelname IS NULL
+                    )
+                AND ((usetype ~* 'office')
+                OR
+                (upper(parcelname) = 'OFFICE BLDG'
+                AND agency IS NOT NULL))
+                THEN 'Office - '||(
+            CASE
+                WHEN agency = 'HYDC' THEN 'HYDC'
+                WHEN agency = 'MTA' THEN 'MTA'
+                WHEN agency = 'NYCTA' THEN 'MTA'
+                WHEN agency = 'TBTA' THEN 'MTA'
+                WHEN agency = 'PARKS' THEN 'NYCDPR'
+                WHEN agency = 'BLDGS' THEN 'NYCDOB'
+                WHEN agency = 'BPL' THEN 'BPL'
+                WHEN agency = 'NYPL' THEN 'NYPL'
+                WHEN agency = 'QPL' THEN 'QPL'
+                WHEN agency = 'SANIT' THEN 'NYCDSNY'
+                WHEN agency = 'AGING' THEN 'NYCDFTA'
+                WHEN agency = 'EDUC' THEN 'NYCDOE'
+                WHEN agency = 'CULT' THEN 'NYCDCLA'
+                WHEN agency = 'CORR' THEN 'NYCDOC'
+                WHEN agency = 'HLTH' THEN 'NYCDOHMH'
+                WHEN agency = 'ELECT' THEN 'BOENY'
+                WHEN agency = 'CIVIL' THEN 'NYCCCSC'
+                WHEN agency = 'HUMRT' THEN 'NYCCCHR'
+                WHEN agency = 'COUNC' THEN 'NYCC'
+                WHEN agency = 'PLAN' THEN 'NYCDCP'
+                WHEN agency = 'FINAN' THEN 'NYCDOF'
+                WHEN agency = 'PROB' THEN 'NYCDOP'
+                WHEN agency = 'DSBS' THEN 'NYCSBS'
+                WHEN agency = 'FIRE' THEN 'FDNY'
+                WHEN agency = 'NYPD' THEN 'NYPD'
+                WHEN agency = 'HRA' THEN 'NYCHRA'
+                WHEN agency = 'DA-SP' THEN 'NYCDA-SNP'
+                WHEN agency = 'LDMKS' THEN 'NYCLPC'
+                WHEN agency = 'OEM' THEN 'NYCEM'
+                WHEN agency = 'PBADV' THEN 'NYCPA'
+                WHEN agency = 'ACTRY' THEN 'NYCACT'
+                WHEN agency = 'COMPT' THEN 'NYCCOMP'
+                WHEN agency = 'MAYOR' THEN 'NYCOOM'
+                WHEN agency = 'MOME' THEN 'NYCOOM'
+                WHEN agency = 'TAX' THEN 'NYCTC'
+                WHEN agency = 'COURT' THEN 'NYCOURTS'
+                WHEN agency = 'CUNY' THEN 'CUNY'
+                WHEN agency='CNTYC' THEN 'CNTYC'
+                WHEN agency = 'PRIV' THEN 'Non-public'
+                WHEN agency = 'UNKN' THEN 'NYC-Unknown'
+                ELSE CONCAT('NYC', agency)
+            END)
+        WHEN parcelname <> ' '
+        AND parcelname IS NOT NULL
+        AND upper(usetype) LIKE '%OFFICE%'
+ THEN initcap(parcelname)||' - '||(
             CASE
                 WHEN agency = 'HYDC' THEN 'HYDC'
                 WHEN agency = 'MTA' THEN 'MTA'
@@ -106,7 +111,7 @@ WITH _dcp_colp_tmp AS(
                 ELSE CONCAT('NYC', agency)
             END
         )
-                WHEN parcelname <> ' '
+            WHEN parcelname <> ' '
                 AND parcelname IS NOT NULL THEN initcap(parcelname)
                 ELSE initcap(REPLACE(usetype, 'OTHER ', ''))
             END
@@ -537,7 +542,7 @@ duplicate_offices AS(
             SELECT bbl
             FROM _dcp_colp_tmp
             WHERE factype = 'Office' OR factype = 'Agency Office'
-            GROUP BY bbl
+            GROUP BY bbl, opabbrev
             HAVING COUNT(DISTINCT factype) > 1
         )
     AND factype = 'Office'
