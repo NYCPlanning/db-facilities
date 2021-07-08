@@ -11,7 +11,8 @@ WHERE uid IN (
 				coalesce(bin::Text, geom::Text),
 				factype,
 				datasource,
-				regexp_replace(facname, '[^a-zA-Z0-9]+', '','g')
+				regexp_replace(facname, '[^a-zA-Z0-9]+', '','g'),
+				opabbrev
 			) as rownum
 		FROM facdb
 	) a WHERE rownum > 1
