@@ -108,7 +108,7 @@ SELECT
             'Assisted Competitive Employment-OMH, Advocacy Services-OMH, Supported SRO-OMH',
             'Assisted Competitive Employment-OMH, Assertive Community Treatment-OMH',
             'Clinic Treatment-OMH',
-            "Coordinated Children's Services Initiative-OMH",
+            'Coordinated Children''s Services Initiative-OMH',
             'CPEP Crisis Intervention-OMH, CPEP Crisis Outreach-OMH',
             'CPEP Crisis Outreach-OMH',
             'Crisis Intervention-OMH',
