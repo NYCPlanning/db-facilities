@@ -29,6 +29,7 @@ SELECT
     NULL as geo_bn
 INTO _foodbankny_foodbanks
 FROM foodbankny_foodbanks
-WHERE program_type !~* 'senior';
+WHERE (program_type !~* 'senior'
+AND program_type !~* 'home');
 
 CALL append_to_facdb_base('_foodbankny_foodbanks');
