@@ -30,9 +30,12 @@ SELECT
             'Adult Literacy - English for Speakers of Other Languages')
             THEN 'Adult and Immigrant Literacy'
         WHEN program_name IN
-            ('COMPASS Elementary',
+            ('Beacon',
+            'COMPASS Elementary',
             'COMPASS Explore',
             'COMPASS High',
+            'Cornerstone',
+            'Educational Support: High School Youth',
             'PEAK Centers',
             'School’s Out New York City (SONYC)',
             'Teen Rapp',
@@ -57,17 +60,23 @@ SELECT
             )
             THEN 'Chemical Dependency'
         WHEN program_name IN
-            ('Community Based Programs',
-            'Beacon')
+            ('Community Based Programs')
             THEN 'Community Centers and Community Programs'
         WHEN program_name IN
-            ('Social Welfare')
+            ('Fatherhood',
+            'Healthy Families',
+            'Social Welfare')
             THEN 'Financial Assistance and Social Services'
         WHEN program_name IN
             ('COVID19 Programs',
             'Customized Assistance Services (CAS)',
             'Intake Medical Services')
             THEN 'Health Promotion and Disease Prevention'
+        WHEN program_name IN
+            ('Civics Classes',
+            'Immigrant Family Services',
+            'Immigrant Services')
+            THEN 'Immigrant Services'
         WHEN program_name IN
             ('AIM',
             'Alternative To Detention',
@@ -147,8 +156,7 @@ SELECT
             'Self-Help-OMH',
             'Self-Help-OMH, Advocacy Services-OMH',
             'Self-Help-OMH, Non-Medicaid Care Coordination (OMH)-OMH',
-            'Self-Help-OMH, Non-Medicaid Care Coordination; (Non-Licensed Program)-OMH, Advocacy Services-OMH',
-            'Vocational Services-OMH'
+            'Self-Help-OMH, Non-Medicaid Care Coordination; (Non-Licensed Program)-OMH, Advocacy Services-OMH'
             )
             THEN 'Mental Health'
         WHEN program_name IN
@@ -218,6 +226,7 @@ SELECT
             'NeON Arts',
             'NYC Business Solutions',
             'Placement Services',
+            'Vocational Services-OMH',
             'WeCARE',
             'Workforce 1 Career Centers',
             'Works Plus',
@@ -227,13 +236,6 @@ SELECT
             ('Adolescent Literacy',
             'Advance & Earn',
             'City Council Awards',
-            'Civics Classes',
-            'Cornerstone',
-            'Educational Support: High School Youth',
-            'Fatherhood',
-            'Healthy Families',
-            'Immigrant Family Services',
-            'Immigrant Services',
             'Intern & Earn',
             'Ladders for Leaders (LFL)',
             'Learn & Earn',
