@@ -1,0 +1,43 @@
+version: "3"
+networks:
+  default:
+    driver: bridge
+services:
+  facdb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Geosupport Versions
+        RELEASE: 21a
+        MAJOR: 21
+        MINOR: 1
+        PATCH: 0
+    environment:
+      - BUILD_ENGINE=postgresql://postgres:postgres@db:5432/postgres
+    volumes:
+      - .:/src
+    command: sleep infinity
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgis/postgis:11-3.0-alpine
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres-data:

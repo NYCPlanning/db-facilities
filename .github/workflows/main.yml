@@ -1,60 +1,67 @@
 name: Build
 
-on: [push]
+on:
+  push:
+    paths-ignore:
+      - "*.md"
+      - ".pre-commit-config.yml"
+      - ".gitignore"
+      - "docs/*"
+      - "dashboard/*"
+  workflow_dispatch:
 
 jobs:
   Build:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event_name == 'push' &&
+        ! contains(github.event.head_commit.message, '[skip]')
+      )
     name: Building ...
-    if: "contains(github.event.head_commit.message, '[build]')"
-    runs-on: self-hosted
-    env: 
-      RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
-      BUILD_ENGINE: ${{ secrets.BUILD_ENGINE }}
+    runs-on: ubuntu-20.04
+    env:
       EDM_DATA: ${{ secrets.EDM_DATA }}
-      AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      BUILD_ENGINE: postgresql://postgres:postgres@localhost:5432/postgres
+      AWS_S3_ENDPOINT: ${{ secrets.DO_S3_ENDPOINT }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.DO_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.DO_SECRET_ACCESS_KEY }}
     steps:
         - uses: actions/checkout@v2
-        - name: install dependencies ...
+
+        - name: Install Minio Client and Ogr2ogr
           run: |
-            sudo apt update
-            sudo apt install -y curl zip
-
-            sudo tee /etc/apt/sources.list.d/pgdg.list <<END
-            deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
-            END
-
-            # get the signing key and import it
-            curl -O https://www.postgresql.org/media/keys/ACCC4CF8.asc
-            sudo apt-key add ACCC4CF8.asc
-
-            sudo apt update
-            sudo apt install -y postgresql-client-11 gdal-bin
-            sudo apt autoremove -y
-
             curl -O https://dl.min.io/client/mc/release/linux-amd64/mc
             chmod +x mc
             sudo mv ./mc /usr/bin
-            mc config host add spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
+            mc alias set spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
+            sudo apt-get update
+            sudo apt-get -y install --no-install-recommends gdal-bin
 
-        - name: 1. dataloading ..
-          working-directory: facdb_build
-          run: ./01_dataloading.sh
-          
-        - name: 2. Building ..
-          working-directory: facdb_build
-          run: ./02_build.sh
-        
-        - name: 3. Exporting ..
-          working-directory: facdb_build
-          run: ./03_export.sh
-        
-        - name: 4. Archive ..
-          working-directory: facdb_build
-          run: ./04_archive.sh
-        
-        - name: Clean up ...
-          if: ${{ always() }}
-          run: sudo rm -rf /home/self-hosted/actions-runner/_work/db-facilities/db-facilities/facdb_build
-          
+        - name: Initialize
+          run: ./facdb.sh init
+
+        - name: Dataloading
+          run: ./facdb.sh dataloading
+
+        - name: Check on Services
+          run: docker-compose ps
+
+        - name: Run Pipelines
+          run: ./facdb.sh run --all
+
+        - name: Build facdb
+          run: ./facdb.sh build
+
+        - name: QAQC facdb
+          run: ./facdb.sh qaqc
+
+        - name: Export facdb
+          run: ./facdb.sh export
+
+        - name: Upload Artifacts
+          run: ./facdb.sh upload
+
+        - name: Archive tables to EDM_DATA
+          if: github.ref == 'refs/heads/develop'
+          run: ./facdb.sh archive --all
