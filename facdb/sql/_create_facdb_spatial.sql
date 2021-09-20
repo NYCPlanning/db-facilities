@@ -35,7 +35,7 @@ with boundary_geosupport as (
 		(select nta2020 from dcp_nta2020 b where st_intersects(b.wkb_geometry, a.geom)) as nta2020,
 		(select coundist::text from dcp_councildistricts b where st_intersects(b.wkb_geometry, a.geom)) as council,
 		(select RIGHT(boroct2010::text, 6) from dcp_ct2010 b where st_intersects(b.wkb_geometry, a.geom)) as ct2010,
-		(select RIGHT(boroct2010::text, 6) from dcp_ct2020 b where st_intersects(b.wkb_geometry, a.geom)) as ct2020,
+		(select RIGHT(boroct2020::text, 6) from dcp_ct2020 b where st_intersects(b.wkb_geometry, a.geom)) as ct2020,
 		(select precinct::text from dcp_policeprecincts b where st_intersects(b.wkb_geometry, a.geom)) as policeprct,
 		(select schooldist::text from dcp_school_districts b where st_intersects(b.wkb_geometry, a.geom)) as schooldist,
 		'spatial join' as boundarysource
