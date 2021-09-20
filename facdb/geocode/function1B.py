@@ -36,13 +36,24 @@ class Function1B:
         input_borough = inputs.get(self.borough_field)
         input_zipcode = inputs.get(self.zipcode_field)
         try:
-            geo = g["1B"](
+            geo1B = g["1B"](
+                street_name=input_sname,
+                house_number=input_hnum,
+                borough=input_borough,
+                zip_code=input_zipcode,
+            )
+            # Adding 2020 fields to 1B  by calling 1E
+            geo1E = g["1E"](
                 street_name=input_sname,
                 house_number=input_hnum,
                 borough=input_borough,
                 zip_code=input_zipcode,
                 mode="extended",
             )
+            del geo1E["Latitude"]
+            del geo1E["Longitude"]
+            geo1B.update(geo1E)
+            geo = geo1B
         except GeosupportError as e:
             geo = e.result
 
