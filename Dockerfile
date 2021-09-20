@@ -1,8 +1,10 @@
 FROM python:3.9-slim
 
 # install additional OS packages.
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends zip unzip curl postgresql-client postgresql-client-11 build-essential jq
+RUN apt-get update && apt-get -y install zip unzip curl
+
+RUN curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
+    && apt-get update && apt install -y postgresql-client postgresql-client-11 build-essential jq
 
 # Install Geosupport
 ARG RELEASE=21c
