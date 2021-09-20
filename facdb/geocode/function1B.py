@@ -41,6 +41,7 @@ class Function1B:
                 house_number=input_hnum,
                 borough=input_borough,
                 zip_code=input_zipcode,
+                mode="extended",
             )
         except GeosupportError as e:
             geo = e.result
@@ -82,9 +83,11 @@ class Function1B:
             geo_commboard=geo.get("COMMUNITY DISTRICT", {}).get(
                 "COMMUNITY DISTRICT", None
             ),
-            geo_nta=geo.get("Neighborhood Tabulation Area (NTA)", None),
+            geo_nta2010=geo.get("Neighborhood Tabulation Area (NTA)", None),
+            geo_nta2020=geo.get("2020 Neighborhood Tabulation Area (NTA)", None),
             geo_council=geo.get("City Council District", None),
-            geo_censtract=geo.get("2010 Census Tract", None),
+            geo_ct2010=geo.get("2010 Census Tract", None),
+            geo_ct2020=geo.get("2020 Census Tract", None),
             geo_grc=geo.get("Geosupport Return Code (GRC)", None),
             geo_grc2=geo.get("Geosupport Return Code 2 (GRC 2)", None),
             geo_reason_code=geo.get("Reason Code", None),
