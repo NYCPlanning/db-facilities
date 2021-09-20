@@ -3,7 +3,7 @@ FROM python@sha256:c5f60863db103c951595f110def9244c1e09efe9e8d072cfac3da39310bc8
 
 # install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends zip unzip curl postgresql-client-11 build-essential jq
+    && apt-get -y install --no-install-recommends zip unzip curl postgresql-client-11 build-essential jq git
 
 # Install Geosupport
 ARG RELEASE=21c
