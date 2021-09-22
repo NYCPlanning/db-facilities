@@ -10,7 +10,7 @@ pandas = "^1.2.3"
 SQLAlchemy = "^1.4.3"
 usaddress = "^0.5.10"
 psycopg2-binary = "^2.8.6"
-python-geosupport = { git = "https://github.com/NYCPlanning/python-geosupport.git", rev = "4b8a9ff" }
+python-geosupport = { git = "https://github.com/NYCPlanning/python-geosupport.git", rev = "30a2097" }
 python-dotenv = "^0.16.0"
 typer = "^0.3.2"
 tqdm = "^4.59.0"
