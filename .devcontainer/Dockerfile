@@ -11,7 +11,7 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/l
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends postgresql-client-11 gdal-bin
+    && apt-get -y install --no-install-recommends postgresql-client gdal-bin
 
 # Install Geosupport
 ARG RELEASE=21a
@@ -29,6 +29,10 @@ RUN FILE_NAME=linux_geo${RELEASE}_${MAJOR}_${MINOR}.zip\
 ENV GEOFILES=/geosupport/version-${RELEASE}_${MAJOR}.${MINOR}/fls/
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/geosupport/version-${RELEASE}_${MAJOR}.${MINOR}/lib/
 WORKDIR /
+
+#Install ipython
+# RUN pip install ipython
+
 
 # Install Poetry
 USER vscode
