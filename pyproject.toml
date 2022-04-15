@@ -15,6 +15,7 @@ python-dotenv = "^0.16.0"
 typer = "^0.3.2"
 tqdm = "^4.59.0"
 PyYAML = "^5.4.1"
+ipython = "^8.2.0"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.11.1"
