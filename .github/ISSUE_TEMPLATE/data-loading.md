@@ -31,7 +31,7 @@ To see if a dataset needs to be uploaded, check date last updated in open data a
 
 - [ ] dca_operatingbusinesses https://data.cityofnewyork.us/Business/Legally-Operating-Businesses/w7w3-xahh
 
-- [ ] dcas_colp https://www1.nyc.gov/site/planning/data-maps/open-data.page#city_facilities
+- [ ] dcp_colp https://www1.nyc.gov/site/planning/data-maps/open-data.page#city_facilities
 
 - [ ] dcla_culturalinstitutions https://data.cityofnewyork.us/Recreation/DCLA-Cultural-Organizations/u35m-9t32
 
