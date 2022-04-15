@@ -10,6 +10,8 @@ assignees: ''
 # FacDB Source Data Updates 
 Like most of our data products, source data must be updated in data library before facDB is run. As there are are many source datasets with varied update processes, this issue template should be opened to track progress towards updating all source data
 
+**All source data is to be uploaded as .sql files**
+
 ## Scraped by data library 
 
 - [ ] bpl_libraries
