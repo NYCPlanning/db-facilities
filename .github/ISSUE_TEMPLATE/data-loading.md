@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 # FacDB Source Data Updates 
-Like most of our data products, source data must be updated in data library before facDB is run. As there are are many source datasets with varied update processes, this issue template should be opened to track progress towards updating all source data
+Like most of our data products, source data must be updated in data library before FacDB is run. As there are are many source datasets with varied update processes, this issue template should be opened to track progress towards updating all source data
 
 **All source data is to be uploaded as .sql files**
 
@@ -27,7 +27,7 @@ Source: Court locator for NY state
 Source url: http://www.uscourts.gov/court-locator/city/New%20York/state/NY
 
 ## Source data from OpenData 
-To see if a dataset needs to be uploaded, check date last updated  in open data against version in recipes
+To see if a dataset needs to be uploaded, check date last updated in open data against version in data library
 
 - [ ] dca_operatingbusinesses https://data.cityofnewyork.us/Business/Legally-Operating-Businesses/w7w3-xahh
 
