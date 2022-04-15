@@ -5,7 +5,7 @@ datasets:
       - nypl_libraries.sql
 
   - name: bpl_libraries
-    version: 20210511
+    version: 20220415
     scripts:
       - bpl_libraries.sql
 
