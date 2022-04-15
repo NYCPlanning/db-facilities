@@ -92,7 +92,6 @@ When searching by state, there should be 5 NY prisons, 3 of which are in NYC (Br
 Source: NYCDOC locations directory
  
 - [ ] nycourts_courts http://www.nycourts.gov/courts/nyc/criminal/generalinfo.shtml#BRONX_COUNTY
-nysdoccs_corrections
 
 - [ ] nysdoccs_corrections https://doccs.ny.gov/find-facility
 Hand check for 1 facility in queens, 1 facility in Manhattan, 0 in the other 3 boros. Only look at the correctional facility locations, not the offices.
