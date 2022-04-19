@@ -104,7 +104,7 @@ This dataset is updated for CEQR
 Go to the expanded view of the google maps. Click “Download KML” under the options (three dots). Instead of “Entire Map,” select “Food Bank For NYC Open Sites.” Select. “Keep data up to date with network link KML (only usable online).“ Go to https://mygeodata.cloud/converter/kmz-to-csv to convert the kmz to csv, then use recipe app to load in the csv
 
 - [ ] nysed_activeinstitutions  https://eservices.nysed.gov/sedreports/list?id=1
- Active Institutions with GIS coordinates and OITS Accuracy Code - Select by County__ CSV
+ Active Institutions with GIS coordinates and OITS Accuracy Code - Select by County__ CSV. Note that .csv data is automatically downloaded without comma delimiter. Exporting to csv from numbers is one way to get around this issue
 
  - [ ] nysed_nonpublicenrollment http://www.p12.nysed.gov/irs/statistics/nonpublic/
  Nonpublic Enrollment by Grade 
