@@ -19,11 +19,12 @@ def get_dataset_version(name: str) -> str:
     datasets = read_datasets_yml()
     dataset = next(filter(lambda x: x["name"] == name, datasets), None)
     assert dataset, f"{name} is not included as a dataset in datasets.yml"
-    return str(dataset["version"])
+    return str(dataset.get("version", "latest"))
 
 
 def read_csv(name: str) -> pd.DataFrame:
     version = get_dataset_version(name)
+    print(f"version is {version}")
     return pd.read_csv(
         f"{BASE_URL}/{name}/{version}/{name}.csv", dtype=str, index_col=False
     )
@@ -37,6 +38,7 @@ def Prepare(func) -> callable:
         pkl_path = BASE_PATH / f"{name}.pkl"
         if not os.path.isfile(pkl_path):
             # pull from data library
+            print("pulling from data library")
             # fmt:off
             df = read_csv(name)\
                 .pipe(hash_each_row)\
@@ -45,6 +47,7 @@ def Prepare(func) -> callable:
             # fmt:on
         else:
             # read from cache
+            print("reading from cached data")
             df = pd.read_pickle(pkl_path)
 
         # Apply custom wrangler

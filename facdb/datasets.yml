@@ -15,7 +15,6 @@ datasets:
       - dcp_colp.sql
 
   - name: dca_operatingbusinesses
-    version: 20210402
     scripts:
       - dca_operatingbusinesses.sql
 
