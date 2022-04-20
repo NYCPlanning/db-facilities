@@ -7,12 +7,12 @@ assignees: ''
 
 ---
 
-# FacDB Source Data Updates 
+# FacDB Source Data Updates
 Like most of our data products, source data must be updated in data library before FacDB is run. As there are are many source datasets with varied update processes, this issue template should be opened to track progress towards updating all source data
 
 **All source data listed is to be uploaded as .csv files**
 
-## Scraped by data library 
+## Scraped by data library
 
 - [ ] bpl_libraries
 Source: Scraped from BPL website
@@ -26,7 +26,7 @@ Source url: https://www.nypl.org/locations/list
 Source: Court locator for NY state
 Source url: http://www.uscourts.gov/court-locator/city/New%20York/state/NY
 
-## Source data from OpenData 
+## Source data from OpenData
 To see if a dataset needs to be uploaded, check date last updated in open data against version in data library
 
 - [ ] dca_operatingbusinesses https://data.cityofnewyork.us/Business/Legally-Operating-Businesses/w7w3-xahh
@@ -50,9 +50,11 @@ NOTE: DPR open data table URLs are not consistent. Be sure to double-check befor
 
 - [ ] fdny_firehouses https://data.cityofnewyork.us/Public-Safety/FDNY-Firehouse-Listing/hc8x-tcnd
 
-- [ ] nycha_communitycenters https://data.cityofnewyork.us/Social-Services/Directory-of-NYCHA-Community-Facilities/crns-fw6u
-
 - [ ] hhc_hospitals https://data.cityofnewyork.us/Health/Health-and-Hospitals-Corporation-HHC-Facilities/f7b6-v6v3
+
+- [ ] moeo_socialservicesitelocations https://data.cityofnewyork.us/City-Government/Verified-Locations-for-NYC-City-Funded-Social-Serv/2bvn-ky2h
+
+- [ ] nycha_communitycenters https://data.cityofnewyork.us/Social-Services/Directory-of-NYCHA-Community-Facilities/crns-fw6u
 
 - [ ] nycha_policeservice https://data.cityofnewyork.us/Housing-Development/NYCHA-PSA-Police-Service-Areas-/72wx-vdjr
 
@@ -90,7 +92,7 @@ When searching by state, there should be 5 NY prisons, 3 of which are in NYC (Br
 
 - [ ] nycdoc_corrections  https://www1.nyc.gov/site/doc/about/facilities-locations.page
 Source: NYCDOC locations directory
- 
+
 - [ ] nycourts_courts http://www.nycourts.gov/courts/nyc/criminal/generalinfo.shtml#BRONX_COUNTY
 
 - [ ] nysdoccs_corrections https://doccs.ny.gov/find-facility
@@ -107,7 +109,7 @@ Go to the expanded view of the google maps. Click “Download KML” under the o
  Active Institutions with GIS coordinates and OITS Accuracy Code - Select by County__ CSV. Note that .csv data is automatically downloaded without comma delimiter. Exporting to csv from numbers is one way to get around this issue
 
  - [ ] nysed_nonpublicenrollment http://www.p12.nysed.gov/irs/statistics/nonpublic/
- Nonpublic Enrollment by Grade 
+ Nonpublic Enrollment by Grade
 
 - [ ] nysoasas_programs  https://webapps.oasas.ny.gov/providerDirectory/index.cfm?search_type=2
 Download all treatment providers
@@ -118,16 +120,16 @@ NOTE: the final number in the URL (2225713) is not always stable. If the data is
 
 
 ### Will receive via email or FTP
-- [ ] dot_bridgehouses 
+- [ ] dot_bridgehouses
 - [ ] dot_ferryterminals
 - [ ] dot_mannedfacilities
 - [ ] dot_publicparking
 - [ ] dot_pedplazas
 - [ ] dsny_mtsgaragemaintenance
-- [ ] moeo_socialservicesiteloactions
 
-## Unresolved process 
-Still waiting to figure out best way to upload these data 
+
+## Unresolved process
+Still waiting to figure out best way to upload these data
 
 - [ ] doe_universalprek
 Source url: https://maps.nyc.gov/prek/data/pka/pka.csv
