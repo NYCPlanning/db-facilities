@@ -50,11 +50,11 @@ NOTE: DPR open data table URLs are not consistent. Be sure to double-check befor
 
 - [ ] fdny_firehouses https://data.cityofnewyork.us/Public-Safety/FDNY-Firehouse-Listing/hc8x-tcnd
 
+- [ ] hhc_hospitals https://data.cityofnewyork.us/Health/Health-and-Hospitals-Corporation-HHC-Facilities/f7b6-v6v3
+
 - [ ] moeo_socialservicesitelocations https://data.cityofnewyork.us/Social-Services/Department-for-the-Aging-DFTA-All-Contracted-Provi/6j6t-3ixh
 
 - [ ] nycha_communitycenters https://data.cityofnewyork.us/Social-Services/Directory-of-NYCHA-Community-Facilities/crns-fw6u
-
-- [ ] hhc_hospitals https://data.cityofnewyork.us/Health/Health-and-Hospitals-Corporation-HHC-Facilities/f7b6-v6v3
 
 - [ ] nycha_policeservice https://data.cityofnewyork.us/Housing-Development/NYCHA-PSA-Police-Service-Areas-/72wx-vdjr
 
