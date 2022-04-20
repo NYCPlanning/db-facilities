@@ -144,12 +144,10 @@ datasets:
       - usdot_airports.sql
 
   - name: usdot_ports
-    version: 20210416
     scripts:
       - usdot_ports.sql
 
   - name: usnps_parks
-    version: 20210415
     scripts:
       - usnps_parks.sql
 
@@ -174,7 +172,6 @@ datasets:
       - nysdoccs_corrections.sql
 
   - name: nysed_nonpublicenrollment
-    version: 2019-20
 
   - name: nysed_activeinstitutions
     version: 20210412
@@ -255,7 +252,6 @@ datasets:
       - hhc_hospitals.sql
 
   - name: moeo_socialservicesitelocations
-    version: 20210706
     scripts:
       - moeo_socialservicesitelocations.sql
 
@@ -280,6 +276,5 @@ datasets:
       - nysparks_parks.sql
 
   - name: nysoasas_programs
-    version: 22-Apr-21
     scripts:
       - nysoasas_programs.sql
