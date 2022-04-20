@@ -52,7 +52,7 @@ NOTE: DPR open data table URLs are not consistent. Be sure to double-check befor
 
 - [ ] hhc_hospitals https://data.cityofnewyork.us/Health/Health-and-Hospitals-Corporation-HHC-Facilities/f7b6-v6v3
 
-- [ ] moeo_socialservicesitelocations https://data.cityofnewyork.us/Social-Services/Department-for-the-Aging-DFTA-All-Contracted-Provi/6j6t-3ixh
+- [ ] moeo_socialservicesitelocations https://data.cityofnewyork.us/City-Government/Verified-Locations-for-NYC-City-Funded-Social-Serv/2bvn-ky2h
 
 - [ ] nycha_communitycenters https://data.cityofnewyork.us/Social-Services/Directory-of-NYCHA-Community-Facilities/crns-fw6u
 
