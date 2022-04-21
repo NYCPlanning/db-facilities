@@ -84,7 +84,6 @@ datasets:
       - nycha_communitycenters.sql
 
   - name: nycha_policeservice
-    version: 20160915
     scripts:
       - nycha_policeservice.sql
 
@@ -154,17 +153,14 @@ datasets:
       - usnps_parks.sql
 
   - name: nysdec_solidwaste
-    version: 20210412
     scripts:
       - nysdec_solidwaste.sql
 
   - name: nysdoh_healthfacilities
-    version: 20210602
     scripts:
       - nysdoh_healthfacilities.sql
 
   - name: nysdoh_nursinghomes
-    version: 20210412
     scripts:
       - nysdoh_nursinghomes.sql
 
@@ -255,7 +251,6 @@ datasets:
       - hhc_hospitals.sql
 
   - name: moeo_socialservicesitelocations
-    version: 20210706
     scripts:
       - moeo_socialservicesitelocations.sql
 
