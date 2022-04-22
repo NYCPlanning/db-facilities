@@ -1,16 +1,13 @@
 datasets:
   - name: nypl_libraries
-    version: 20210208
     scripts:
       - nypl_libraries.sql
 
   - name: bpl_libraries
-    version: 20220415
     scripts:
       - bpl_libraries.sql
 
   - name: dcp_colp
-    version: 202106
     scripts:
       - dcp_colp.sql
 
@@ -19,7 +16,6 @@ datasets:
       - dca_operatingbusinesses.sql
 
   - name: dcla_culturalinstitutions
-    version: 20201110
     scripts:
       - dcla_culturalinstitutions.sql
 
@@ -54,7 +50,6 @@ datasets:
       - dsny_leafdrop.sql
 
   - name: dsny_fooddrop
-    version: 20210402
     scripts:
       - dsny_fooddrop.sql
 
@@ -79,7 +74,6 @@ datasets:
       - hra_medicaid.sql
 
   - name: nycha_communitycenters
-    version: 20191118
     scripts:
       - nycha_communitycenters.sql
 
@@ -89,12 +83,11 @@ datasets:
       - nycha_policeservice.sql
 
   - name: nycourts_courts
-    version: 20210413
     scripts:
       - nycourts_courts.sql
 
   - name: nysdec_lands
-    version: 20210415
+    version: latest
     scripts:
       - nysdec_lands.sql
 
@@ -124,7 +117,6 @@ datasets:
       - dot_publicparking.sql
 
   - name: qpl_libraries
-    version: 20180620
     scripts:
       - qpl_libraries.sql
 
@@ -134,7 +126,6 @@ datasets:
       - sbs_workforce1.sql
 
   - name: uscourts_courts
-    version: 20210405
     scripts:
       - uscourts_courts.sql
 
@@ -154,12 +145,10 @@ datasets:
       - usnps_parks.sql
 
   - name: nysdec_solidwaste
-    version: 20210412
     scripts:
       - nysdec_solidwaste.sql
 
   - name: nysdoh_healthfacilities
-    version: 20210602
     scripts:
       - nysdoh_healthfacilities.sql
 
@@ -169,7 +158,6 @@ datasets:
       - nysdoh_nursinghomes.sql
 
   - name: nysdoccs_corrections
-    version: 20210412
     scripts:
       - nysdoccs_corrections.sql
 
@@ -177,7 +165,6 @@ datasets:
     version: 2019-20
 
   - name: nysed_activeinstitutions
-    version: 20210412
     scripts:
       - nysed_activeinstitutions.sql
 
@@ -187,22 +174,18 @@ datasets:
       - nysomh_mentalhealth.sql
 
   - name: dpr_parksproperties
-    version: 20210324
     scripts:
       - dpr_parksproperties.sql
 
   - name: dycd_afterschoolprograms
-    version: 20170916
     scripts:
       -  dycd_afterschoolprograms.sql
 
   - name: fbop_corrections
-    version: 20210413
     scripts:
       - fbop_corrections.sql
 
   - name: fdny_firehouses
-    version: 20170916
     scripts:
       - fdny_firehouses.sql
 
@@ -217,17 +200,14 @@ datasets:
       - dep_wwtc.sql
 
   - name: dfta_contracts
-    version: 20210402
     scripts:
       - dfta_contracts.sql
 
   - name: doe_busroutesgarages
-    version: 20210401
     scripts:
       - doe_busroutesgarages.sql
 
   - name: sca_enrollment_capacity
-    version: 20191230
 
   - name: doe_lcgms
     version: 20210216
@@ -240,17 +220,14 @@ datasets:
       - doe_universalprek.sql
 
   - name: dohmh_daycare
-    version: 20210405
     scripts:
       - dohmh_daycare.sql
 
   - name: foodbankny_foodbanks
-    version: 20210414
     scripts:
       - foodbankny_foodbanks.sql
 
   - name: hhc_hospitals
-    version: 20170908
     scripts:
       - hhc_hospitals.sql
 
@@ -260,7 +237,6 @@ datasets:
       - moeo_socialservicesitelocations.sql
 
   - name: nycdoc_corrections
-    version: 20210413
     scripts:
       - nycdoc_corrections.sql
 
