@@ -44,19 +44,13 @@ def build():
     """
     Building facdb based on facdb_base
     """
-    print("create facdb geometry")
     ExecuteSQL("facdb/sql/_create_facdb_geom.sql")
-    print("create facdb address")
     ExecuteSQL("facdb/sql/_create_facdb_address.sql")
-    print("create facdb spatial")
     ExecuteSQL("facdb/sql/_create_facdb_spatial.sql")
     ExecuteSQL("facdb/sql/_create_facdb_boro.sql")
     ExecuteSQL("facdb/sql/_create_facdb_classification.sql")
-    print("create facdb agency")
     ExecuteSQL("facdb/sql/_create_facdb_agency.sql")
-    print("create facdb")
     ExecuteSQL("facdb/sql/_create_facdb.sql")
-    print("deduplication")
     ExecuteSQL("facdb/sql/_deduplication.sql")
 
 
