@@ -28,14 +28,7 @@ SELECT
     'NYSOMH' as overabbrev,
     NULL as capacity,
     NULL as captype,
-    (CASE
-        WHEN location LIKE '%(%'
-            THEN ST_SetSRID(ST_Point(
-                split_part(REPLACE(reverse(split_part(reverse(location),
-                            '(', 1)),')',''), ',', 2)::DOUBLE PRECISION,
-                split_part(REPLACE(reverse(split_part(reverse(location),
-                            '(', 1)),')',''), ',', 1)::DOUBLE PRECISION), 4326)
-    END) as wkb_geometry,
+    ST_AsBinary(ST_AsText(georeference)) as wkb_geometry,
     geo_1b,
     NULL as geo_bl,
     NULL as geo_bn

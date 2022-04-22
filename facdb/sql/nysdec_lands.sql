@@ -23,7 +23,7 @@ SELECT
     'NYSDEC' as overabbrev,
     NULL as capacity,
     NULL as captype,
-    wkt::geometry as wkb_geometry,
+    ST_AsBinary(ST_AsText(wkt)) as wkb_geometry,
     NULL as geo_1b,
     NULL as geo_bl,
     NULL as geo_bn
