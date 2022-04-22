@@ -15,9 +15,9 @@ services:
         USER_UID: 1000
         USER_GID: 1000
         # Geosupport Versions
-        RELEASE: 21a
+        RELEASE: 21c
         MAJOR: 21
-        MINOR: 1
+        MINOR: 3
         PATCH: 0
 
     volumes:
