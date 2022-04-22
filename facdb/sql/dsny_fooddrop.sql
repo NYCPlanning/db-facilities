@@ -13,7 +13,7 @@ SELECT uid,
     NULL as bbl,
     'Compost' as factype,
     'DSNY Drop-off Facility' as facsubgrp,
-    serviced_by as opname,
+    hosted_by as opname,
     NULL as opabbrev,
     'NYCDSNY' as overabbrev,
     NULL as capacity,
@@ -21,8 +21,6 @@ SELECT uid,
     wkt::geometry as wkb_geometry,
     geo_1b,
     NULL as geo_bl,
-    NULL as geo_bn
-INTO _dsny_fooddrop
+    NULL as geo_bn INTO _dsny_fooddrop
 FROM dsny_fooddrop;
-
 CALL append_to_facdb_base('_dsny_fooddrop');
