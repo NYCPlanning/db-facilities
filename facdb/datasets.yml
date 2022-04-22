@@ -87,7 +87,7 @@ datasets:
       - nycourts_courts.sql
 
   - name: nysdec_lands
-    version: latest
+    version: 20210415
     scripts:
       - nysdec_lands.sql
 
@@ -135,12 +135,10 @@ datasets:
       - usdot_airports.sql
 
   - name: usdot_ports
-    version: 20210416
     scripts:
       - usdot_ports.sql
 
   - name: usnps_parks
-    version: 20210415
     scripts:
       - usnps_parks.sql
 
@@ -162,14 +160,12 @@ datasets:
       - nysdoccs_corrections.sql
 
   - name: nysed_nonpublicenrollment
-    version: 2019-20
 
   - name: nysed_activeinstitutions
     scripts:
       - nysed_activeinstitutions.sql
 
   - name: nysomh_mentalhealth
-    version: 20210413
     scripts:
       - nysomh_mentalhealth.sql
 
@@ -232,7 +228,6 @@ datasets:
       - hhc_hospitals.sql
 
   - name: moeo_socialservicesitelocations
-    version: 20210706
     scripts:
       - moeo_socialservicesitelocations.sql
 
@@ -241,21 +236,17 @@ datasets:
       - nycdoc_corrections.sql
 
   - name: nysopwdd_providers
-    version: 20210422
     scripts:
       - nysopwdd_providers.sql
 
   - name: nysparks_historicplaces
-    version: 20210511
     scripts:
       - nysparks_historicplaces.sql
 
   - name: nysparks_parks
-    version: 20210511
     scripts:
       - nysparks_parks.sql
 
   - name: nysoasas_programs
-    version: 22-Apr-21
     scripts:
       - nysoasas_programs.sql
