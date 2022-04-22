@@ -34,17 +34,14 @@ datasets:
       - dcp_pops.sql
 
   - name: dsny_garages
-    version: 20210414
     scripts:
       - dsny_garages.sql
 
   - name: dsny_specialwastedrop
-    version: 20210414
     scripts:
       - dsny_specialwastedrop.sql
 
   - name: dsny_textiledrop
-    version: 20210415
     scripts:
       - dsny_textiledrop.sql
 
@@ -59,7 +56,6 @@ datasets:
       - dsny_fooddrop.sql
 
   - name: dsny_electronicsdrop
-    version: 20210414
     scripts:
       - dsny_electronicsdrop.sql
 
