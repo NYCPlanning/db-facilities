@@ -42,6 +42,7 @@ datasets:
       - dsny_textiledrop.sql
 
   - name: dsny_leafdrop
+    version: 20210402
     scripts:
       - dsny_leafdrop.sql
 
