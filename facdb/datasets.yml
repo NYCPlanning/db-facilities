@@ -81,7 +81,6 @@ datasets:
       - nycourts_courts.sql
 
   - name: nysdec_lands
-    version: 20210415
     scripts:
       - nysdec_lands.sql
 
