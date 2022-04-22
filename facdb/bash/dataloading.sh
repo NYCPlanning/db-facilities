@@ -6,10 +6,12 @@ max_bg_procs 5
 import_public dcp_facilities &
 import_public dcp_mappluto &
 import_public dcp_boroboundaries_wi &
-import_public dcp_censustracts &
+import_public dcp_ct2010 &
+import_public dcp_ct2020 &
 import_public dcp_councildistricts &
 import_public dcp_cdboundaries &
-import_public dcp_ntaboundaries &
+import_public dcp_nta2010 &
+import_public dcp_nta2020 &
 import_public dcp_policeprecincts &
 import_public doitt_zipcodeboundaries &
 import_public doitt_buildingfootprints &

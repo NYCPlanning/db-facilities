@@ -4,7 +4,6 @@ datasets:
       - nypl_libraries.sql
 
   - name: bpl_libraries
-    version: 20210405
     scripts:
       - bpl_libraries.sql
 
@@ -112,7 +111,6 @@ datasets:
       - dot_publicparking.sql
 
   - name: qpl_libraries
-    version: 20180620
     scripts:
       - qpl_libraries.sql
 
@@ -176,7 +174,6 @@ datasets:
       - fbop_corrections.sql
 
   - name: fdny_firehouses
-    version: 20170916
     scripts:
       - fdny_firehouses.sql
 
@@ -190,17 +187,14 @@ datasets:
       - dep_wwtc.sql
 
   - name: dfta_contracts
-    version: 20210402
     scripts:
       - dfta_contracts.sql
 
   - name: doe_busroutesgarages
-    version: 20210401
     scripts:
       - doe_busroutesgarages.sql
 
   - name: sca_enrollment_capacity
-    version: 20191230
 
   - name: doe_lcgms
     version: 20210216
@@ -213,17 +207,14 @@ datasets:
       - doe_universalprek.sql
 
   - name: dohmh_daycare
-    version: 20210405
     scripts:
       - dohmh_daycare.sql
 
   - name: foodbankny_foodbanks
-    version: 20210414
     scripts:
       - foodbankny_foodbanks.sql
 
   - name: hhc_hospitals
-    version: 20170908
     scripts:
       - hhc_hospitals.sql
 
@@ -232,7 +223,6 @@ datasets:
       - moeo_socialservicesitelocations.sql
 
   - name: nycdoc_corrections
-    version: 20210413
     scripts:
       - nycdoc_corrections.sql
 
