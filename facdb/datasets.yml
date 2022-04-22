@@ -82,7 +82,6 @@ datasets:
       - nycourts_courts.sql
 
   - name: nysdec_lands
-    version: 20210415
     scripts:
       - nysdec_lands.sql
 
@@ -163,7 +162,6 @@ datasets:
       - nysed_activeinstitutions.sql
 
   - name: nysomh_mentalhealth
-    version: 20210413
     scripts:
       - nysomh_mentalhealth.sql
 
@@ -225,7 +223,6 @@ datasets:
       - hhc_hospitals.sql
 
   - name: moeo_socialservicesitelocations
-    version: 20210706
     scripts:
       - moeo_socialservicesitelocations.sql
 
