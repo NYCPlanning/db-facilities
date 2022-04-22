@@ -42,7 +42,6 @@ datasets:
       - dsny_textiledrop.sql
 
   - name: dsny_leafdrop
-    version: 20210402
     scripts:
       - dsny_leafdrop.sql
 
@@ -180,7 +179,6 @@ datasets:
       - fdny_firehouses.sql
 
   - name: nysomh_mentalhealth
-    version: 20210413
     scripts:
       - nysomh_mentalhealth.sql
 
