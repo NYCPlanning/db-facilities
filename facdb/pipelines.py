@@ -336,11 +336,12 @@ def dsny_textiledrop(df: pd.DataFrame = None):
 
 @Export
 @Function1B(
-    street_name_field="street",
-    house_number_field="number",
+    street_name_field="parsed_sname",
+    house_number_field="parsed_hnum",
     borough_field="borough",
     zipcode_field="zipcode",
 )
+@ParseAddress(raw_address_field="address")
 @FunctionBL(bbl_field="bbl")
 @FunctionBN(bin_field="bin")
 @Prepare
