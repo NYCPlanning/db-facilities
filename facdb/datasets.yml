@@ -25,7 +25,6 @@ datasets:
       - dcp_sfpsd.sql
 
   - name: dcp_pops
-    version: 20210513
     scripts:
       - dcp_pops.sql
 
