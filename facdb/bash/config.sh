@@ -1,8 +1,15 @@
 #!/bin/bash
-if [ -f .env ]
-then
-  export $(cat .env | sed 's/#.*//g' | xargs)
-fi
+function set_env {
+  for envfile in $@
+  do
+    if [ -f $envfile ]
+      then
+        export $(cat $envfile | sed 's/#.*//g' | xargs)
+      fi
+  done
+}
+# Set Environmental variables
+set_env ../.env ../version.env
 
 function urlparse {
     proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"

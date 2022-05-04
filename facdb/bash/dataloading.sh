@@ -3,7 +3,8 @@ CURRENT_DIR=$(dirname "$(readlink -f "$0")")
 source $CURRENT_DIR/config.sh
 max_bg_procs 5
 
-import_public dcp_facilities &
+import_public dcp_facilities_with_unmapped $VERSION_PREV &
+import_public dcp_facilities $VERSION_PREV &
 import_public dcp_mappluto &
 import_public dcp_boroboundaries_wi &
 import_public dcp_ct2010 &

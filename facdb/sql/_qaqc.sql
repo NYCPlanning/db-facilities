@@ -8,7 +8,7 @@ new as (
 ),
 old as (
 	SELECT opabbrev, opname, optype, datasource, count(*) as count_old
-	FROM dcp_facilities
+	FROM dcp_facilities_with_unmapped
 	group by opabbrev, opname, optype, datasource
 )
 select
@@ -34,7 +34,7 @@ new as (
 ),
 old as (
 	SELECT overabbrev, overagency, overlevel, datasource, count(*) as count_old
-	FROM dcp_facilities
+	FROM dcp_facilities_with_unmapped
 	group by overabbrev, overagency, overlevel, datasource
 )
 select
@@ -61,7 +61,7 @@ new as (
 ),
 old as (
 	SELECT facdomain, facgroup, facsubgrp, servarea, count(*) as count_old
-	FROM dcp_facilities
+	FROM dcp_facilities_with_unmapped
 	group by facdomain, facgroup, facsubgrp, servarea
 )
 select
@@ -88,7 +88,7 @@ new as (
 ),
 old as (
 	SELECT captype, sum(capacity::integer) as sum_old
-	FROM dcp_facilities
+	FROM dcp_facilities_with_unmapped
 	group by captype
 )
 select a.captype, a.sum_new, b.sum_old, a.sum_new - b.sum_old as diff
@@ -110,7 +110,7 @@ geom_old as (
 	SELECT facdomain, facgroup, facsubgrp, factype, datasource,
 	count(*) as count_old,
 	sum((wkb_geometry is null)::integer) as wogeom_old
-	from dcp_facilities
+	from dcp_facilities_with_unmapped
 	group by facdomain, facgroup, facsubgrp, factype, datasource
 )
 select
@@ -152,7 +152,7 @@ FROM
 	group by facdomain, facgroup, facsubgrp, factype, datasource
 ) a FULL JOIN
 (	select facdomain, facgroup, facsubgrp, factype, datasource, coalesce(count(*),0) as count_old
-	from dcp_facilities
+	from dcp_facilities_with_unmapped
 	where wkb_geometry is not null
 	group by facdomain, facgroup, facsubgrp, factype, datasource
 ) b
