@@ -1,13 +1,6 @@
 name: Build
 
 on:
-  push:
-    paths-ignore:
-      - "*.md"
-      - ".pre-commit-config.yml"
-      - ".gitignore"
-      - "docs/*"
-      - "dashboard/*"
   workflow_dispatch:
 
 jobs:
