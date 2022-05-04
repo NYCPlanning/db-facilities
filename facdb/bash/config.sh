@@ -9,7 +9,7 @@ function set_env {
   done
 }
 # Set Environmental variables
-set_env ../.env ../version.env
+set_env .env version.env
 
 function urlparse {
     proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
