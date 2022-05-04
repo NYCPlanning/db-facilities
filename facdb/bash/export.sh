@@ -1,6 +1,6 @@
 #!/bin/bash
 CURRENT_DIR=$(dirname "$(readlink -f "$0")")
-source facdb/bash/config.sh
+source $CURRENT_DIR/config.sh
 max_bg_procs 5
 
 mkdir -p output && (
