@@ -1,3 +1,4 @@
+from .geocode.function1A import Function1A
 from .geocode.function1B import Function1B
 from .geocode.functionBL import FunctionBL
 from .geocode.functionBN import FunctionBN

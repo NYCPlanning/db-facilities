@@ -122,7 +122,7 @@ datasets:
       - uscourts_courts.sql
 
   - name: usdot_airports
-    version: 20210416
+    version: 20220504
     scripts:
       - usdot_airports.sql
 
