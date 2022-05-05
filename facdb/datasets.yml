@@ -25,7 +25,6 @@ datasets:
       - dcp_sfpsd.sql
 
   - name: dcp_pops
-    version: 20210513
     scripts:
       - dcp_pops.sql
 
@@ -54,17 +53,14 @@ datasets:
       - dsny_electronicsdrop.sql
 
   - name: hra_snapcenters
-    version: 20200901
     scripts:
       - hra_snapcenters.sql
 
   - name: hra_jobcenters
-    version: 20200901
     scripts:
       - hra_jobcenters.sql
 
   - name: hra_medicaid
-    version: 20200901
     scripts:
       - hra_medicaid.sql
 

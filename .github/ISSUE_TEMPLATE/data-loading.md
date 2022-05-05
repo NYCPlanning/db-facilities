@@ -64,6 +64,12 @@ NOTE: DPR open data table URLs are not consistent. Be sure to double-check befor
 
 - [ ] hhc_hospitals https://data.cityofnewyork.us/Health/Health-and-Hospitals-Corporation-HHC-Facilities/f7b6-v6v3
 
+- [ ] hra_jobcenters https://data.cityofnewyork.us/Business/Directory-Of-Job-Centers/9d9t-bmk7
+
+- [ ] hra_medicaid https://data.cityofnewyork.us/City-Government/Medicaid-Offices/ibs4-k445
+
+- [ ] hra_snapcenters https://data.cityofnewyork.us/Social-Services/Directory-of-SNAP-Centers/tc6u-8rnp
+
 - [ ] moeo_socialservicesitelocations https://data.cityofnewyork.us/City-Government/Verified-Locations-for-NYC-City-Funded-Social-Serv/2bvn-ky2h
 
 - [ ] nycha_communitycenters https://data.cityofnewyork.us/Social-Services/Directory-of-NYCHA-Community-Facilities/crns-fw6u
@@ -137,7 +143,7 @@ NOTE: the final number in the URL (2225713) is not always stable. If the data is
 - [ ] dot_mannedfacilities
 - [ ] dot_publicparking
 - [ ] dot_pedplazas
-- [ ] dsny_mtsgaragemaintenance
+
 
 
 ## Unresolved process
@@ -145,10 +151,6 @@ Still waiting to figure out best way to upload these data
 
 - [ ] doe_universalprek
 Source url: https://maps.nyc.gov/prek/data/pka/pka.csv
-
-- [ ] hra_centers
-Source: ?
-OpenData table name/url:?
 
 ## Last step
 - [ ] dcp_pops
