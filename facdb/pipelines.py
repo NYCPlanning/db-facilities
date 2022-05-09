@@ -813,7 +813,7 @@ def uscourts_courts(df: pd.DataFrame = None):
     zipcode_field="zipcode",
 )
 @Function1B(
-    street_name_field="parsed_sname",
+    street_name_field="manager_address",
     house_number_field="parsed_hnum",
     borough_field="county",
     zipcode_field="zipcode",
@@ -832,6 +832,7 @@ def usdot_airports(df: pd.DataFrame = None):
         df.name == "JOHN F KENNEDY INTL", "manager_address"
     ] = "JOHN F KENNEDY INTL AIRPORT"
     df.loc[df.name == "LAGUARDIA", "manager_address"] = "LAGUARDIA AIRPORT"
+    df = df[df["facility_type"] == "AIRPORT"]
     return df
 
 
