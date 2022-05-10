@@ -35,6 +35,10 @@ class Function1A:
         input_hnum = inputs.get(self.house_number_field)
         input_borough = inputs.get(self.borough_field)
         input_zipcode = inputs.get(self.zipcode_field)
+        print(
+            f"passing these inputs to 1A \
+            {input_sname=}, {input_hnum=}, {input_borough=}, {input_zipcode=}"
+        )
         try:
             geo = g["1A"](
                 street_name=input_sname,
@@ -46,6 +50,7 @@ class Function1A:
             geo = e.result
 
         geo = self.parser(geo)
+        print(f"result is {geo}")
         return dict(
             uid=uid,
             geo_1a=json.dumps(
