@@ -107,14 +107,14 @@ WITH
 geom_new as (
 	SELECT facdomain, facgroup, facsubgrp, factype, datasource,
 	count(*) as count_new,
-	sum((geom is null)::integer) as wogeom_new
+	sum((geom is NOT null)::integer) as with_geom_new
 	from facdb
 	group by facdomain, facgroup, facsubgrp, factype, datasource
 ),
 geom_old as (
 	SELECT facdomain, facgroup, facsubgrp, factype, datasource,
 	count(*) as count_old,
-	count(*) FILTER (WHERE mapped=false) as wogeom_old
+	count(*) FILTER (WHERE mapped=TRUE) as with_geom_old
 	from dcp_facilities_with_unmapped
 	group by facdomain, facgroup, facsubgrp, factype, datasource
 )
@@ -126,8 +126,8 @@ select
 	coalesce(a.datasource, b.datasource) as datasource,
 	coalesce(b.count_old, 0) as count_old,
 	coalesce(a.count_new, 0) as count_new,
-	coalesce(a.wogeom_new, 0) as wogeom_new,
-	coalesce(b.wogeom_old, 0) as wogeom_old
+	coalesce(a.with_geom_new, 0) as with_geom_new,
+	coalesce(b.with_geom_old, 0) as with_geom_old
 INTO qc_mapped
 from geom_new a
 FULL join geom_old b
