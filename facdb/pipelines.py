@@ -806,7 +806,7 @@ def uscourts_courts(df: pd.DataFrame = None):
     return df
 
 
-def AddManagerAddress(func):
+def UseAirportName(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         df = func()
@@ -829,7 +829,7 @@ def AddManagerAddress(func):
     borough_field="county",
     zipcode_field="zipcode",
 )
-@AddManagerAddress
+@UseAirportName
 @ParseAddress(raw_address_field="manager_address")
 @Prepare
 def usdot_airports(df: pd.DataFrame = None):
