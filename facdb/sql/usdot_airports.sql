@@ -27,12 +27,7 @@ SELECT
     NULL as captype,
     --- wkt::geometry as wkb_geometry,
     NULL as wkb_geometry,
-    (CASE
-        WHEN facility_type = 'AIRPORT' THEN geo_1a
-        WHEN name = 'NYPD AIR OPERATIONS (FLOYD BENNETT FLD)' THEN geo_1a
-        ELSE geo_1b :: VARCHAR
-        END
-    ) as geo_1b,
+    geo_1b,
     NULL geo_bl,
     NULL geo_bn
 INTO _usdot_airports

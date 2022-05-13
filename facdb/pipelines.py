@@ -810,10 +810,11 @@ def AddManagerAddress(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         df = func()
+
         df["parsed_sname"] = df.apply(
             axis=1,
-            func=lambda x: x["manager_address"]
-            if not x["manager_address"] is None
+            func=lambda x: x["airport_name"]
+            if not x["airport_name"] is None
             else x["parsed_sname"],
         )
         return df
@@ -839,12 +840,13 @@ def usdot_airports(df: pd.DataFrame = None):
     ].copy()
     # 1B can geocode free form address if we pass it into street_name
     df["zipcode"] = df["manager_city_state_zip"].str[-5:]
-    df["manager_address"] = None
+    df["airport_name"] = None
     df.loc[
-        df.name == "JOHN F KENNEDY INTL", "manager_address"
+        df.name == "JOHN F KENNEDY INTL", "airport_name"
     ] = "JOHN F KENNEDY INTL AIRPORT"
-    df.loc[df.name == "LAGUARDIA", "manager_address"] = "LAGUARDIA AIRPORT"
-    df = df[df["facility_type"] == "AIRPORT"]
+    df.loc[df.name == "LAGUARDIA", "airport_name"] = "LAGUARDIA AIRPORT"
+    # df = df[df["facility_type"] == "AIRPORT"]
+
     return df
 
 
