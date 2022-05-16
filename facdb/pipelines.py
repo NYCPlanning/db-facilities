@@ -7,12 +7,12 @@ import pandas as pd
 
 from . import (
     Export,
-    Function1A,
     Function1B,
     FunctionBL,
     FunctionBN,
     ParseAddress,
     Prepare,
+    UseAirportName,
 )
 
 
@@ -806,30 +806,6 @@ def uscourts_courts(df: pd.DataFrame = None):
     return df
 
 
-def UseAirportName(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        df = func()
-
-        df["parsed_sname"] = df.apply(
-            axis=1,
-            func=lambda x: x["manager_address"]
-            if x["parsed_sname"] is ""
-            else x["parsed_sname"],
-        )
-        return df
-
-    def find_sname(row):
-
-        if row["parsed_sname"] != "":
-            return row["parsed_sname"]
-        if row["airport_name"] != "":
-            return row["airport_name"]
-        return row["cleaned_address"]
-
-    return wrapper
-
-
 @Export
 @Function1B(
     street_name_field="parsed_sname",
@@ -850,9 +826,9 @@ def usdot_airports(df: pd.DataFrame = None):
     df["zipcode"] = df["manager_city_state_zip"].str[-5:]
     df["airport_name"] = ""
     df.loc[
-        df.name == "JOHN F KENNEDY INTL", "manager_address"
+        df.name == "JOHN F KENNEDY INTL", "airport_name"
     ] = "JOHN F KENNEDY INTL AIRPORT"
-    df.loc[df.name == "LAGUARDIA", "manager_address"] = "LAGUARDIA AIRPORT"
+    df.loc[df.name == "LAGUARDIA", "airport_name"] = "LAGUARDIA AIRPORT"
     return df
 
 
