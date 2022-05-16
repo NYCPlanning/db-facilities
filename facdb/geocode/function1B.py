@@ -24,7 +24,7 @@ class Function1B:
         records = df.to_dict("records")
         it = process_map(self.geocode_one_record, records, chunksize=1000)
         df_geo = pd.DataFrame(it)
-        print(f"columns returned by 1B: {df_geo.columns}")
+        # print(f"columns returned by 1B: {df_geo.columns}")
         return df.merge(df_geo, how="left", on="uid", suffixes=("", "_"))
 
     def geocode_one_record(self, inputs: dict) -> dict:
@@ -36,10 +36,10 @@ class Function1B:
         input_hnum = inputs.get(self.house_number_field)
         input_borough = inputs.get(self.borough_field)
         input_zipcode = inputs.get(self.zipcode_field)
-        print(
-            f"passing these inputs to 1B \
-            {input_sname=}, {input_hnum=}, {input_borough=}, {input_zipcode=}"
-        )
+        # print(
+        #     f"passing these inputs to 1B \
+        #     {input_sname=}, {input_hnum=}, {input_borough=}, {input_zipcode=}"
+        # )
         try:
             geo = g["1B"](
                 street_name=input_sname,
