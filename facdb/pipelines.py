@@ -810,7 +810,13 @@ def UseAirportName(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         df = func()
-        df["parsed_sname"] = df.apply(axis=1, func=find_sname)
+
+        df["parsed_sname"] = df.apply(
+            axis=1,
+            func=lambda x: x["manager_address"]
+            if x["parsed_sname"] is ""
+            else x["parsed_sname"],
+        )
         return df
 
     def find_sname(row):
@@ -844,10 +850,9 @@ def usdot_airports(df: pd.DataFrame = None):
     df["zipcode"] = df["manager_city_state_zip"].str[-5:]
     df["airport_name"] = ""
     df.loc[
-        df.name == "JOHN F KENNEDY INTL", "airport_name"
+        df.name == "JOHN F KENNEDY INTL", "manager_address"
     ] = "JOHN F KENNEDY INTL AIRPORT"
-    df.loc[df.name == "LAGUARDIA", "airport_name"] = "LAGUARDIA AIRPORT"
-
+    df.loc[df.name == "LAGUARDIA", "manager_address"] = "LAGUARDIA AIRPORT"
     return df
 
 
