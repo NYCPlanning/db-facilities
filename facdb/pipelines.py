@@ -810,14 +810,16 @@ def UseAirportName(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         df = func()
-
-        df["parsed_sname"] = df.apply(
-            axis=1,
-            func=lambda x: x["airport_name"]
-            if not x["airport_name"] is None
-            else x["parsed_sname"],
-        )
+        df["parsed_sname"] = df.apply(axis=1, func=find_sname)
         return df
+
+    def find_sname(row):
+
+        if row["parsed_sname"] != "":
+            return row["parsed_sname"]
+        if row["airport_name"] != "":
+            return row["airport_name"]
+        return row["cleaned_address"]
 
     return wrapper
 
@@ -840,12 +842,11 @@ def usdot_airports(df: pd.DataFrame = None):
     ].copy()
     # 1B can geocode free form address if we pass it into street_name
     df["zipcode"] = df["manager_city_state_zip"].str[-5:]
-    df["airport_name"] = None
+    df["airport_name"] = ""
     df.loc[
         df.name == "JOHN F KENNEDY INTL", "airport_name"
     ] = "JOHN F KENNEDY INTL AIRPORT"
     df.loc[df.name == "LAGUARDIA", "airport_name"] = "LAGUARDIA AIRPORT"
-    # df = df[df["facility_type"] == "AIRPORT"]
 
     return df
 
