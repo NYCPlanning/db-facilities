@@ -57,3 +57,22 @@ def ParseAddress(function: callable = None, raw_address_field: str = None):
     if function:
         return _ParseAddress(function)
     return _ParseAddress
+
+
+def UseAirportName(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        df = func()
+
+        df["parsed_sname"] = df.apply(axis=1, func=find_sname)
+        return df
+
+    def find_sname(row):
+
+        if row["parsed_sname"] != "":
+            return row["parsed_sname"]
+        if row["airport_name"] != "":
+            return row["airport_name"]
+        return row["manager_address"]
+
+    return wrapper

@@ -1,10 +1,19 @@
 import datetime
 import re
+from functools import wraps
 from io import StringIO
 
 import pandas as pd
 
-from . import Export, Function1B, FunctionBL, FunctionBN, ParseAddress, Prepare
+from . import (
+    Export,
+    Function1B,
+    FunctionBL,
+    FunctionBN,
+    ParseAddress,
+    Prepare,
+    UseAirportName,
+)
 
 
 @Export
@@ -799,19 +808,27 @@ def uscourts_courts(df: pd.DataFrame = None):
 
 @Export
 @Function1B(
-    street_name_field="fac_name",
-    house_number_field="house_number",
+    street_name_field="parsed_sname",
+    house_number_field="parsed_hnum",
     borough_field="county",
+    zipcode_field="zipcode",
 )
+@UseAirportName
+@ParseAddress(raw_address_field="manager_address")
 @Prepare
 def usdot_airports(df: pd.DataFrame = None):
     df = df.loc[
-        (df.state_name == "NEW YORK")
+        (df["state_name"] == "NEW YORK")
         & (df.county.isin(["NEW YORK", "KINGS", "BRONX", "QUEENS", "RICHMOND"])),
         :,
     ].copy()
     # 1B can geocode free form address if we pass it into street_name
-    df["house_number"] = ""
+    df["zipcode"] = df["manager_city_state_zip"].str[-5:]
+    df["airport_name"] = ""
+    df.loc[
+        df.name == "JOHN F KENNEDY INTL", "airport_name"
+    ] = "JOHN F KENNEDY INTL AIRPORT"
+    df.loc[df.name == "LAGUARDIA", "airport_name"] = "LAGUARDIA AIRPORT"
     return df
 
 
