@@ -47,6 +47,8 @@ def version_from_config(name, read_version):
     file_content = str(obj["Body"].read(), "utf-8")
     json_content = json.loads(file_content)
     version = json_content["dataset"]["version"]
+    if version.isnumeric():
+        version = int(version)
     add_version(dataset=name, version=version)
 
 
