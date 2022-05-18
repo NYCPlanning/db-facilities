@@ -7,8 +7,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 
 # Install Geosupport
 ARG RELEASE=22a
-ARG MAJOR=21
-ARG MINOR=3
+ARG MAJOR=22
+ARG MINOR=1
 ARG PATCH=0
 
 WORKDIR /geosupport
