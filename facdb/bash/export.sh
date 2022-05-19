@@ -5,9 +5,10 @@ max_bg_procs 5
 
 # mkdir -p output && (
 echo "current directory is ${CURRENT_DIR}"
-echo "contents of output"
-find ../../output -type f -printf "%f\n"
-cd ../../output
+echo "contents of ../"
+find ../ -type f -printf "%f\n"
+echo "contents of ../../"
+find ../../ -type f -printf "%f\n"
 echo "*" > .gitignore
 CSV_export facdb facilities &
 CSV_export qc_operator &
