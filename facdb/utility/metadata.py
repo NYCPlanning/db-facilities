@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 import yaml
 
@@ -15,7 +16,5 @@ def add_version(dataset: str, version: str):
 
 
 def dump_metadata():
-    if not os.path.exists("output/"):
-        os.mkdir("output/")
-    with open("output/metadata.yml", "w") as outfile:
+    with open(Path(__file__).parent.parent / "metadata.yml", "w") as outfile:
         yaml.dump(metadata, outfile, Dumper=MyDumper, default_flow_style=False)
