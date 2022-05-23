@@ -5,6 +5,7 @@ max_bg_procs 5
 
 mkdir -p output && (
     cd output
+    mv ../facdb/metadata.yml .
     echo "*" > .gitignore
     CSV_export facdb facilities &
     CSV_export qc_operator &

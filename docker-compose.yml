@@ -15,6 +15,9 @@ services:
         PATCH: 0
     environment:
       - BUILD_ENGINE=postgresql://postgres:postgres@db:5432/postgres
+      - AWS_S3_ENDPOINT=${AWS_S3_ENDPOINT}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
       - .:/src
     command: sleep infinity

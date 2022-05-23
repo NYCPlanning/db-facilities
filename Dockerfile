@@ -1,14 +1,14 @@
-# FROM python:3.9-slim
-FROM python@sha256:c5f60863db103c951595f110def9244c1e09efe9e8d072cfac3da39310bc8cc8
+FROM python:latest
+# FROM python@sha256:c5f60863db103c951595f110def9244c1e09efe9e8d072cfac3da39310bc8cc8
 
 # install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends zip unzip curl postgresql-client build-essential jq
 
 # Install Geosupport
-ARG RELEASE=21c
-ARG MAJOR=21
-ARG MINOR=3
+ARG RELEASE=22a1
+ARG MAJOR=22
+ARG MINOR=11
 ARG PATCH=0
 
 WORKDIR /geosupport
