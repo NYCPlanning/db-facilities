@@ -191,7 +191,6 @@ datasets:
       - doe_lcgms.sql
 
   - name: doe_universalprek
-    version: 20210414
     scripts:
       - doe_universalprek.sql
 
