@@ -59,7 +59,7 @@ def Prepare(func) -> callable:
         pkl_path = BASE_PATH / f"{name}.pkl"
         if not os.path.isfile(pkl_path):
             # pull from data library
-            print("pulling from data library")
+            print(f"pulling from {name} data library")
             # fmt:off
             df = read_from_S3(name)\
                 .pipe(hash_each_row)\
