@@ -5,11 +5,6 @@ max_bg_procs 5
 
 mkdir -p output && (
     cd output
-    echo "working directory: $PWD"
-    for entry in "$PWD"/*
-    do
-    echo "$entry"
-    done
     mv ../facdb/metadata.yml .
     echo "*" > .gitignore
     CSV_export facdb facilities &

@@ -6,9 +6,9 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends zip unzip curl postgresql-client build-essential jq
 
 # Install Geosupport
-ARG RELEASE=21a
-ARG MAJOR=21
-ARG MINOR=1
+ARG RELEASE=22a1
+ARG MAJOR=22
+ARG MINOR=11
 ARG PATCH=0
 
 WORKDIR /geosupport
