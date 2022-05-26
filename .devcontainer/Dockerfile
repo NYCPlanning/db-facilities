@@ -33,6 +33,11 @@ WORKDIR /
 #Install ipython
 # RUN pip install ipython
 
+#Install minio
+RUN curl -O https://dl.min.io/client/mc/release/linux-amd64/mc\
+    && chmod +x mc\
+    && sudo mv ./mc /usr/bin
+
 
 # Install Poetry
 USER vscode
