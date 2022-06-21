@@ -340,6 +340,10 @@ def dsny_specialwastedrop(df: pd.DataFrame = None):
 @Prepare
 def dsny_textiledrop(df: pd.DataFrame = None):
     df["bbl"] = df.bbl.fillna(0).astype(float).astype(int)
+    df = df[
+        df["categoriesaccepted"].notna()
+        & df["categoriesaccepted"].str.contains("Clothing")
+    ]
     return df
 
 
@@ -348,7 +352,6 @@ def dsny_textiledrop(df: pd.DataFrame = None):
     street_name_field="parsed_sname",
     house_number_field="parsed_hnum",
     borough_field="borough",
-    zipcode_field="zipcode",
 )
 @ParseAddress(raw_address_field="address")
 @FunctionBL(bbl_field="bbl")
