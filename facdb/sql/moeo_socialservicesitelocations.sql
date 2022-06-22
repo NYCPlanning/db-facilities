@@ -21,6 +21,7 @@ SELECT
     (CASE
         WHEN program_name = 'NORC SITES' THEN 'NORC Services'
         WHEN program_name = 'TRANSPORTATION ONLY' THEN 'Transportation'
+        WHEN program_name = 'School’s Out New York City (SONYC)' THEN 'Schools Out New York City (SONYC)'
         ELSE initcap(program_name)
     END) as factype,
     (CASE
@@ -37,7 +38,7 @@ SELECT
             'Cornerstone',
             'Educational Support: High School Youth',
             'PEAK Centers',
-            'School’s Out New York City (SONYC)',
+            'Schools Out New York City (SONYC)',
             'Teen Rapp',
             'Youth Recreational Services/Youth Athletic Leagues')
             THEN 'After-School Programs'
