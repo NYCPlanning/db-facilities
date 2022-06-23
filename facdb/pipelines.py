@@ -335,7 +335,7 @@ def dsny_specialwastedrop(df: pd.DataFrame = None):
 @FunctionBL(bbl_field="bbl")
 @FunctionBN(bin_field="bin")
 @Prepare
-def dsny_textiledrop(df: pd.DataFrame = None):
+def dsny_donatenycdirectory(df: pd.DataFrame = None):
     df["bbl"] = df.bbl.fillna(0).astype(float).astype(int)
     df = df[
         df["categoriesaccepted"].notna()

@@ -36,9 +36,9 @@ datasets:
     scripts:
       - dsny_specialwastedrop.sql
 
-  - name: dsny_textiledrop
+  - name: dsny_donatenycdirectory
     scripts:
-      - dsny_textiledrop.sql
+      - dsny_donatenycdirectory.sql
 
   - name: dsny_leafdrop
     scripts:
