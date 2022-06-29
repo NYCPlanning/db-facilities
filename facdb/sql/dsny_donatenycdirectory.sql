@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS _dsny_textiledrop;
+DROP TABLE IF EXISTS _dsny_donatenycdirectory;
 SELECT uid,
     source,
     CONCAT(site, ' Textile Drop-off Site') as facname,
@@ -22,7 +22,7 @@ SELECT uid,
     geo_1b,
     geo_bl,
     geo_bn
-INTO _dsny_textiledrop
-FROM dsny_textiledrop;
+INTO _dsny_donatenycdirectory
+FROM dsny_donatenycdirectory;
 
-CALL append_to_facdb_base('_dsny_textiledrop');
+CALL append_to_facdb_base('_dsny_donatenycdirectory');
