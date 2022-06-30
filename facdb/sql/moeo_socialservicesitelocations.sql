@@ -38,7 +38,7 @@ SELECT
             'Cornerstone',
             'Educational Support: High School Youth',
             'PEAK Centers',
-            'School''s Out New York City (SONYC)',
+            'School’s Out New York City (SONYC)',
             'Teen Rapp',
             'Youth Recreational Services/Youth Athletic Leagues')
             THEN 'After-School Programs'
