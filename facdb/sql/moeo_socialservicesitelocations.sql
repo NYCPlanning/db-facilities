@@ -21,6 +21,7 @@ SELECT
     (CASE
         WHEN program_name = 'NORC SITES' THEN 'NORC Services'
         WHEN program_name = 'TRANSPORTATION ONLY' THEN 'Transportation'
+        WHEN program_name = 'School’s Out New York City (SONYC)' THEN 'School''s Out New York City (SONYC)'
         ELSE initcap(program_name)
     END) as factype,
     (CASE

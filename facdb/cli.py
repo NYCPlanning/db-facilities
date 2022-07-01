@@ -5,7 +5,7 @@ from typing import List, Optional
 
 import typer
 
-from . import ExecuteSQL
+from . import ExecuteSQL, dump_metadata
 from .utility.prepare import read_datasets_yml
 
 app = typer.Typer(add_completion=False)
@@ -108,6 +108,7 @@ def run(
                 ExecuteSQL(Path(__file__).parent / "sql" / script)
 
         typer.echo(typer.style(f"SUCCESS: {name}", fg=typer.colors.GREEN))
+    dump_metadata()
 
 
 @app.command()

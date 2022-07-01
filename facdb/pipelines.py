@@ -1,10 +1,19 @@
 import datetime
 import re
+from functools import wraps
 from io import StringIO
 
 import pandas as pd
 
-from . import Export, Function1B, FunctionBL, FunctionBN, ParseAddress, Prepare
+from . import (
+    Export,
+    Function1B,
+    FunctionBL,
+    FunctionBN,
+    ParseAddress,
+    Prepare,
+    UseAirportName,
+)
 
 
 @Export
@@ -321,26 +330,28 @@ def dsny_specialwastedrop(df: pd.DataFrame = None):
 
 @Export
 @Function1B(
-    street_name_field="street",
-    house_number_field="number",
-    borough_field="borough",
-    zipcode_field="zip",
+    street_name_field="street", house_number_field="number", borough_field="borough"
 )
 @FunctionBL(bbl_field="bbl")
 @FunctionBN(bin_field="bin")
 @Prepare
-def dsny_textiledrop(df: pd.DataFrame = None):
+def dsny_donatenycdirectory(df: pd.DataFrame = None):
     df["bbl"] = df.bbl.fillna(0).astype(float).astype(int)
+    df = df[
+        df["categoriesaccepted"].notna()
+        & df["categoriesaccepted"].str.contains("Clothing")
+    ]
     return df
 
 
 @Export
 @Function1B(
-    street_name_field="street",
-    house_number_field="number",
+    street_name_field="parsed_sname",
+    house_number_field="parsed_hnum",
     borough_field="borough",
     zipcode_field="zipcode",
 )
+@ParseAddress(raw_address_field="address")
 @FunctionBL(bbl_field="bbl")
 @FunctionBN(bin_field="bin")
 @Prepare
@@ -359,6 +370,9 @@ def dsny_leafdrop(df: pd.DataFrame = None):
 @ParseAddress(raw_address_field="location")
 @Prepare
 def dsny_fooddrop(df: pd.DataFrame = None):
+    df["zip_code"] = df["location"].apply(
+        lambda x: x[:-5] if x[:-5].isnumeric() else None
+    )
     return df
 
 
@@ -795,19 +809,27 @@ def uscourts_courts(df: pd.DataFrame = None):
 
 @Export
 @Function1B(
-    street_name_field="fac_name",
-    house_number_field="house_number",
+    street_name_field="parsed_sname",
+    house_number_field="parsed_hnum",
     borough_field="county",
+    zipcode_field="zipcode",
 )
+@UseAirportName
+@ParseAddress(raw_address_field="manager_address")
 @Prepare
 def usdot_airports(df: pd.DataFrame = None):
     df = df.loc[
-        (df.state_name == "NEW YORK")
+        (df["state_name"] == "NEW YORK")
         & (df.county.isin(["NEW YORK", "KINGS", "BRONX", "QUEENS", "RICHMOND"])),
         :,
     ].copy()
     # 1B can geocode free form address if we pass it into street_name
-    df["house_number"] = ""
+    df["zipcode"] = df["manager_city_state_zip"].str[-5:]
+    df["airport_name"] = ""
+    df.loc[
+        df.name == "JOHN F KENNEDY INTL", "airport_name"
+    ] = "JOHN F KENNEDY INTL AIRPORT"
+    df.loc[df.name == "LAGUARDIA", "airport_name"] = "LAGUARDIA AIRPORT"
     return df
 
 

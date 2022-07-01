@@ -12,6 +12,7 @@ function facdb_execute {
 }
 
 function facdb_upload {
+    mc config host add spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
     local branchname=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
     local DATE=$(date "+%Y-%m-%d")
     local SPACES="spaces/edm-publishing/db-facilities/$branchname"

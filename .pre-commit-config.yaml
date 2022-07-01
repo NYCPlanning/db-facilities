@@ -9,6 +9,7 @@ repos:
     rev: 19.3b0
     hooks:
     -   id: black
+        additional_dependencies: ['click==8.0.4']
 -   repo: https://github.com/PyCQA/isort
     rev: 5.7.0
     hooks:

@@ -1,8 +1,15 @@
 #!/bin/bash
-if [ -f .env ]
-then
-  export $(cat .env | sed 's/#.*//g' | xargs)
-fi
+function set_env {
+  for envfile in $@
+  do
+    if [ -f $envfile ]
+      then
+        export $(cat $envfile | sed 's/#.*//g' | xargs)
+      fi
+  done
+}
+# Set Environmental variables
+set_env .env version.env
 
 function urlparse {
     proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
@@ -81,6 +88,7 @@ function SHP_export {
     cd $name
     ogr2ogr -progress -f "ESRI Shapefile" $name.shp \
         PG:"host=$BUILD_HOST user=$BUILD_USER port=$BUILD_PORT dbname=$BUILD_DB password=$BUILD_PWD" \
+        -s_srs EPSG:4326 -t_srs EPSG:2263\
         $table -nlt $geomtype
       rm -f $name.shp.zip
       zip -9 $name.shp.zip *
