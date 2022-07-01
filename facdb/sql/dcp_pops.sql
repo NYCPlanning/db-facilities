@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS _dcp_pops;
 SELECT
-    pops_number,
+    pops_number as uid,
     source,
     (CASE
         WHEN building_name IS NOT NULL AND building_name <> '' THEN building_name
