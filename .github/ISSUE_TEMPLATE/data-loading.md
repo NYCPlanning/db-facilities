@@ -121,7 +121,12 @@ Hand check for 1 facility in queens, 1 facility in Manhattan, 0 in the other 3 b
 This dataset is updated for CEQR
 
 - [ ] foodbankny_foodbanks http://www.foodbanknyc.org/get-help/
-Go to the expanded view of the google maps. Click “Download KML” under the options (three dots). Instead of “Entire Map,” select “Food Bank For NYC Open Sites.” Select. “Keep data up to date with network link KML (only usable online).“ Go to https://mygeodata.cloud/converter/kmz-to-csv to convert the kmz to csv, then use recipe app to load in the csv
+      1. head to http://www.foodbanknyc.org/get-help/
+      2. navigate to the map and make a copy of the map
+      3. After making a copy, click on the three dots next to the target layer and click "Export Data" and export as a csv 
+      4. Rename the file (still as a csv) to match Food_Bank_For_NYC_Open_Members_as_of_DATE(dmmyy)
+      5. place it at the library/tmp folder 
+      6. then run library archive --name foodbankny_foodbanks with the -version flag set to the DATE in the file path
 
 - [ ] nysed_activeinstitutions  https://eservices.nysed.gov/sedreports/list?id=1
  Active Institutions with GIS coordinates and OITS Accuracy Code - Select by County__ CSV. Note that .csv data is automatically downloaded without comma delimiter. Exporting to csv from numbers is one way to get around this issue
