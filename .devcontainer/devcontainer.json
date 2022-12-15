@@ -46,7 +46,7 @@
 		5432
 	],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": ". $HOME/.poetry/env && poetry install && poetry run pre-commit install",
+	"postCreateCommand": ". $HOME/.local/bin && poetry install && poetry run pre-commit install",
 	// Adding id_rsa so that we can push to github from the dev container
 	"initializeCommand": "ssh-add $HOME/.ssh/id_rsa",
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
