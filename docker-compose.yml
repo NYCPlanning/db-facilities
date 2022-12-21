@@ -26,7 +26,7 @@ services:
         condition: service_healthy
 
   db:
-    image: postgis/postgis:11-3.0-alpine
+    image: postgis/postgis:12-3.0-alpine
     restart: unless-stopped
     ports:
       - 5432:5432
