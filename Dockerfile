@@ -26,6 +26,7 @@ WORKDIR /src
 COPY . .
 
 RUN curl -sSL https://install.python-poetry.org | python3 - --version 1.1.6
+    poetry --version
 
 RUN . $HOME/.local/bin;\
     poetry config virtualenvs.create false --local;\
