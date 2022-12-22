@@ -31,7 +31,7 @@ ENV PATH="~/.local/bin:$PATH"
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN poetry config virtualenvs.create false --local
-RUN poetry install --without dev
+RUN poetry install --no-dev
 
 #RUN . $HOME/.local/bin;\
 #    poetry config virtualenvs.create false --local;\
