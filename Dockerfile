@@ -25,15 +25,11 @@ ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/geosupport/version-${RELEASE}_${MAJOR}.${M
 WORKDIR /src
 COPY . .
 
-RUN curl -sSL https://install.python-poetry.org | python3 -
-
 ENV PATH="${PATH}:/root/.local/bin"
 
-RUN ECHO $PATH
-
-RUN poetry install --without dev
-
+RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN poetry config virtualenvs.create false --local
+RUN poetry install --without dev
 
 #RUN . $HOME/.local/bin;\
 #    poetry config virtualenvs.create false --local;\
