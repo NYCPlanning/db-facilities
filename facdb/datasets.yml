@@ -186,6 +186,7 @@ datasets:
   - name: sca_enrollment_capacity
 
   - name: doe_lcgms
+    version: 20220513
     scripts:
       - doe_lcgms.sql
 
