@@ -27,7 +27,7 @@ COPY . .
 
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3 - --version 1.1.6
 
-RUN . $HOME/.poetry/bin;\
+RUN . $HOME/.poetry/env;\
     poetry config virtualenvs.create false --local;\
     poetry install --no-dev
 
