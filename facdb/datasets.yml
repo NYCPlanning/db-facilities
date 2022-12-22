@@ -199,6 +199,7 @@ datasets:
       - dohmh_daycare.sql
 
   - name: foodbankny_foodbanks
+    version: 20220421
     scripts:
       - foodbankny_foodbanks.sql
 
