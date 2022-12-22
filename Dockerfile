@@ -31,8 +31,9 @@ RUN echo $HOME
 
 ENV PATH="${PATH}:/root/.local/bin"
 
+RUN poetry install --without dev
+
 RUN poetry config virtualenvs.create false --local;\
-    poetry install
 
 #RUN . $HOME/.local/bin;\
 #    poetry config virtualenvs.create false --local;\
