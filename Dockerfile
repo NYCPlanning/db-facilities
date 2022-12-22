@@ -26,6 +26,8 @@ WORKDIR /src
 COPY . .
 
 ENV PATH="${PATH}:/root/.local/bin"
+ENV PATH="~/.poetry/bin:$PATH"
+ENV PATH="~/.local/bin:$PATH"
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN poetry config virtualenvs.create false --local
