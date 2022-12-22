@@ -25,9 +25,9 @@ ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/geosupport/version-${RELEASE}_${MAJOR}.${M
 WORKDIR /src
 COPY . .
 
-RUN pip install poetry
+RUN pip install poetry==1.1.6
 
-RUN . $HOME/.poetry/env;\
+RUN . $HOME/.local/bin;\
     poetry config virtualenvs.create false --local;\
     poetry install --no-dev
 
