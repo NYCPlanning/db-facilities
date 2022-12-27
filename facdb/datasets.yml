@@ -186,6 +186,7 @@ datasets:
   - name: sca_enrollment_capacity
 
   - name: doe_lcgms
+    version: 20220513
     scripts:
       - doe_lcgms.sql
 
@@ -198,6 +199,7 @@ datasets:
       - dohmh_daycare.sql
 
   - name: foodbankny_foodbanks
+    version: 20220421
     scripts:
       - foodbankny_foodbanks.sql
 
