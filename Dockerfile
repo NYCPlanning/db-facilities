@@ -27,7 +27,7 @@ COPY . .
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
-RUN . $HOME/.local/bin &&\
+RUN export PATH=$PATH:$HOME/.local/bin &&\
     poetry config virtualenvs.create false --local &&\
     poetry install --no-dev
 
