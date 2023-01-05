@@ -42,5 +42,5 @@ RUN curl -O https://dl.min.io/client/mc/release/linux-amd64/mc\
 # Install Poetry
 USER vscode
 RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="~/.poetry/bin:$PATH"
-ENV PATH="~/.local/bin:$PATH"
+#ENV PATH="~/.poetry/bin:$PATH"
+#ENV PATH="~/.local/bin:$PATH"

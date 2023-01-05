@@ -31,4 +31,4 @@ RUN export PATH="/root/.local/bin:$PATH" &&\
     poetry config virtualenvs.create false --local &&\
     poetry install --no-dev
 
-ENV PATH="~/.local/bin:$PATH"
+#ENV PATH="~/.local/bin:$PATH"
