@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS _foodbankny_foodbanks;
 SELECT
     uid,
     source,
-    name as facname,
+    agency_name as facname,
     parsed_hnum as addressnum,
     parsed_sname as streetname,
     address,
@@ -18,7 +18,7 @@ SELECT
 		WHEN program_type ~* 'Soup Kitchen' THEN 'Soup Kitchen'
 	END) as factype,
     'Soup Kitchens and Food Pantries' as facsubgrp,
-    name as opname,
+    agency_name as opname,
     'Non-public' as opabbrev,
     'Non-public' as overabbrev,
     NULL as capacity,
