@@ -59,7 +59,7 @@ SELECT
             'Other Prevention Services-OASAS, Prevention Resource Center-OASAS, Primary Prevention Services-OASAS',
             'Primary Prevention Services-OASAS'
             )
-            THEN 'Chemical Dependency'
+            THEN 'Substance Use Disorder Treatment Programs'
         WHEN program_name IN
             ('Community Based Programs')
             THEN 'Community Centers and Community Programs'
