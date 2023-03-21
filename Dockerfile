@@ -6,15 +6,15 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends zip unzip curl postgresql-client build-essential jq
 
 # Install Geosupport
-ARG RELEASE=22a1
-ARG MAJOR=22
-ARG MINOR=11
+ARG RELEASE=23a1
+ARG MAJOR=23
+ARG MINOR=1
 ARG PATCH=0
 
 WORKDIR /geosupport
 RUN FILE_NAME=linux_geo${RELEASE}_${MAJOR}_${MINOR}.zip\
     && echo $FILE_NAME\
-    && curl -O https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/$FILE_NAME\
+    && curl -O https://s-media.nyc.gov/agencies/dcp/assets/files/zip/data-tools/bytes/$FILE_NAME\
     && unzip -qq *.zip\
     && rm *.zip
 
