@@ -13,7 +13,10 @@ Like most of our data products, source data must be updated in data library befo
 **All source data listed is to be uploaded as .csv files**
 
 ## Geosupport
-- [ ] Update geosupport version in both docker-compose.yml files and both Dockerfiles
+- [ ] Update geosupport version in both Dockerfiles
+
+## Version Env
+- [ ] Update previous version for QCQA in `version.env` file
 
 ## Scraped by data library
 
