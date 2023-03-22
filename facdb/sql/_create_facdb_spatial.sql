@@ -23,12 +23,12 @@ with boundary_geosupport as (
 	SELECT
 		uid,
 		coalesce(
-			(select left(bbl::text, 1)::integer from dcp_mappluto b where st_intersects(b.wkb_geometry, a.geom)),
+			(select left(bbl::text, 1)::integer from dcp_mappluto_wi b where st_intersects(b.wkb_geometry, a.geom)),
 			(select borocode::integer from dcp_boroboundaries_wi b where st_intersects(b.wkb_geometry, a.geom))
 		)as borocode,
 		(select zipcode from doitt_zipcodeboundaries b where st_intersects(b.wkb_geometry, a.geom) limit 1) as zipcode,
 		(select bin::bigint::text from doitt_buildingfootprints b where st_intersects(b.wkb_geometry, a.geom) limit 1) as bin,
-		(select bbl::bigint::text from dcp_mappluto b where st_intersects(b.wkb_geometry, a.geom)) as bbl,
+		(select bbl::bigint::text from dcp_mappluto_wi b where st_intersects(b.wkb_geometry, a.geom)) as bbl,
 		(select UPPER(po_name) from doitt_zipcodeboundaries b where st_intersects(b.wkb_geometry, a.geom) limit 1) as city,
 		(select borocd::text from dcp_cdboundaries b where st_intersects(b.wkb_geometry, a.geom)) as commboard,
 		(select ntacode from dcp_nta2010 b where st_intersects(b.wkb_geometry, a.geom)) as nta2010,

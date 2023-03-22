@@ -34,7 +34,7 @@ def init():
 @app.command()
 def dataloading():
     """
-    Load SQL dump datasets from data library e.g. dcp_mappluto, doitt_buildingcentroids
+    Load SQL dump datasets from data library e.g. dcp_mappluto_wi, doitt_buildingcentroids
     """
     os.system("./facdb/bash/dataloading.sh")
 

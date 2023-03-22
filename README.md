@@ -59,7 +59,7 @@ Commands:
 <details><summary>Examples</summary>
     
 - `facdb init` initialization of the database with `facdb_base`, functions and stored procedures
-- `facdb dataloading` load supplementry datasets from data-library (e.g. `dcp_mappluto`, `doitt_buildingcentroids`)
+- `facdb dataloading` load supplementry datasets from data-library (e.g. `dcp_mappluto_wi`, `doitt_buildingcentroids`)
 - `facdb run`
     - `facdb run -n nysed_activeinstitutions` to execute both the python and sql part specified in `datasets.yml`
     - `facdb run -n nysed_activeinstitutions --python` to execute the python part only
