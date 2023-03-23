@@ -51,13 +51,13 @@ FROM (
 			facdb_base_geom.geom_1b,
 			facdb_base_geom.geom_bl,
 			facdb_base_geom.geom_bn,
-			st_centroid(dcp_mappluto.wkb_geometry) as geom_pluto,
+			st_centroid(dcp_mappluto_wi.wkb_geometry) as geom_pluto,
 			st_centroid(doitt_buildingfootprints.wkb_geometry) as geom_bldg,
 			(case when facdb_base_geom.wkb_geometry is not null then 'wkb_geometry' end) as source_wkb,
 			(case when geom_1b is not null then '1b' end) as source_1b,
 			(case when geom_bl is not null then 'bl' end) as source_bl,
 			(case when geom_bn is not null then 'bn' end) as source_bn,
-			(case when dcp_mappluto.wkb_geometry is not null then 'pluto bbl centroid' end) as source_pluto,
+			(case when dcp_mappluto_wi.wkb_geometry is not null then 'pluto bbl centroid' end) as source_pluto,
 			(case when doitt_buildingfootprints.wkb_geometry is not null then 'building centroid' end ) as source_bldg
 		FROM (
 			SELECT
@@ -88,8 +88,8 @@ FROM (
 				) as geom_bn
 			from facdb_base
 		) as facdb_base_geom
-		LEFT JOIN dcp_mappluto
-			ON dcp_mappluto.bbl::bigint::text = facdb_base_geom.geo_bbl
+		LEFT JOIN dcp_mappluto_wi
+			ON dcp_mappluto_wi.bbl::bigint::text = facdb_base_geom.geo_bbl
 		LEFT JOIN doitt_buildingfootprints
 			ON doitt_buildingfootprints.bin::bigint::text = facdb_base_geom.geo_bin
 	) a

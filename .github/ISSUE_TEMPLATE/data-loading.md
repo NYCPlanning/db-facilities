@@ -12,6 +12,12 @@ Like most of our data products, source data must be updated in data library befo
 
 **All source data listed is to be uploaded as .csv files**
 
+## Geosupport
+- [ ] Update geosupport version in both Dockerfiles
+
+## Version Env
+- [ ] Update previous version for QCQA in `version.env` file
+
 ## Scraped by data library
 
 - [ ] bpl_libraries
@@ -32,6 +38,8 @@ To see if a dataset needs to be uploaded, check date last updated in open data a
 - [ ] dca_operatingbusinesses https://data.cityofnewyork.us/Business/Legally-Operating-Businesses/w7w3-xahh
 
 - [ ] dcp_colp https://www1.nyc.gov/site/planning/data-maps/open-data.page#city_facilities
+
+- [ ] dcp_facilities_with_unmapped https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-selfac.page
 
 - [ ] dcla_culturalinstitutions https://data.cityofnewyork.us/Recreation/DCLA-Cultural-Organizations/u35m-9t32
 

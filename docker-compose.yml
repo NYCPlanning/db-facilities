@@ -7,12 +7,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        # Geosupport Versions
-        RELEASE: 21a
-        MAJOR: 21
-        MINOR: 1
-        PATCH: 0
     environment:
       - BUILD_ENGINE=postgresql://postgres:postgres@db:5432/postgres
       - AWS_S3_ENDPOINT=${AWS_S3_ENDPOINT}
