@@ -8,7 +8,7 @@ import_public dcp_mappluto_wi &
 import_public dcp_boroboundaries_wi &
 import_public dcp_ct2010 &
 import_public dcp_ct2020 &
-import_public dcp_councildistricts &
+import_public dcp_councildistricts 22c &
 import_public dcp_cdboundaries &
 import_public dcp_nta2010 &
 import_public dcp_nta2020 &
