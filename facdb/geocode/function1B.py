@@ -84,7 +84,7 @@ class Function1B:
             ),
             geo_nta2010=geo.get("Neighborhood Tabulation Area (NTA)", None),
             geo_nta2020=geo.get("2020 Neighborhood Tabulation Area (NTA)", None),
-            geo_council=geo.get("City Council District", None),
+            # geo_council=geo.get("City Council District", None),
             geo_ct2010=geo.get("2010 Census Tract", None),
             geo_ct2020=geo.get("2020 Census Tract", None),
             geo_grc=geo.get("Geosupport Return Code (GRC)", None),
