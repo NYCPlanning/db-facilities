@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS facdb_spatial;
 with boundary_geosupport as (
 	SELECT
-		uid,
+		a.uid,
 		nullif(nullif(geo_1b->'result'->>'geo_borough_code',''), '0')::integer as borocode,
 		nullif(geo_1b->'result'->>'geo_zip_code','') as zipcode,
 		nullif(geo_1b->'result'->>'geo_bin','') as bin,
@@ -16,8 +16,9 @@ with boundary_geosupport as (
 		nullif(geo_1b->'result'->>'geo_policeprct','') as policeprct,
 		nullif(geo_1b->'result'->>'geo_schooldist','') as schooldist,
 		'geosupport' as boundarysource
-	FROM facdb_geom
-	LEFT JOIN dcp_councildistricts b ON st_intersects(b.wkb_geometry, facdb_geom.geom)
+	FROM facdb_base a
+	LEFT JOIN facdb_geom g ON a.uid = g.uid
+	LEFT JOIN dcp_councildistricts b ON st_intersects(b.wkb_geometry, g.geom)
 	WHERE nullif(geo_1b->'result'->>'geo_grc','') IN ('00', '01')
 	AND nullif(geo_1b->'result'->>'geo_grc2','') IN ('00', '01')
 ), boundary_spatial_join as (
