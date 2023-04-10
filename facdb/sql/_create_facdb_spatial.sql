@@ -10,6 +10,7 @@ with boundary_geosupport as (
 		nullif(geo_1b->'result'->>'geo_commboard','') as commboard,
 		nullif(geo_1b->'result'->>'geo_nta2010','') as nta2010,
 		nullif(geo_1b->'result'->>'geo_nta2020','') as nta2020,
+		-- see comment in join clauses below
 		coundist::text as council, --nullif(geo_1b->'result'->>'geo_council','') as council,
 		nullif(geo_1b->'result'->>'geo_ct2010','000000') as ct2010,
 		nullif(geo_1b->'result'->>'geo_ct2020','000000') as ct2020,
@@ -17,6 +18,8 @@ with boundary_geosupport as (
 		nullif(geo_1b->'result'->>'geo_schooldist','') as schooldist,
 		'geosupport' as boundarysource
 	FROM facdb_base a
+	-- temporary workaround 2023-04: geosupport is returning latest city council districts, but we need a specific version
+	-- in future, remove two lines below and uncomment the council row up above
 	LEFT JOIN facdb_geom g ON a.uid = g.uid
 	LEFT JOIN dcp_councildistricts b ON st_intersects(b.wkb_geometry, g.geom)
 	WHERE nullif(geo_1b->'result'->>'geo_grc','') IN ('00', '01')
