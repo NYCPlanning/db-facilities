@@ -17,7 +17,7 @@ with boundary_geosupport as (
 		nullif(geo_1b->'result'->>'geo_schooldist','') as schooldist,
 		'geosupport' as boundarysource
 	FROM facdb_geom
-	LEFT JOIN dcp_councildistricts b ON st_intersects(b.wkb_geometry, facdb_base.geom)
+	LEFT JOIN dcp_councildistricts b ON st_intersects(b.wkb_geometry, facdb_geom.geom)
 	WHERE nullif(geo_1b->'result'->>'geo_grc','') IN ('00', '01')
 	AND nullif(geo_1b->'result'->>'geo_grc2','') IN ('00', '01')
 ), boundary_spatial_join as (
